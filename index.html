@@ -695,6 +695,71 @@
 
   footer span { color: var(--cyan); }
 
+  /* ===== DEADLINE CARDS ===== */
+  .deadlines-block {
+    margin-top: 18px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+  .deadlines-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .deadline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    margin-bottom: 8px;
+    transition: border-color 0.3s;
+  }
+  .deadline-item:hover { border-color: var(--steel); }
+  .deadline-item:last-child { margin-bottom: 0; }
+  .dl-date {
+    flex-shrink: 0;
+    text-align: center;
+    min-width: 52px;
+    padding: 6px 8px;
+    border-radius: 8px;
+  }
+  .dl-day { font-family:'Orbitron',sans-serif; font-size:20px; font-weight:900; line-height:1; }
+  .dl-month { font-size:10px; font-family:'Share Tech Mono',monospace; margin-top:2px; letter-spacing:1px; }
+  .dl-body { flex: 1; }
+  .dl-label { font-size:10px; font-family:'Share Tech Mono',monospace; letter-spacing:2px; margin-bottom:3px; }
+  .dl-title { font-size:14px; font-weight:700; color:var(--text); margin-bottom:3px; line-height:1.3; }
+  .dl-desc  { font-size:12px; color:rgba(232,244,253,0.45); line-height:1.4; font-weight:300; }
+
+  .dl-cyan   { background:rgba(0,229,255,0.08); border-color:rgba(0,229,255,0.25); }
+  .dl-cyan .dl-day   { color:var(--cyan); }
+  .dl-cyan .dl-month { color:rgba(0,229,255,0.6); }
+  .dl-cyan .dl-label { color:var(--cyan); }
+
+  .dl-orange { background:rgba(255,107,43,0.08); border-color:rgba(255,107,43,0.25); }
+  .dl-orange .dl-day   { color:var(--orange); }
+  .dl-orange .dl-month { color:rgba(255,107,43,0.6); }
+  .dl-orange .dl-label { color:var(--orange); }
+
+  .dl-green  { background:rgba(0,255,136,0.06); border-color:rgba(0,255,136,0.2); }
+  .dl-green .dl-day   { color:var(--green); }
+  .dl-green .dl-month { color:rgba(0,255,136,0.6); }
+  .dl-green .dl-label { color:var(--green); }
+
+  .dl-amber  { background:rgba(255,193,66,0.07); border-color:rgba(255,193,66,0.22); }
+  .dl-amber .dl-day   { color:var(--amber); }
+  .dl-amber .dl-month { color:rgba(255,193,66,0.6); }
+  .dl-amber .dl-label { color:var(--amber); }
+
+  .dl-purple { background:rgba(204,136,255,0.07); border-color:rgba(204,136,255,0.22); }
+  .dl-purple .dl-day   { color:#cc88ff; }
+  .dl-purple .dl-month { color:rgba(204,136,255,0.6); }
+  .dl-purple .dl-label { color:#cc88ff; }
+
   /* Responsive */
   @media(max-width:600px) {
     .tasks-grid { grid-template-columns: 1fr; }
@@ -776,6 +841,33 @@
           <div class="mini-stat"><div class="mini-stat-num pend" id="cnt-pend-CHAFOYA">0</div><div class="mini-stat-label">PENDIENTE</div></div>
         </div>
         <div class="member-bar-bg"><div class="member-bar-fill bar-CHAFOYA" id="bar-CHAFOYA" style="width:0%"></div></div>
+        <div class="deadlines-block">
+          <div class="deadlines-title">// FECHAS LÍMITE DE ENTREGA</div>
+          <div class="deadline-item">
+            <div class="dl-date dl-cyan"><div class="dl-day">29</div><div class="dl-month">MAYO</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-cyan">VIERNES · SEMANA 1</div>
+              <div class="dl-title">Confirmación de visita a CORINCA</div>
+              <div class="dl-desc">Carta entregada, fecha y hora de visita confirmadas. Notificar al equipo punto de reunión.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-cyan"><div class="dl-day">02</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-cyan">MARTES · SEMANA 2</div>
+              <div class="dl-title">Tema dominado al 100%</div>
+              <div class="dl-desc">Propiedades del acero explicables oralmente sin leer. Preguntas de entrevista memorizadas.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-cyan"><div class="dl-day">09</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-cyan">MARTES · ENSAYO FINAL</div>
+              <div class="dl-title">Ensayo general + vestimenta lista</div>
+              <div class="dl-desc">Liderar el ensayo grupal. Ropa formal ejecutiva preparada para el día de la defensa.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -799,6 +891,33 @@
           <div class="mini-stat"><div class="mini-stat-num pend" id="cnt-pend-KERIM">0</div><div class="mini-stat-label">PENDIENTE</div></div>
         </div>
         <div class="member-bar-bg"><div class="member-bar-fill bar-KERIM" id="bar-KERIM" style="width:0%"></div></div>
+        <div class="deadlines-block">
+          <div class="deadlines-title">// FECHAS LÍMITE DE ENTREGA</div>
+          <div class="deadline-item">
+            <div class="dl-date dl-orange"><div class="dl-day">03</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-orange">MIÉRCOLES · SEMANA 2</div>
+              <div class="dl-title">Guion del video y plan de grabación</div>
+              <div class="dl-desc">Estructura completa con tiempos planificados y lista de tomas B-Roll necesarias en CORINCA.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-orange"><div class="dl-day">07</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-orange">DOMINGO · FECHA LÍMITE</div>
+              <div class="dl-title">Video editado y subido</div>
+              <div class="dl-desc">4–5 minutos exactos: entrevista + B-Roll + lower thirds. Enlace subido a YouTube/Drive y compartido al equipo.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-orange"><div class="dl-day">09</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-orange">MARTES · ENSAYO FINAL</div>
+              <div class="dl-title">Ensayo general — todo listo</div>
+              <div class="dl-desc">Participar en el ensayo grupal. Video ya insertado en el Prezi de Axel y verificado.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -822,6 +941,33 @@
           <div class="mini-stat"><div class="mini-stat-num pend" id="cnt-pend-IRVIN">0</div><div class="mini-stat-label">PENDIENTE</div></div>
         </div>
         <div class="member-bar-bg"><div class="member-bar-fill bar-IRVIN" id="bar-IRVIN" style="width:0%"></div></div>
+        <div class="deadlines-block">
+          <div class="deadlines-title">// FECHAS LÍMITE DE ENTREGA</div>
+          <div class="deadline-item">
+            <div class="dl-date dl-green"><div class="dl-day">02</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-green">MARTES · SEMANA 2</div>
+              <div class="dl-title">Tema dominado — lista de preguntas repasada</div>
+              <div class="dl-desc">Conocer la teoría del acero para interactuar con el experto en campo. Sin improvisar.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-green"><div class="dl-day">08</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-green">LUNES · FECHA LÍMITE</div>
+              <div class="dl-title">Informe PDF completo con formato final</div>
+              <div class="dl-desc">Todas las secciones integradas. Portada con foto grupal como marca de agua. Bibliografía APA de Chávez incluida. Listo para entregar.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-green"><div class="dl-day">09</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-green">MARTES · ENSAYO FINAL</div>
+              <div class="dl-title">Ensayo general de defensa</div>
+              <div class="dl-desc">Participar en el ensayo grupal. Dominar oralmente su sección del informe para la Q&A del docente.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -844,6 +990,33 @@
           <div class="mini-stat"><div class="mini-stat-num pend" id="cnt-pend-AXEL">0</div><div class="mini-stat-label">PENDIENTE</div></div>
         </div>
         <div class="member-bar-bg"><div class="member-bar-fill bar-AXEL" id="bar-AXEL" style="width:0%"></div></div>
+        <div class="deadlines-block">
+          <div class="deadlines-title">// FECHAS LÍMITE DE ENTREGA</div>
+          <div class="deadline-item">
+            <div class="dl-date dl-amber"><div class="dl-day">05</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-amber">VIERNES · SEMANA 2</div>
+              <div class="dl-title">Estructura base del Prezi armada</div>
+              <div class="dl-desc">Las 7 secciones creadas en Prezi con diseño visual aplicado. Navegación y estética definidas aunque el contenido final esté pendiente.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-amber"><div class="dl-day">08</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-amber">LUNES · FECHA LÍMITE</div>
+              <div class="dl-title">Prezi 100% completo con video insertado</div>
+              <div class="dl-desc">Todas las secciones con contenido final. Video de Kerim insertado directamente. QR/enlace al informe en anexos. Listo para ensayo.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-amber"><div class="dl-day">09</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-amber">MARTES · ENSAYO FINAL</div>
+              <div class="dl-title">Ensayo general de presentación</div>
+              <div class="dl-desc">Manejar el Prezi durante el ensayo. Exponer el Marco Teórico sin leer, fluidez técnica completa.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -866,6 +1039,33 @@
           <div class="mini-stat"><div class="mini-stat-num pend" id="cnt-pend-CHAVEZ">0</div><div class="mini-stat-label">PENDIENTE</div></div>
         </div>
         <div class="member-bar-bg"><div class="member-bar-fill bar-CHAVEZ" id="bar-CHAVEZ" style="width:0%"></div></div>
+        <div class="deadlines-block">
+          <div class="deadlines-title">// FECHAS LÍMITE DE ENTREGA</div>
+          <div class="deadline-item">
+            <div class="dl-date dl-purple"><div class="dl-day">28</div><div class="dl-month">MAYO</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-purple">JUEVES · SEMANA 1</div>
+              <div class="dl-title">Cuestionario estructurado listo</div>
+              <div class="dl-desc">Mínimo 8–10 preguntas técnicas revisadas y compartidas al grupo. Deben aprobarse antes de la visita a CORINCA.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-purple"><div class="dl-day">05</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-purple">VIERNES · SEMANA 2</div>
+              <div class="dl-title">Marco teórico e investigación redactados</div>
+              <div class="dl-desc">Sección 5 del informe completa: propiedades del acero, historia en El Salvador. Enviada a Irvin para integración. Bibliografía APA lista.</div>
+            </div>
+          </div>
+          <div class="deadline-item">
+            <div class="dl-date dl-purple"><div class="dl-day">09</div><div class="dl-month">JUN</div></div>
+            <div class="dl-body">
+              <div class="dl-label dl-purple">MARTES · ENSAYO FINAL</div>
+              <div class="dl-title">Ensayo general de defensa</div>
+              <div class="dl-desc">Dominar oralmente el contraste Teoría vs. Realidad para la sección 6 del Prezi. Preparado para Q&A técnica del docente.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
