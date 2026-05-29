@@ -325,6 +325,19 @@ header { padding: 64px 0 48px; text-align: center; }
   background:rgba(56,189,248,0.08);
 }
 
+/* Mod Link Button Style */
+.mod-link-btn {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 14px; font-size: 11px; font-weight: 500;
+  color: var(--text2); text-decoration: none; font-family: 'JetBrains Mono', monospace;
+  transition: all 0.25s ease; backdrop-filter: blur(8px);
+}
+.mod-link-btn:hover {
+  background: rgba(255, 255, 255, 0.08); border-color: var(--border2);
+  color: #fff; transform: translateY(-1px);
+}
+
 .mod-stats {
   display:flex; gap:20px; flex-wrap:wrap;
   align-items:flex-end;
@@ -670,6 +683,7 @@ header { padding: 64px 0 48px; text-align: center; }
 </div>
 
 <div class="sec-label">// MÓDULOS POR INTEGRANTE</div>
+
 <div class="nav-bar">
   <button class="tab-btn active" data-m="CHAFOYA" onclick="showMod('CHAFOYA')">
     <div class="tab-top"><span class="tab-icon">🔵</span><span class="tab-name">CHAFOYA</span></div>
@@ -692,738 +706,411 @@ header { padding: 64px 0 48px; text-align: center; }
     <div class="tab-progress" id="mini-AXEL">0 / 5 tareas</div>
   </button>
   <button class="tab-btn" data-m="CHAVEZ" onclick="showMod('CHAVEZ')">
-    <div class="tab-top"><span class="tab-icon">🟣</span><span class="tab-name">CHÁVEZ</span></div>
-    <div class="tab-role">Control de Calidad<br>& Maquetador Teórico</div>
+    <div class="tab-top"><span class="tab-icon">🟣</span><span class="tab-name">CHAVEZ</span></div>
+    <div class="tab-role">Coordinador Técnico<br>& Editor Final</div>
     <div class="tab-progress" id="mini-CHAVEZ">0 / 5 tareas</div>
   </button>
 </div>
 
-<div id="mod-CHAFOYA" class="module-panel active">
-  <div class="mod-header" style="--mh-from:rgba(56,189,248,0.12); --mh-border:rgba(56,189,248,0.35); --mh-color:var(--cyan)">
+<div class="module-panel active" id="mod-CHAFOYA">
+  <div class="mod-header" style="--mh-from:rgba(56,189,248,0.12);--mh-to:rgba(56,189,248,0.02);--mh-glow:rgba(56,189,248,0.18);--mh-border:rgba(56,189,248,0.35);--mh-avatar:rgba(56,189,248,0.12);--mh-color:var(--cyan)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">CH</div>
+      <div class="mod-avatar">CC</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 01 · Liderazgo de Campo</div>
-        <h2 class="mod-name">Chafoya</h2>
-        <p class="mod-subtitle">Gestión logística en CORINCA, desarrollo técnico de la entrevista presencial y coordinación teórica del marco estructural.</p>
+        <div class="mod-eyebrow">Módulo 01 · Integrante Responsable</div>
+        <h2 class="mod-name">Carlos Chafoya</h2>
+        <p class="mod-subtitle">Liderazgo de campo, enlace directo para la gestión de la visita y encargado de dirigir el cuestionario técnico presencial en la planta.</p>
         <div class="mod-badges">
-          <span class="mod-badge">Logística</span>
-          <span class="mod-badge">Investigación Técnica</span>
-          <span class="mod-badge">Entrevistas</span>
+          <span class="mod-badge">Fase 1 (x1)</span>
+          <span class="mod-badge">Fase 3 (x3)</span>
+          <span class="mod-badge">Fase 5 (x1)</span>
         </div>
+        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
+          📄 Ver Documento de Referencia (SC)
+        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-CHAFOYA">0%</div><div class="mod-stat-label">Progreso</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" id="p-CHAFOYA">0%</div><div class="mod-stat-label">Completado</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
-    <div class="tasks-list">
-      <div class="task-card status-pending" onclick="toggleTask('T01')" id="task-T01" style="--bar-color:var(--cyan)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 01</span><span class="task-phase phase-F1">FASE 1</span></div>
-            <h3 class="task-title">Investigación del Proceso del Acero en El Salvador</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T01">Pendiente</button>
-        </div>
-        <p class="task-desc">Recopilar información histórica, técnica y económica sobre la evolución de la metalurgia en el país y el papel de plantas clave como CORINCA en Quetzaltepeque.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
-          <span class="task-eval">Evaluación: Rigor teórico y fuentes bibliográficas completas.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T02')" id="task-T02" style="--bar-color:var(--green)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 02</span><span class="task-phase phase-F2">FASE 2</span></div>
-            <h3 class="task-title">Diseño del Cuestionario Técnico para CORINCA</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T02">Pendiente</button>
-        </div>
-        <p class="task-desc">Escribir una guía de 10 a 15 preguntas avanzadas dirigidas a los ingenieros de planta, enfocadas en aleaciones químicas, normas sismorresistentes (normas ASTM) y sostenibilidad.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
-          <span class="task-eval">Evaluación: Pertinencia de preguntas y profundidad de la investigación de campo.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T03')" id="task-T03" style="--bar-color:var(--orange)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 03</span><span class="task-phase phase-F3">FASE 3</span></div>
-            <h3 class="task-title">Dirección de la Entrevista Grabada en Planta</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T03">Pendiente</button>
-        </div>
-        <p class="task-desc">Actuar como el entrevistador principal durante la visita presencial a CORINCA, asegurando la captura clara del audio y guiando las respuestas hacia el comportamiento estructural.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
-          <span class="task-eval">Evaluación: Fluidez, profesionalismo y manejo del cuestionario técnico.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T04')" id="task-T04" style="--bar-color:var(--violet)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 04</span><span class="task-phase phase-F4">FASE 4</span></div>
-            <h3 class="task-title">Redacción del Segmento "Logística y Aplicación Símica"</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T04">Pendiente</button>
-        </div>
-        <p class="task-desc">Escribir las secciones del informe final sobre cómo el acero local responde a las normativas constructivas de El Salvador frente a desastres sísmicos.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
-          <span class="task-eval">Evaluación: Integración teórica de datos reales de la industria.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T05')" id="task-T05" style="--bar-color:var(--amber)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 05</span><span class="task-phase phase-F4">FASE 5</span></div>
-            <h3 class="task-title">Consolidación del Argumento Técnico de Defensa</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T05">Pendiente</button>
-        </div>
-        <p class="task-desc">Revisar el dominio conceptual y preparar las respuestas a posibles objeciones del jurado acerca de la viabilidad económica y propiedades mecánicas de las aleaciones.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
-          <span class="task-eval">Evaluación: Oratoria, claridad argumentativa y dominio del tema.</span>
-        </div>
-      </div>
-    </div>
-    <div class="mod-footer">
-      <div>
-        <div class="mod-footer-title">Estado de Tareas</div>
-        <div class="stat-row">
-          <div class="stat-box"><div class="stat-n c-done" id="f-done-CHAFOYA">0</div><div class="stat-l">Listo</div></div>
-          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-CHAFOYA">0</div><div class="stat-l">Proceso</div></div>
-          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-CHAFOYA">5</div><div class="stat-l">Pendiente</div></div>
-        </div>
-        <div class="member-track"><div class="member-fill fill-cyan" id="bar-CHAFOYA" style="width:0%"></div></div>
-      </div>
-      <div>
-        <div class="mod-footer-title">Próximas Fechas Límite</div>
-        <div class="dl-list">
-          <div class="dl-item bg-cyan"><div class="dl-date-box col-cyan"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-cyan">Teoría · Prioridad</div><div class="dl-t">Investigación del Acero</div></div></div>
-          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Campo</div><div class="dl-t">Diseño de Cuestionario</div></div></div>
-        </div>
-      </div>
-    </div>
+    <div class="tasks-list" id="tasks-CHAFOYA"></div>
   </div>
 </div>
 
-<div id="mod-KERIM" class="module-panel">
-  <div class="mod-header" style="--mh-from:rgba(251,146,60,0.12); --mh-border:rgba(251,146,60,0.35); --mh-color:var(--orange)">
+<div class="module-panel" id="mod-KERIM">
+  <div class="mod-header" style="--mh-from:rgba(251,146,60,0.12);--mh-to:rgba(251,146,60,0.02);--mh-glow:rgba(251,146,60,0.18);--mh-border:rgba(251,146,60,0.35);--mh-avatar:rgba(251,146,60,0.12);--mh-color:var(--orange)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">KE</div>
+      <div class="mod-avatar">PA</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 02 · Dirección Audiovisual y Teórica</div>
-        <h2 class="mod-name">Kerim</h2>
-        <p class="mod-subtitle">Registro cinematográfico de la visita de campo, síntesis teórica del carbono y montaje del video justificativo para el jurado.</p>
+        <div class="mod-eyebrow">Módulo 02 · Integrante Responsable</div>
+        <h2 class="mod-name">Kerim Ramos</h2>
+        <p class="mod-subtitle">Dirección audiovisual del proyecto, registro de evidencia multimedia en CORINCA y estructuración del marco teórico inicial.</p>
         <div class="mod-badges">
-          <span class="mod-badge">Cineasta</span>
-          <span class="mod-badge">Investigación Química</span>
-          <span class="mod-badge">Edición</span>
+          <span class="mod-badge">Fase 1 (x2)</span>
+          <span class="mod-badge">Fase 3 (x2)</span>
+          <span class="mod-badge">Fase 5 (x1)</span>
         </div>
+        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
+          📄 Ver Documento de Referencia (SC)
+        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-KERIM">0%</div><div class="mod-stat-label">Progreso</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" id="p-KERIM">0%</div><div class="mod-stat-label">Completado</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
-    <div class="tasks-list">
-      <div class="task-card status-pending" onclick="toggleTask('T06')" id="task-T06" style="--bar-color:var(--orange)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 06</span><span class="task-phase phase-F1">FASE 1</span></div>
-            <h3 class="task-title">Fundamentos del Carbono en las Estructuras Metálicas</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T06">Pendiente</button>
-        </div>
-        <p class="task-desc">Investigar a fondo el impacto del porcentaje de carbono en la ductilidad y resistencia a la tracción de los aceros estructurales utilizados en El Salvador.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
-          <span class="task-eval">Evaluación: Claridad en diagramas y fórmulas metalúrgicas básicas.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T07')" id="task-T07" style="--bar-color:var(--green)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 07</span><span class="task-phase phase-F2">FASE 2</span></div>
-            <h3 class="task-title">Guion de Contenido Audiovisual e Institucional</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T07">Pendiente</button>
-        </div>
-        <p class="task-desc">Escribir el guion técnico y literario del video del proyecto, detallando planos de los laboratorios de CORINCA, narración de fondo e inserciones de gráficos de aleaciones.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
-          <span class="task-eval">Evaluación: Estructura narrativa, ritmo y articulación de los objetivos del ITSI.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T08')" id="task-T08" style="--bar-color:var(--cyan)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 08</span><span class="task-phase phase-F3">FASE 3</span></div>
-            <h3 class="task-title">Grabación y Cobertura Cinematográfica en CORINCA</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T08">Pendiente</button>
-        </div>
-        <p class="task-desc">Operar los equipos de grabación durante el recorrido por la planta siderúrgica, capturando el proceso de fundición, laminado de varillas y entrevistas al personal técnico.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
-          <span class="task-eval">Evaluación: Estabilidad de imagen, iluminación industrial y nitidez sonora.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T09')" id="task-T09" style="--bar-color:var(--violet)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 09</span><span class="task-phase phase-F4">FASE 4</span></div>
-            <h3 class="task-title">Edición Completa y Postproducción del Video</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T09">Pendiente</button>
-        </div>
-        <p class="task-desc">Montar todo el metraje recolectado, añadir pistas sonoras claras, corregir el color de las zonas industriales y exportar el video final (máximo 5-7 minutos).</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
-          <span class="task-eval">Evaluación: Calidad del render final, fluidez de los cortes y dinamismo pedagógico.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T10')" id="task-T10" style="--bar-color:var(--amber)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 10</span><span class="task-phase phase-F4">FASE 5</span></div>
-            <h3 class="task-title">Defensa: Argumentación sobre Propiedades Químicas</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T10">Pendiente</button>
-        </div>
-        <p class="task-desc">Preparar la sección oral relativa a las propiedades del material fundido frente al calor y cómo las impurezas alteran el comportamiento estructural.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
-          <span class="task-eval">Evaluación: Precisión terminológica en química metalúrgica.</span>
-        </div>
-      </div>
-    </div>
-    <div class="mod-footer">
-      <div>
-        <div class="mod-footer-title">Estado de Tareas</div>
-        <div class="stat-row">
-          <div class="stat-box"><div class="stat-n c-done" id="f-done-KERIM">0</div><div class="stat-l">Listo</div></div>
-          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-KERIM">0</div><div class="stat-l">Proceso</div></div>
-          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-KERIM">5</div><div class="stat-l">Pendiente</div></div>
-        </div>
-        <div class="member-track"><div class="member-fill fill-orange" id="bar-KERIM" style="width:0%"></div></div>
-      </div>
-      <div>
-        <div class="mod-footer-title">Próximas Fechas Límite</div>
-        <div class="dl-list">
-          <div class="dl-item bg-orange"><div class="dl-date-box col-orange"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-orange">Teoría · Prioridad</div><div class="dl-t">Fundamentos del Carbono</div></div></div>
-          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Contenido</div><div class="dl-t">Diseño del Guion Técnico</div></div></div>
-        </div>
-      </div>
-    </div>
+    <div class="tasks-list" id="tasks-KERIM"></div>
   </div>
 </div>
 
-<div id="mod-IRVIN" class="module-panel">
-  <div class="mod-header" style="--mh-from:rgba(52,211,153,0.12); --mh-border:rgba(52,211,153,0.35); --mh-color:var(--green)">
+<div class="module-panel" id="mod-IRVIN">
+  <div class="mod-header" style="--mh-from:rgba(52,211,153,0.12);--mh-to:rgba(52,211,153,0.02);--mh-glow:rgba(52,211,153,0.18);--mh-border:rgba(52,211,153,0.35);--mh-avatar:rgba(52,211,153,0.12);--mh-color:var(--green)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">IR</div>
+      <div class="mod-avatar">RP</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 03 · Redacción, Estilo y Estructuración Científica</div>
-        <h2 class="mod-name">Irvin</h2>
-        <p class="mod-subtitle">Redactor de los pilares del marco teórico e integrador del informe bajo normativas académicas estrictas.</p>
+        <div class="mod-eyebrow">Módulo 03 · Integrante Responsable</div>
+        <h2 class="mod-name">Irvin Flores</h2>
+        <p class="mod-subtitle">Responsable del desarrollo del reporte formal escrito, transcripción de datos y recopilación de las normas técnicas aplicadas.</p>
         <div class="mod-badges">
-          <span class="mod-badge">Redactor Alfa</span>
-          <span class="mod-badge">Normas APA / ITSI</span>
-          <span class="mod-badge">Documentación</span>
+          <span class="mod-badge">Fase 1 (x1)</span>
+          <span class="mod-badge">Fase 2 (x3)</span>
+          <span class="mod-badge">Fase 3 (x1)</span>
+          <span class="mod-badge">Fase 5 (x1)</span>
         </div>
+        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
+          📄 Ver Documento de Referencia (SC)
+        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-IRVIN">0%</div><div class="mod-stat-label">Progreso</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" id="p-IRVIN">0%</div><div class="mod-stat-label">Completado</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
-    <div class="tasks-list">
-      <div class="task-card status-pending" onclick="toggleTask('T11')" id="task-T11" style="--bar-color:var(--green)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 11</span><span class="task-phase phase-F1">FASE 1</span></div>
-            <h3 class="task-title">Bases Físico-Químicas de las Aleaciones de Hierro-Carbono</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T11">Pendiente</button>
-        </div>
-        <p class="task-desc">Desarrollar teóricamente la formación cristalina del acero y el papel de elementos adicionales como manganeso, silicio y fósforo en la resistencia del material.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
-          <span class="task-eval">Evaluación: Rigor analítico y correcta referenciación científica.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T12')" id="task-T12" style="--bar-color:var(--green)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 12</span><span class="task-phase phase-F1">FASE 1</span></div>
-            <h3 class="task-title">Investigación de Normativas ASTM Internacionales</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T12">Pendiente</button>
-        </div>
-        <p class="task-desc">Documentar los estándares específicos de calidad del acero exigidos para las edificaciones comerciales en la región centroamericana.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
-          <span class="task-eval">Evaluación: Exactitud de normas citadas y aplicabilidad práctica.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T13')" id="task-T13" style="--bar-color:var(--green)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 13</span><span class="task-phase phase-F2">FASE 2</span></div>
-            <h3 class="task-title">Estructuración Completa del Cuerpo del Informe Escrito</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T13">Pendiente</button>
-        </div>
-        <p class="task-desc">Recibir la información de todos los módulos y unificarla en un único documento Word estructurado según los lineamientos oficiales del Lic. Menjívar.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
-          <span class="task-eval">Evaluación: Ortografía impecable, cohesión textual y aplicación de formato.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T14')" id="task-T14" style="--bar-color:var(--cyan)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 14</span><span class="task-phase phase-F3">FASE 3</span></div>
-            <h3 class="task-title">Transcripción Analítica de Datos de Campo</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T14">Pendiente</button>
-        </div>
-        <p class="task-desc">Analizar las grabaciones de CORINCA para transcribir textualmente los comentarios de los ingenieros y convertirlos en citas válidas dentro del capítulo de hallazgos del informe.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
-          <span class="task-eval">Evaluación: Precisión en la transcripción técnica y síntesis informativa.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T15')" id="task-T15" style="--bar-color:var(--violet)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 15</span><span class="task-phase phase-F4">FASE 4</span></div>
-            <h3 class="task-title">Revisión de Estilo Académico y Citas Bibliográficas APA</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T15">Pendiente</button>
-        </div>
-        <p class="task-desc">Asegurar que cada libro, sitio web institucional o entrevista citada cumpla estrictamente el formato APA de última edición, depurando el índice automatizado.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
-          <span class="task-eval">Evaluación: Cero plagio y referencias cruzadas correctas.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T16')" id="task-T16" style="--bar-color:var(--amber)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 16</span><span class="task-phase phase-F4">FASE 5</span></div>
-            <h3 class="task-title">Defensa Oral: Introducción y Conclusiones del Proyecto</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T16">Pendiente</button>
-        </div>
-        <p class="task-desc">Ensayar la apertura formal de la ponencia y la lectura técnica de las conclusiones, vinculando los resultados con los objetivos iniciales planteados.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
-          <span class="task-eval">Evaluación: Manejo del tiempo de presentación y tono académico formal.</span>
-        </div>
-      </div>
-    </div>
-    <div class="mod-footer">
-      <div>
-        <div class="mod-footer-title">Estado de Tareas</div>
-        <div class="stat-row">
-          <div class="stat-box"><div class="stat-n c-done" id="f-done-IRVIN">0</div><div class="stat-l">Listo</div></div>
-          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-IRVIN">0</div><div class="stat-l">Proceso</div></div>
-          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-IRVIN">6</div><div class="stat-l">Pendiente</div></div>
-        </div>
-        <div class="member-track"><div class="member-fill fill-green" id="bar-IRVIN" style="width:0%"></div></div>
-      </div>
-      <div>
-        <div class="mod-footer-title">Próximas Fechas Límite</div>
-        <div class="dl-list">
-          <div class="dl-item bg-green"><div class="dl-date-box col-green"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-green">Teoría · Prioridad</div><div class="dl-t">Bases Físico-Químicas e Invs. ASTM</div></div></div>
-          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Estructura</div><div class="dl-t">Cuerpo General del Informe</div></div></div>
-        </div>
-      </div>
-    </div>
+    <div class="tasks-list" id="tasks-IRVIN"></div>
   </div>
 </div>
 
-<div id="mod-AXEL" class="module-panel">
-  <div class="mod-header" style="--mh-from:rgba(251,191,36,0.12); --mh-border:rgba(251,191,36,0.35); --mh-color:var(--amber)">
+<div class="module-panel" id="mod-AXEL">
+  <div class="mod-header" style="--mh-from:rgba(251,191,36,0.12);--mh-to:rgba(251,191,36,0.02);--mh-glow:rgba(251,191,36,0.18);--mh-border:rgba(251,191,36,0.35);--mh-avatar:rgba(251,191,36,0.12);--mh-color:var(--amber)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">AX</div>
+      <div class="mod-avatar">DP</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 04 · Diseño de Interfaz de Defensa y Exposición</div>
-        <h2 class="mod-name">Axel</h2>
-        <p class="mod-subtitle">Diseño estructural de la presentación en Prezi, investigación del comportamiento mecánico y control estético visual del equipo.</p>
+        <div class="mod-eyebrow">Módulo 04 · Integrante Responsable</div>
+        <h2 class="mod-name">Axel Castillo</h2>
+        <p class="mod-subtitle">Diseño estructural de la presentación interactiva en Prezi, diseño de diagramas de procesos y co-defensa del proyecto.</p>
         <div class="mod-badges">
-          <span class="mod-badge">Diseñador Prezi</span>
-          <span class="mod-badge">Estudio Mecánico</span>
-          <span class="mod-badge">Maquetador</span>
+          <span class="mod-badge">Fase 1 (x1)</span>
+          <span class="mod-badge">Fase 4 (x3)</span>
+          <span class="mod-badge">Fase 5 (x1)</span>
         </div>
+        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
+          📄 Ver Documento de Referencia (SC)
+        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-AXEL">0%</div><div class="mod-stat-label">Progreso</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" id="p-AXEL">0%</div><div class="mod-stat-label">Completado</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
-    <div class="tasks-list">
-      <div class="task-card status-pending" onclick="toggleTask('T17')" id="task-T17" style="--bar-color:var(--amber)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 17</span><span class="task-phase phase-F1">FASE 1</span></div>
-            <h3 class="task-title">Estudio Teórico del Esfuerzo, Deformación y Fatiga</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T17">Pendiente</button>
-        </div>
-        <p class="task-desc">Recopilar datos conceptuales e infografías sobre las curvas de esfuerzo-deformación del acero estructural de refuerzo, esenciales para justificar el marco teórico.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
-          <span class="task-eval">Evaluación: Calidad técnica de los gráficos explicativos.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T18')" id="task-T18" style="--bar-color:var(--green)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 18</span><span class="task-phase phase-F2">FASE 2</span></div>
-            <h3 class="task-title">Arquitectura e Infraestructura de Diapositivas en Prezi</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T18">Pendiente</button>
-        </div>
-        <p class="task-desc">Crear el entorno de trabajo dinámico en Prezi, definiendo la paleta de colores corporativa basada en CORINCA y la tipografía tecnológica del proyecto.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
-          <span class="task-eval">Evaluación: Creatividad espacial y limpieza en la plantilla inicial.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T19')" id="task-T19" style="--bar-color:var(--cyan)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 19</span><span class="task-phase phase-F3">FASE 3</span></div>
-            <h3 class="task-title">Integración de Recursos Multimedia de Campo</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T19">Pendiente</button>
-        </div>
-        <p class="task-desc">Insertar en Prezi de forma ordenada las fotografías en alta resolución tomadas en Quetzaltepeque y el enlace directo al video producido por Kerim.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
-          <span class="task-eval">Evaluación: Tiempos de carga óptimos y consistencia visual interactiva.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T20')" id="task-T20" style="--bar-color:var(--violet)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 20</span><span class="task-phase phase-F4">FASE 4</span></div>
-            <h3 class="task-title">Optimización de Rutas de Zoom y Animaciones de Flujo</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T20">Pendiente</button>
-        </div>
-        <p class="task-desc">Configurar el camino de transición inteligente entre los subtemas para evitar transiciones molestas, asegurando una lectura natural para el jurado evaluador.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
-          <span class="task-eval">Evaluación: Fluidez del movimiento técnico de la plataforma.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T21')" id="task-T21" style="--bar-color:var(--amber)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 21</span><span class="task-phase phase-F4">FASE 5</span></div>
-            <h3 class="task-title">Co-Presentador Oral: Análisis Mecánico en la Pizarra</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T21">Pendiente</button>
-        </div>
-        <p class="task-desc">Ensayar la explicación interactiva de las fuerzas físicas reales aplicadas a las vigas de acero de construcción ante el tribunal científico.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
-          <span class="task-eval">Evaluación: Dinamismo expositivo y uso correcto del lenguaje corporal técnico.</span>
-        </div>
-      </div>
-    </div>
-    <div class="mod-footer">
-      <div>
-        <div class="mod-footer-title">Estado de Tareas</div>
-        <div class="stat-row">
-          <div class="stat-box"><div class="stat-n c-done" id="f-done-AXEL">0</div><div class="stat-l">Listo</div></div>
-          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-AXEL">0</div><div class="stat-l">Proceso</div></div>
-          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-AXEL">5</div><div class="stat-l">Pendiente</div></div>
-        </div>
-        <div class="member-track"><div class="member-fill fill-amber" id="bar-AXEL" style="width:0%"></div></div>
-      </div>
-      <div>
-        <div class="mod-footer-title">Próximas Fechas Límite</div>
-        <div class="dl-list">
-          <div class="dl-item bg-amber"><div class="dl-date-box col-amber"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-amber">Teoría · Prioridad</div><div class="dl-t">Estudio Teórico de Fuerzas</div></div></div>
-          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Entorno</div><div class="dl-t">Línea Estética en Prezi</div></div></div>
-        </div>
-      </div>
-    </div>
+    <div class="tasks-list" id="tasks-AXEL"></div>
   </div>
 </div>
 
-<div id="mod-CHAVEZ" class="module-panel">
-  <div class="mod-header" style="--mh-from:rgba(167,139,250,0.12); --mh-border:rgba(167,139,250,0.35); --mh-color:var(--violet)">
+<div class="module-panel" id="mod-CHAVEZ">
+  <div class="mod-header" style="--mh-from:rgba(167,139,250,0.12);--mh-to:rgba(167,139,250,0.02);--mh-glow:rgba(167,139,250,0.18);--mh-border:rgba(167,139,250,0.35);--mh-avatar:rgba(167,139,250,0.12);--mh-color:var(--violet)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">CH</div>
+      <div class="mod-avatar">CT</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 05 · Control de Calidad Teórica y Maquetación Final</div>
-        <h2 class="mod-name">Chávez</h2>
-        <p class="mod-subtitle">Filtro de calidad teórica del informe escrito, maquetación de gráficos e inspector técnico general de las rúbricas evaluativas.</p>
+        <div class="mod-eyebrow">Módulo 05 · Integrante Responsable</div>
+        <h2 class="mod-name">Rodrigo Chávez</h2>
+        <p class="mod-subtitle">Coordinación de los requerimientos de entrega en Classroom, control de calidad del documento integrado y simulación previa de preguntas y respuestas.</p>
         <div class="mod-badges">
-          <span class="mod-badge">Calidad / Editor</span>
-          <span class="mod-badge">Rúbricas Profesionales</span>
-          <span class="mod-badge">Validación</span>
+          <span class="mod-badge">Fase 2 (x1)</span>
+          <span class="mod-badge">Fase 4 (x1)</span>
+          <span class="mod-badge">Fase 5 (x3)</span>
         </div>
+        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
+          📄 Ver Documento de Referencia (SC)
+        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-CHAVEZ">0%</div><div class="mod-stat-label">Progreso</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" id="p-CHAVEZ">0%</div><div class="mod-stat-label">Completado</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
-    <div class="tasks-list">
-      <div class="task-card status-pending" onclick="toggleTask('T22')" id="task-T22" style="--bar-color:var(--violet)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 22</span><span class="task-phase phase-F1">FASE 1</span></div>
-            <h3 class="task-title">Análisis de Fallas Teóricas y Fatiga en el Acero Bajo</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T22">Pendiente</button>
-        </div>
-        <p class="task-desc">Recopilar y estructurar los datos analíticos mundiales e institucionales sobre colapsos de obras por el uso de aceros mal aleados o fuera de norma técnica.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
-          <span class="task-eval">Evaluación: Rigor empírico y valor preventivo aplicado al contexto de El Salvador.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T23')" id="task-T23" style="--bar-color:var(--green)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 23</span><span class="task-phase phase-F2">FASE 2</span></div>
-            <h3 class="task-title">Corrección de Estilo Teórico del Informe</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T23">Pendiente</button>
-        </div>
-        <p class="task-desc">Auditar minuciosamente el borrador general del documento de Irvin, eliminando ambigüedades lógicas, redundancias léxicas y asegurando la coherencia científica total.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
-          <span class="task-eval">Evaluación: Fluidez de lectura y unificación de criterios técnicos.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T24')" id="task-T24" style="--bar-color:var(--cyan)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 24</span><span class="task-phase phase-F3">FASE 3</span></div>
-            <h3 class="task-title">Maquetación Avanzada de Gráficos de Datos</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T24">Pendiente</button>
-        </div>
-        <p class="task-desc">Convertir las estadísticas complejas recolectadas en la planta de Quetzaltepeque en diagramas vectoriales limpios y tablas claras para adjuntar en los anexos.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
-          <span class="task-eval">Evaluación: Comprensión visual inmediata y excelente manejo de la escala de datos.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T25')" id="task-T25" style="--bar-color:var(--violet)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 25</span><span class="task-phase phase-F4">FASE 4</span></div>
-            <h3 class="task-title">Auditoría Final del Proyecto Contra la Rúbrica Oficial</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T25">Pendiente</button>
-        </div>
-        <p class="task-desc">Evaluar el informe final y la presentación en Prezi con base en los indicadores reales provistos por la institución, garantizando la búsqueda de los 50 puntos.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
-          <span class="task-eval">Evaluación: Cumplimiento del 100% de los requisitos curriculares establecidos.</span>
-        </div>
-      </div>
-      <div class="task-card status-pending" onclick="toggleTask('T26')" id="task-T26" style="--bar-color:var(--amber)">
-        <div class="task-top">
-          <div class="task-left">
-            <div class="task-meta"><span class="task-num">TAREA 26</span><span class="task-phase phase-F4">FASE 5</span></div>
-            <h3 class="task-title">Defensa Oral: Control de Calidad de Respuestas Rápidas</h3>
-          </div>
-          <button class="status-btn s-pending" id="btn-T26">Pendiente</button>
-        </div>
-        <p class="task-desc">Coordinar simulacros de preguntas imprevistas dentro del grupo, calibrando las respuestas para que sean concretas, seguras y científicamente fundamentadas.</p>
-        <div class="task-footer">
-          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
-          <span class="task-eval">Evaluación: Capacidad de reacción en equipo y consistencia conceptual.</span>
-        </div>
-      </div>
-    </div>
-    <div class="mod-footer">
-      <div>
-        <div class="mod-footer-title">Estado de Tareas</div>
-        <div class="stat-row">
-          <div class="stat-box"><div class="stat-n c-done" id="f-done-CHAVEZ">0</div><div class="stat-l">Listo</div></div>
-          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-CHAVEZ">0</div><div class="stat-l">Proceso</div></div>
-          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-CHAVEZ">5</div><div class="stat-l">Pendiente</div></div>
-        </div>
-        <div class="member-track"><div class="member-fill fill-violet" id="bar-CHAVEZ" style="width:0%"></div></div>
-      </div>
-      <div>
-        <div class="mod-footer-title">Próximas Fechas Límite</div>
-        <div class="dl-list">
-          <div class="dl-item bg-violet"><div class="dl-date-box col-violet"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-violet">Teoría · Prioridad</div><div class="dl-t">Análisis de Fallas Teóricas</div></div></div>
-          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Filtro</div><div class="dl-t">Control de Cohesión Científica</div></div></div>
-        </div>
-      </div>
-    </div>
+    <div class="tasks-list" id="tasks-CHAVEZ"></div>
   </div>
 </div>
 
-<div class="sec-label">// CRONOGRAMA MAESTRO UNIFICADO</div>
+<div style="margin-top:40px;"></div>
+
 <div class="section-block">
-  <h2 class="section-title">Línea de Tiempo y Flujo Crítico de Entregas</h2>
-  <p class="section-desc">Estructura cronológica para asegurar la excelencia académica y la correcta sincronización del equipo antes de la defensa del proyecto.</p>
-
+  <div class="sec-label" style="margin-bottom:8px">// CRONOGRAMA DE ENTREGAS CRÍTICAS</div>
+  <h3 class="section-title">Hitos del Segundo Trimestre</h3>
+  <p class="section-desc">Puntos de control obligatorios establecidos por la institución educativa para la asignación de notas.</p>
+  
   <div class="tl">
     <div class="tl-row">
-      <div class="tl-date"><div class="tl-date-main">01 Junio</div><div class="tl-date-sub">Lunes</div></div>
+      <div class="tl-date"><div class="tl-date-main">20 Abr</div><div class="tl-date-sub">Lunes</div></div>
       <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--cyan)"></div><div class="tl-vline"></div></div>
       <div class="tl-content">
-        <span class="tl-phase-badge bg-cyan col-cyan">FASE 1: INVESTIGACIÓN</span>
-        <h4 class="tl-title">Hito de Prioridad Teórica</h4>
-        <p class="tl-desc">Consolidar todo el levantamiento bibliográfico, fórmulas metalúrgicas, normas de sismicidad y estudio de esfuerzos.</p>
-        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
+        <span class="tl-phase-badge" style="background:rgba(56,189,248,0.15);color:var(--cyan)">ENTREGA 01</span>
+        <h4 class="tl-title">Avance del Marco Teórico Completo</h4>
+        <p class="tl-desc">Revisión obligatoria en Classroom de los primeros capítulos investigados. Ponderación directa.</p>
+        <div class="tl-who"><span class="tl-tag">Todo el equipo</span></div>
       </div>
     </div>
-
+    
     <div class="tl-row">
-      <div class="tl-date"><div class="tl-date-main">03 Junio</div><div class="tl-date-sub">Miércoles</div></div>
+      <div class="tl-date"><div class="tl-date-main">15 May</div><div class="tl-date-sub">Viernes</div></div>
       <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--green)"></div><div class="tl-vline"></div></div>
       <div class="tl-content">
-        <span class="tl-phase-badge bg-green col-green">FASE 2: REDACCIÓN</span>
-        <h4 class="tl-title">Estructura Inicial del Informe y Preparativos</h4>
-        <p class="tl-desc">Cuerpo base del Word unificado con formato APA, guion del video finalizado y cuestionario aprobado para la planta.</p>
-        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
+        <span class="tl-phase-badge" style="background:rgba(52,211,153,0.15);color:var(--green)">ENTREGA 02</span>
+        <h4 class="tl-title">Informe Final Impreso & Video Técnico</h4>
+        <p class="tl-desc">Cierre total de la redacción. Entrega física del reporte empastado o engargolado y subida del video de la visita industrial a CORINCA.</p>
+        <div class="tl-who"><span class="tl-tag">Todo el equipo</span></div>
       </div>
     </div>
 
     <div class="tl-row">
-      <div class="tl-date"><div class="tl-date-main">05 Junio</div><div class="tl-date-sub">Viernes</div></div>
+      <div class="tl-date"><div class="tl-date-main">05 Jun</div><div class="tl-date-sub">Viernes</div></div>
       <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--orange)"></div><div class="tl-vline"></div></div>
       <div class="tl-content">
-        <span class="tl-phase-badge bg-orange col-orange">FASE 3: TRABAJO DE CAMPO</span>
-        <h4 class="tl-title">Visita Técnica a CORINCA (Quetzaltepeque)</h4>
-        <p class="tl-desc">Ejecución de la entrevista técnica grabada, captura de material multimedia en laboratorios y transcripción inmediata de las citas de los ingenieros.</p>
-        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
+        <span class="tl-phase-badge" style="background:rgba(251,146,60,0.15);color:var(--orange)">ENTREGA 03</span>
+        <h4 class="tl-title">Presentación Prezi & Recursos Visuales</h4>
+        <p class="tl-desc">Entrega del enlace público de la presentación en Prezi Next y validación del material de apoyo final.</p>
+        <div class="tl-who"><span class="tl-tag">Axel Castillo</span></div>
       </div>
     </div>
 
     <div class="tl-row">
-      <div class="tl-date"><div class="tl-date-main">07 Junio</div><div class="tl-date-sub">Domingo</div></div>
-      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--violet)"></div><div class="tl-vline"></div></div>
+      <div class="tl-date"><div class="tl-date-main">10–12 Jun</div><div class="tl-date-sub">Mie–Vie</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--amber)"></div><div class="tl-vline"></div></div>
       <div class="tl-content">
-        <span class="tl-phase-badge bg-violet col-violet">FASE 4: PRODUCCIÓN</span>
-        <h4 class="tl-title">Cierre de Informe, Video y Presentación Prezi</h4>
-        <p class="tl-desc">Render final del video editado, optimización de rutas dinámicas en Prezi y auditoría completa del Word aplicando las rúbricas institucionales.</p>
-        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
-      </div>
-    </div>
-
-    <div class="tl-row">
-      <div class="tl-date"><div class="tl-date-main">09 Junio</div><div class="tl-date-sub">Martes</div></div>
-      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--amber)"></div></div>
-      <div class="tl-content">
-        <span class="tl-phase-badge bg-amber col-amber">FASE 5: EVALUACIÓN</span>
-        <h4 class="tl-title">Simulacros de Oratoria y Control de Respuestas</h4>
-        <p class="tl-desc">Ensayos generales del discurso oral, dominio del escenario mecánico y calibración de respuestas rápidas ante el tribunal del Lic. Menjívar.</p>
-        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
+        <span class="tl-phase-badge" style="background:rgba(251,191,36,0.15);color:var(--amber)">EVALUACIÓN REINA</span>
+        <h4 class="tl-title">Defensa Oral y Evaluación ante Terna</h4>
+        <p class="tl-desc">Exposición formal en traje completo frente a los docentes evaluadores de la institución. Traer maquetas o muestras.</p>
+        <div class="tl-who"><span class="tl-tag">Defensa Obligatoria de los 5 integrantes</span></div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="sec-label">// CRITERIOS DE RENDIMIENTO Y EVALUACIÓN</div>
-<div class="criteria-grid">
-  <div class="crit-card" data-score="10">
-    <div class="crit-type col-cyan">EVALUACIÓN 01</div>
-    <h3 class="crit-title">Marco Teórico y Científico</h3>
-    <p class="crit-desc">Dominio exacto de conceptos de aleaciones químicas, metalurgia de hierro-carbono y argumentación física del comportamiento del acero estructural.</p>
-    <div class="crit-score"><div class="score-pips"><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span></div><span class="score-pts">10 Puntos</span></div>
-  </div>
+<div class="section-block">
+  <div class="sec-label" style="margin-bottom:8px">// CRITERIOS OFICIALES DE EVALUACIÓN</div>
+  <h3 class="section-title">Distribución Analítica de los 50 Puntos</h3>
+  <p class="section-desc">Estructura del puntaje asignado por el docente asignado para la nota global del periodo.</p>
 
-  <div class="crit-card" data-score="15">
-    <div class="crit-type col-green">EVALUACIÓN 02</div>
-    <h3 class="crit-title">Informe Escrito Unificado</h3>
-    <p class="crit-desc">Calidad de redacción, consistencia lógica interna, ortografía perfecta, maquetación limpia de anexos y uso estricto del estándar APA.</p>
-    <div class="crit-score"><div class="score-pips"><span class="pip on c-green"></span><span class="pip on c-green"></span><span class="pip on c-green"></span></div><span class="score-pts">15 Puntos</span></div>
-  </div>
+  <div class="criteria-grid">
+    <div class="crit-card" data-score="10 pts">
+      <div class="crit-type col-cyan">Estructura Escrita</div>
+      <h4 class="crit-title">Marco Teórico & Rigor Científico</h4>
+      <p class="crit-desc">Calidad analítica de la investigación sobre la composición del acero, metalurgia y normas ASTM salvadoreñas.</p>
+      <div class="crit-score">
+        <div class="score-pips"><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span></div>
+        <span class="score-pts">20% Peso</span>
+      </div>
+    </div>
 
-  <div class="crit-card" data-score="10">
-    <div class="crit-type col-orange">EVALUACIÓN 03</div>
-    <h3 class="crit-title">Evidencia de Campo e Impacto</h3>
-    <p class="crit-desc">Rigor científico del cuestionario, profesionalismo en la entrevista ejecutada en CORINCA y dinamismo pedagógico del video documental final.</p>
-    <div class="crit-score"><div class="score-pips"><span class="pip on c-orange"></span><span class="pip on c-orange"></span></div><span class="score-pts">10 Puntos</span></div>
-  </div>
+    <div class="crit-card" data-score="10 pts">
+      <div class="crit-type col-green">Trabajo Empírico</div>
+      <h4 class="crit-title">Visita de Campo & Entrevista</h4>
+      <p class="crit-desc">Evidencia clara de la gestión con la empresa CORINCA S.A., calidad de los datos técnicos obtenidos de primera mano.</p>
+      <div class="crit-score">
+        <div class="score-pips"><span class="pip on c-green"></span><span class="pip on c-green"></span><span class="pip on c-green"></span><span class="pip on c-green"></span><span class="pip on c-green"></span></div>
+        <span class="score-pts">20% Peso</span>
+      </div>
+    </div>
 
-  <div class="crit-card" data-score="15">
-    <div class="crit-type col-violet">EVALUACIÓN 04</div>
-    <h3 class="crit-title">Defensa Oral y Prezi</h3>
-    <p class="crit-desc">Fluidez comunicativa, lenguaje técnico impecable, recursos interactivos de la presentación en Prezi y precisión al responder las objeciones del jurado.</p>
-    <div class="crit-score"><div class="score-pips"><span class="pip on c-violet"></span><span class="pip on c-violet"></span><span class="pip on c-violet"></span></div><span class="score-pts">15 Puntos</span></div>
+    <div class="crit-card" data-score="10 pts">
+      <div class="crit-type col-orange">Multimedia</div>
+      <h4 class="crit-title">Video de la Investigación</h4>
+      <p class="crit-desc">Edición limpia, audio claro, locución profesional, tomas representativas del proceso industrial y las entrevistas.</p>
+      <div class="crit-score">
+        <div class="score-pips"><span class="pip on c-orange"></span><span class="pip on c-orange"></span><span class="pip on c-orange"></span><span class="pip on c-orange"></span><span class="pip on c-orange"></span></div>
+        <span class="score-pts">20% Peso</span>
+      </div>
+    </div>
+
+    <div class="crit-card" data-score="20 pts">
+      <div class="crit-type col-amber">Oratoria</div>
+      <h4 class="crit-title">Defensa Oral y Manejo de Preguntas</h4>
+      <p class="crit-desc">Dominio absoluto del tema, terminología técnica adecuada, seguridad individual frente al jurado examinador.</p>
+      <div class="crit-score">
+        <div class="score-pips"><span class="pip on c-amber"></span><span class="pip on c-amber"></span><span class="pip on c-amber"></span><span class="pip on c-amber"></span><span class="pip on c-amber"></span></div>
+        <span class="score-pts">40% Peso</span>
+      </div>
+    </div>
   </div>
 </div>
 
 <footer class="site-footer">
-  PLAN DE TRABAJO · EXCELENCIA ACADÉMICA EN CIENCIA Y TECNOLOGÍA 2026<br>
-  <span>ALEACIONES DE ACERO EN LA CONSTRUCCIÓN SALVADOREÑA</span> · SEGUNDO AÑO DE BACHILLERATO · ITSI
+  SISTEMA DE GESTIÓN INTERNO · EQUIPO DE TRABAJO ITSI 2026<br>
+  Construido con <span>✦</span> Inter, Syne y JetBrains Mono
 </footer>
 
 </div> <script>
+// BASE DE DATOS DE TAREAS — MODIFICABLE
+const DATA = [
+  // ── CHAFOYA TAREAS
+  { id:1,  m:'CHAFOYA', f:'F1', t:'Búsqueda bibliográfica inicial sobre metalurgia del acero', d:'Recopilar información sobre los procesos de reducción, el alto horno y la inyección de carbono para fundamentar los conceptos metalúrgicos iniciales.', ev:'Marco Teórico', s:'pending' },
+  { id:2,  m:'CHAFOYA', f:'F3', t:'Redacción formal y envío de carta de solicitud a CORINCA', d:'Formular la petición formal firmada por la institución, gestionar los canales de comunicación y dar seguimiento telefónico hasta agendar fecha oficial.', ev:'Evidencia de Campo', s:'pending' },
+  { id:3,  m:'CHAFOYA', f:'F3', t:'Estructuración de guía de entrevista técnica institucional', d:'Diseñar el cuestionario con mínimo 12 preguntas de alta relevancia dirigidas al Ingeniero de Planta de CORINCA acerca de aleaciones y control de calidad.', ev:'Evidencia de Campo', s:'pending' },
+  { id:4,  m:'CHAFOYA', f:'F3', t:'Conducción presencial de la entrevista técnica en planta', d:'Dirigir el cuestionario durante la visita, fungiendo como entrevistador principal y garantizando el desarrollo formal del diálogo.', ev:'Evidencia de Campo', s:'pending' },
+  { id:5,  m:'CHAFOYA', f:'F5', t:'Simulación interna exhaustiva de preguntas y respuestas', d:'Coordinar jornadas de práctica en equipo para anticipar cuestionamientos severos del jurado y refinar respuestas metodológicas.', ev:'Defensa Oral', s:'pending' },
+
+  // ── KERIM TAREAS
+  { id:6,  m:'KERIM',   f:'F1', t:'Investigación de propiedades mecánicas básicas del acero', d:'Definir operacionalmente los conceptos de ductilidad, límite elástico, tenacidad y resistencia a la tracción en el marco conceptual.', ev:'Marco Teórico', s:'pending' },
+  { id:7,  m:'KERIM',   f:'F1', t:'Ficha técnica exhaustiva del acero corrugado (Sismo-Resistente)', d:'Investigar por qué las varillas corrugadas absorben energía sísmica y las normativas que regulan su diseño en El Salvador.', ev:'Marco Teórico', s:'pending' },
+  { id:8,  m:'KERIM',   f:'F3', t:'Coordinación logística de equipos de grabación en visita', d:'Asegurar disponibilidad de cámaras, micrófonos de solapa e iluminación idónea para documentar el recorrido sin interrumpir la operación.', ev:'Video Técnico', s:'pending' },
+  { id:9,  m:'KERIM',   f:'F3', t:'Edición multimedia e integración del Video del Proyecto', d:'Procesar los clips de la planta, insertar transiciones, subtítulos de términos de ingeniería y renderizar el entregable en alta definición.', ev:'Video Técnico', s:'pending' },
+  { id:10, m:'KERIM',   f:'F5', t:'Preparación del guion técnico expositivo de defensa', d:'Definir los bloques cronometrados de la exposición grupal para evitar exceder el tiempo máximo penalizado por el jurado.', ev:'Defensa Oral', s:'pending' },
+
+  // ── IRVIN TAREAS
+  { id:11, m:'IRVIN',   f:'F1', t:'Diferenciación conceptual: Acero al Carbono vs Especiales', d:'Redactar la sección teórica que contrasta las aplicaciones del acero ordinario frente a los aceros aleados con Cromo, Níquel y Manganeso.', ev:'Marco Teórico', s:'pending' },
+  { id:12, m:'IRVIN',   f:'F2', t:'Redacción formal y ordenamiento del Capítulo I y II', d:'Digitar la introducción, justificación, alcances y limitaciones del documento final siguiendo normas estrictas de redacción académica.', ev:'Informe Escrito', s:'pending' },
+  { id:13, m:'IRVIN',   f:'F2', t:'Vaciado técnico y transcripción de datos de entrevista', d:'Pasar a limpio el audio grabado en CORINCA, organizando las respuestas del ingeniero de manera coherente para los anexos.', ev:'Informe Escrito', s:'pending' },
+  { id:14, m:'IRVIN',   f:'F2', t:'Análisis comparativo de las Normas Técnicas Salvadoreñas', d:'Documentar la aplicación obligatoria de las normas técnicas locales e internacionales en las edificaciones de infraestructura civil del país.', ev:'Informe Escrito', s:'pending' },
+  { id:15, m:'IRVIN',   f:'F3', t:'Toma estructurada de bitácora de campo presencial', d:'Registrar manualmente todas las observaciones, datos de producción y comentarios espontáneos del personal durante el recorrido por la fábrica.', ev:'Evidencia de Campo', s:'pending' },
+  { id:16, m:'IRVIN',   f:'F5', t:'Revisión ortográfica de fichas de exposición individual', d:'Verificar que las tarjetas resumen del equipo carezcan de errores tipográficos y posean los conceptos técnicos clave bien detallados.', ev:'Defensa Oral', s:'pending' },
+
+  // ── AXEL TAREAS
+  { id:17, m:'AXEL',    f:'F1', t:'Investigación histórica: Evolución del Acero en el país', d:'Rastrear los hitos constructivos clave en El Salvador desde el uso de estructuras de madera y adobe hasta la adopción masiva del acero estructural.', ev:'Marco Teórico', s:'pending' },
+  { id:18, m:'AXEL',    f:'F4', t:'Diseño estructural y conceptual de la plantilla en Prezi Next', d:'Crear un lienzo dinámico no lineal con paleta oscura acorde al proyecto, estructurando las burbujas temáticas lógicamente.', ev:'Presentación Prezi', s:'pending' },
+  { id:19, m:'AXEL',    f:'F4', t:'Montaje de contenidos teóricos en la presentación', d:'Sintetizar textos densos en diagramas de flujo interactivos dentro de Prezi, optimizando la carga visual.', ev:'Presentación Prezi', s:'pending' },
+  { id:20, m:'AXEL',    f:'F4', t:'Integración de evidencias fotográficas en la secuencia', d:'Insertar de manera organizada las imágenes capturadas de los hornos y laboratorios de CORINCA dentro del flujo de la presentación.', ev:'Presentación Prezi', s:'pending' },
+  { id:21, m:'AXEL',    f:'F5', t:'Diseño y dominio del lenguaje corporal del grupo', d:'Supervisar la postura en el escenario, contacto visual y ademanes correctos durante las fases de ensayo generalizado.', ev:'Defensa Oral', s:'pending' },
+
+  // ── CHAVEZ TAREAS
+  { id:22, m:'CHAVEZ',  f:'F2', t:'Estructuración de Índices, Glosarios y Bibliografía APA', d:'Maquetar el esqueleto automatizado del informe escrito, organizando los términos metalúrgicos y validando las citas bibliográficas.', ev:'Informe Escrito', s:'pending' },
+  { id:23, m:'CHAVEZ',  f:'F4', t:'Revisión crítica del video institucional preliminar', d:'Auditar el primer corte del video de Kerim, señalando ajustes en transiciones, volumen de voz de fondo y exactitud de subtítulos técnicos.', ev:'Video Técnico', s:'pending' },
+  { id:24, m:'CHAVEZ',  f:'F5', t:'Revisión ortográfica final y control de calidad del Informe', d:'Leer meticulosamente el reporte final completo antes de imprimir para erradicar inconsistencias en la paginación o la sintaxis.', ev:'Informe Escrito', s:'pending' },
+  { id:25, m:'CHAVEZ',  f:'F5', t:'Logística de impresión, empastado y entrega formal', d:'Gestionar el financiamiento común, llevar el archivo final a la imprenta y subir el PDF oficial a Google Classroom en el tiempo límite.', ev:'Informe Escrito', s:'pending' },
+  { id:26, m:'CHAVEZ',  f:'F5', t:'Estrategia de contingencia ante preguntas difíciles de la terna', d:'Establecer un código de asignación de respuestas rápido para que el integrante más apto tome la palabra ordenadamente durante la terna.', ev:'Defensa Oral', s:'pending' }
+];
+
 const MEMBERS = ['CHAFOYA', 'KERIM', 'IRVIN', 'AXEL', 'CHAVEZ'];
-const TASKS = {
-  'T01': { m: 'CHAFOYA', weight: 20, status: 0 },
-  'T02': { m: 'CHAFOYA', weight: 20, status: 0 },
-  'T03': { m: 'CHAFOYA', weight: 20, status: 0 },
-  'T04': { m: 'CHAFOYA', weight: 20, status: 0 },
-  'T05': { m: 'CHAFOYA', weight: 20, status: 0 },
 
-  'T06': { m: 'KERIM',   weight: 20, status: 0 },
-  'T07': { m: 'KERIM',   weight: 20, status: 0 },
-  'T08': { m: 'KERIM',   weight: 20, status: 0 },
-  'T09': { m: 'KERIM',   weight: 20, status: 0 },
-  'T10': { m: 'KERIM',   weight: 20, status: 0 },
-
-  'T11': { m: 'IRVIN',   weight: 16.66, status: 0 },
-  'T12': { m: 'IRVIN',   weight: 16.66, status: 0 },
-  'T13': { m: 'IRVIN',   weight: 16.66, status: 0 },
-  'T14': { m: 'IRVIN',   weight: 16.66, status: 0 },
-  'T15': { m: 'IRVIN',   weight: 16.66, status: 0 },
-  'T16': { m: 'IRVIN',   weight: 16.70, status: 0 },
-
-  'T17': { m: 'AXEL',    weight: 20, status: 0 },
-  'T18': { m: 'AXEL',    weight: 20, status: 0 },
-  'T19': { m: 'AXEL',    weight: 20, status: 0 },
-  'T20': { m: 'AXEL',    weight: 20, status: 0 },
-  'T21': { m: 'AXEL',    weight: 20, status: 0 },
-
-  'T22': { m: 'CHAVEZ',  weight: 20, status: 0 },
-  'T23': { m: 'CHAVEZ',  weight: 20, status: 0 },
-  'T24': { m: 'CHAVEZ',  weight: 20, status: 0 },
-  'T25': { m: 'CHAVEZ',  weight: 20, status: 0 },
-  'T26': { m: 'CHAVEZ',  weight: 20, status: 0 }
-};
-
+// INICIALIZACIÓN
 document.addEventListener("DOMContentLoaded", () => {
+  // Cargar estados guardados si existen
+  const saved = localStorage.getItem('itsi_2026_tasks');
+  if(saved) {
+    const parse = JSON.parse(saved);
+    DATA.forEach(t => { if(parse[t.id]) t.s = parse[t.id]; });
+  }
   buildMemberBars();
-  calculateAll();
+  renderAll();
 });
 
+// INTERCAMBIO DE PANELES (TABS)
 function showMod(m) {
   document.querySelectorAll('.module-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('mod-'+m).classList.add('active');
   document.querySelector('[data-m="'+m+'"]').classList.add('active');
+  // scroll to tabs
   document.querySelector('.nav-bar').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
+// RENDERS
+function renderAll() {
+  MEMBERS.forEach(m => renderTasks(m));
+  updateDashboard();
+}
+
+function renderTasks(m) {
+  const container = document.getElementById('tasks-'+m);
+  container.innerHTML = '';
+  const filtered = DATA.filter(t => t.m === m);
+
+  filtered.forEach(t => {
+    const card = document.createElement('div');
+    card.className = `task-card status-${t.s}`;
+    card.onclick = () => toggleStatus(t.id);
+
+    let statusLabel = 'Pendiente';
+    if(t.s === 'inprogress') statusLabel = 'En Proceso';
+    if(t.s === 'done') statusLabel = 'Completado';
+
+    card.innerHTML = `
+      <div class="task-top">
+        <div class="task-left">
+          <div class="task-meta">
+            <span class="task-num">ID-#${String(t.id).padStart(2,'0')}</span>
+            <span class="task-phase phase-${t.f}">${t.f.replace('F','Fase ')}</span>
+          </div>
+          <h4 class="task-title">${t.t}</h4>
+        </div>
+        <button class="status-btn s-${t.s}">${statusLabel}</button>
+      </div>
+      <p class="task-desc">${t.d}</p>
+      <div class="task-footer">
+        <span class="task-eval">🎯 Criterio: ${t.ev}</span>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// LÓGICA DE INTERMITENCIA DE ESTADOS
+function toggleStatus(id) {
+  const task = DATA.find(t => t.id === id);
+  if(task.s === 'pending') task.s = 'inprogress';
+  else if(task.s === 'inprogress') task.s = 'done';
+  else task.s = 'pending';
+
+  // Guardar en local storage
+  const state = {};
+  DATA.forEach(t => state[t.id] = t.s);
+  localStorage.setItem('itsi_2026_tasks', JSON.stringify(state));
+
+  renderAll();
+}
+
+// METRICAS DEL DASHBOARD DEL EQUIPO
+function updateDashboard() {
+  const total = DATA.length;
+  const done = DATA.filter(t => t.s === 'done').length;
+  const ip = DATA.filter(t => t.s === 'inprogress').length;
+
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+  document.getElementById('d-total').innerText = total;
+  document.getElementById('d-done').innerText = done;
+  document.getElementById('d-done-sub').innerText = `${pct}% del proyecto total`;
+  document.getElementById('d-ip').innerText = ip;
+  document.getElementById('d-ip-sub').innerText = `${ip} tareas en desarrollo`;
+
+  // Barra global animada
+  document.getElementById('globalPct').innerText = pct + '%';
+  document.getElementById('globalBar').style.width = pct + '%';
+
+  // Actualizar micro porcentajes de cada integrante
+  MEMBERS.forEach(m => {
+    const mTotal = DATA.filter(t => t.m === m).length;
+    const mDone = DATA.filter(t => t.m === m && t.s === 'done').length;
+    const mPct = mTotal > 0 ? Math.round((mDone / mTotal) * 100) : 0;
+
+    // Actualiza texto en cabecera del módulo
+    document.getElementById('p-'+m).innerText = mPct + '%';
+    // Actualiza mini tabs
+    document.getElementById('mini-'+m).innerText = `${mDone} / ${mTotal} tareas`;
+    // Actualiza barra en dashboard
+    const fill = document.getElementById('mbar-'+m);
+    if(fill) fill.style.width = mPct + '%';
+    const num = document.getElementById('mbarnum-'+m);
+    if(num) num.innerText = mPct + '%';
+  });
+}
+
+// INTEGRACIÓN DE BARRAS DINÁMICAS EN DASHBOARD
 function buildMemberBars() {
   const container = document.getElementById('member-bars');
   const nameMap = { CHAFOYA:'Chafoya', KERIM:'Kerim', IRVIN:'Irvin', AXEL:'Axel', CHAVEZ:'Chávez' };
@@ -1435,80 +1122,9 @@ function buildMemberBars() {
     row.innerHTML = `
       <span class="mbar-name">${nameMap[m]}</span>
       <div class="mbar-track"><div class="mbar-fill" id="mbar-${m}" style="width:0%;background:${fillMap[m]};border-radius:4px;height:100%;transition:width 0.7s ease"></div></div>
-      <span class="mbar-pct" id="mbar-pct-${m}">0%</span>
+      <span class="mbar-pct" id="mbarnum-${m}">0%</span>
     `;
     container.appendChild(row);
-  });
-}
-
-function toggleTask(id) {
-  const t = TASKS[id];
-  if(!t) return;
-  t.status = (t.status + 1) % 3; // 0:pending, 1:inprogress, 2:done
-  
-  const card = document.getElementById('task-' + id);
-  const btn = document.getElementById('btn-' + id);
-  
-  card.classList.remove('status-pending', 'status-inprogress', 'status-done');
-  btn.classList.remove('s-pending', 's-inprogress', 's-done');
-  
-  if(t.status === 0) {
-    card.classList.add('status-pending');
-    btn.classList.add('s-pending');
-    btn.innerText = "Pendiente";
-  } else if(t.status === 1) {
-    card.classList.add('status-inprogress');
-    btn.classList.add('s-inprogress');
-    btn.innerText = "En proceso";
-  } else if(t.status === 2) {
-    card.classList.add('status-done');
-    btn.classList.add('s-done');
-    btn.innerText = "Completado";
-  }
-  calculateAll();
-}
-
-function calculateAll() {
-  let totalTasks = Object.keys(TASKS).length;
-  let totalDone = 0;
-  let totalIp = 0;
-  
-  let mStats = {};
-  MEMBERS.forEach(m => { mStats[m] = { done:0, ip:0, pend:0, progress:0 }; });
-  
-  Object.keys(TASKS).forEach(id => {
-    const t = TASKS[id];
-    if(t.status === 2) {
-      totalDone++;
-      mStats[t.m].done++;
-      mStats[t.m].progress += t.weight;
-    } else if(t.status === 1) {
-      totalIp++;
-      mStats[t.m].ip++;
-    } else {
-      mStats[t.m].pend++;
-    }
-  });
-  
-  let globalPctValue = Math.round((totalDone / totalTasks) * 100);
-  document.getElementById('d-done').innerText = totalDone;
-  document.getElementById('d-done-sub').innerText = globalPctValue + "% del proyecto";
-  document.getElementById('d-ip').innerText = totalIp;
-  document.getElementById('d-ip-sub').innerText = totalIp + " tareas activas";
-  document.getElementById('globalPct').innerText = globalPctValue + "%";
-  document.getElementById('globalBar').style.width = globalPctValue + "%";
-  
-  MEMBERS.forEach(m => {
-    let roundedProgress = Math.min(100, Math.round(mStats[m].progress));
-    document.getElementById('stat-n-' + m).innerText = roundedProgress + "%";
-    document.getElementById('mini-' + m).innerText = mStats[m].done + " / " + (mStats[m].done + mStats[m].ip + mStats[m].pend) + " tareas";
-    document.getElementById('mbar-' + m).style.width = roundedProgress + "%";
-    document.getElementById('mbar-pct-' + m).innerText = roundedProgress + "%";
-    
-    document.getElementById('f-done-' + m).innerText = mStats[m].done;
-    document.getElementById('f-ip-' + m).innerText = mStats[m].ip;
-    document.getElementById('f-pend-' + m).innerText = mStats[m].pend;
-    document.getElementById('bar-' + m).style.width = roundedProgress + "%";
   });
 }
 </script>
