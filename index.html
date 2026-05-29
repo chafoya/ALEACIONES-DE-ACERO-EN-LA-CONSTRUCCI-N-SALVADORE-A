@@ -7,965 +7,1509 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:       #03050a;
-  --s1:       #080d1a;
-  --s2:       #0d1527;
-  --s3:       #15223e;
-  --glass:    rgba(255,255,255,0.02);
-  --glass2:   rgba(255,255,255,0.05);
-  --border:   rgba(56, 189, 248, 0.15);
-  --border2:  rgba(244, 63, 94, 0.3);
+  --bg:       #07090f;
+  --s1:       #0c1220;
+  --s2:       #101828;
+  --s3:       #162035;
+  --glass:    rgba(255,255,255,0.03);
+  --glass2:   rgba(255,255,255,0.055);
+  --border:   rgba(99,155,210,0.14);
+  --border2:  rgba(99,155,210,0.28);
 
   --cyan:     #38bdf8;
   --cyan-d:   #0ea5e9;
-  --orange:   #f97316;
+  --orange:   #fb923c;
   --orange-d: #ea580c;
-  --pink:     #f43f5e;
-  --pink-d:   #e11d48;
-  --purple:   #a855f7;
-  --emerald:  #10b981;
+  --green:    #34d399;
+  --green-d:  #059669;
+  --amber:    #fbbf24;
+  --amber-d:  #d97706;
+  --violet:   #a78bfa;
+  --violet-d: #7c3aed;
+  --rose:     #fb7185;
 
-  /* Colores de los Integrantes */
-  --m-chafoya: #38bdf8;
-  --m-kerim:   #a855f7;
-  --m-irvin:   #f43f5e; /* Irvin tiene el rol crítico de ensamblaje (Color de alerta/misión) */
-  --m-axel:    #10b981;
-  --m-chavez:  #fb923c;
+  --text:     #e2eaf4;
+  --text2:    #8fa8c0;
+  --text3:    #4e6a82;
+
+  /* member accents */
+  --m-chafoya:  #38bdf8;
+  --m-kerim:    #fb923c;
+  --m-irvin:    #34d399;
+  --m-axel:     #fbbf24;
+  --m-chavez:   #a78bfa;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--bg);
-  color: #f1f5f9;
+  background: var(--bg);
+  color: var(--text);
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-  position: relative;
   min-height: 100vh;
-}
-
-/* Fondo Dinámico de Partículas Interactivas */
-#canvas-cyber-grid {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.45;
-}
-
-/* Efecto de Escaneo de Líneas CRT */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-  background-size: 100% 4px, 6px 100%;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-/* Encabezado Cibernético */
-header {
-  border-bottom: 2px solid var(--border);
-  background: linear-gradient(180deg, rgba(8, 13, 26, 0.95) 0%, rgba(3, 5, 10, 0.8) 100%);
-  backdrop-filter: blur(12px);
-  padding: 2.5rem 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--cyan), var(--pink), var(--orange), var(--cyan));
-  background-size: 300% 100%;
-  animation: cyber-gradient-bar 8s linear infinite;
-}
-
-@keyframes cyber-gradient-bar {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.header-container {
-  max-width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* Glitch Artístico en Título */
-.glitch-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.8rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  color: #fff;
-  text-transform: uppercase;
-  position: relative;
-  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-  animation: glitch-pulse 4s infinite;
-}
-
-@keyframes glitch-pulse {
-  0%, 100% { text-shadow: 0 0 8px rgba(56, 189, 248, 0.4), 2px 0 0 rgba(244, 63, 94, 0.2); }
-  50% { text-shadow: 0 0 18px rgba(56, 189, 248, 0.8), -2px 0 0 rgba(251, 146, 60, 0.3); }
-}
-
-.subtitle {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.95rem;
-  color: var(--cyan);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.subtitle::before {
-  content: '⚡';
-  animation: blink 0.8s infinite alternate;
-}
-
-@keyframes blink {
-  0% { opacity: 0.2; }
-  100% { opacity: 1; }
-}
-
-/* Layout Principal */
-main {
-  max-width: 1300px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media(min-width: 1024px) {
-  main {
-    grid-template-columns: 320px 1fr;
-  }
-}
-
-/* Paneles Laterales de Estado Gamer */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.cyber-card {
-  background: rgba(8, 13, 26, 0.85);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-}
-
-.cyber-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--cyan);
-}
-
-.cyber-card.critical::before {
-  background: var(--pink);
-}
-
-.cyber-card:hover {
-  border-color: var(--cyan);
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
-  transform: translateY(-2px);
-}
-
-.card-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: #fff;
-}
-
-/* Indicadores de Rendimiento de Integrantes */
-.stats-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.stat-label-row {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-}
-
-.progress-track {
-  width: 100%;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 5px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  position: relative;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  border-radius: 4px;
-  width: 0%;
-  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-  background-size: 30px 30px;
-  background-image: linear-gradient(
-    45deg, 
-    rgba(255, 255, 255, 0.15) 25%, 
-    transparent 25%, 
-    transparent 50%, 
-    rgba(255, 255, 255, 0.15) 50%, 
-    rgba(255, 255, 255, 0.15) 75%, 
-    transparent 75%, 
-    transparent
-  );
-  animation: gamer-bar-slide 1.5s linear infinite;
-}
-
-@keyframes gamer-bar-slide {
-  0% { background-position: 0 0; }
-  100% { background-position: 30px 0; }
-}
-
-/* Sistema de Navegación Gamer */
-.nav-bar {
-  display: flex;
-  background: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.4rem;
-  gap: 0.4rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.nav-bar::-webkit-scrollbar {
-  display: none;
-}
-
-.tab-btn {
-  background: transparent;
-  border: none;
-  color: #94a3b8;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.8rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.25s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.tab-btn.active {
-  background: var(--cyan);
-  color: var(--bg);
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-}
-
-.tab-btn:hover:not(.active) {
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-}
-
-/* Área de Módulos */
-.content-area {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.module-pane {
-  display: none;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.module-pane.active {
-  display: flex;
-  animation: cyber-teleport 0.4s cubic-bezier(0.19, 1, 0.22, 1) both;
-}
-
-@keyframes cyber-teleport {
-  0% {
-    opacity: 0;
-    transform: scale(0.97) translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-/* Tarjetas de Misión / Tareas */
-.task-card {
-  background: rgba(13, 21, 39, 0.7);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.task-card::after {
-  content: 'SYS.ACTIVE';
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--border2);
-  letter-spacing: 1px;
-}
-
-.task-card:hover {
-  border-color: var(--pink);
-  box-shadow: 0 0 20px rgba(244, 63, 94, 0.15);
-  transform: translateX(4px);
-}
-
-.task-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.task-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-}
-
-.badge-owner {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-
-.badge-owner.chafoya { background: rgba(56, 189, 248, 0.15); color: var(--cyan); border: 1px solid var(--cyan); }
-.badge-owner.kerim { background: rgba(168, 85, 247, 0.15); color: var(--purple); border: 1px solid var(--purple); }
-.badge-owner.irvin { background: rgba(244, 63, 94, 0.15); color: var(--pink); border: 1px solid var(--pink); }
-.badge-owner.axel { background: rgba(16, 185, 129, 0.15); color: var(--emerald); border: 1px solid var(--emerald); }
-.badge-owner.chavez { background: rgba(251, 146, 96, 0.15); color: var(--orange); border: 1px solid var(--orange); }
-
-.badge-status {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #94a3b8;
-}
-
-.badge-status.urgent {
-  background: rgba(244, 63, 94, 0.2);
-  border-color: var(--pink);
-  color: #fda4af;
-  animation: pulse-border 1.5s infinite alternate;
-}
-
-@keyframes pulse-border {
-  0% { box-shadow: 0 0 5px rgba(244, 63, 94, 0.2); }
-  100% { box-shadow: 0 0 15px rgba(244, 63, 94, 0.6); }
-}
-
-.task-date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--orange);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.task-date.critical-date {
-  color: var(--pink);
-  font-weight: 700;
-  text-shadow: 0 0 5px rgba(244, 63, 94, 0.3);
-}
-
-.task-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.3;
-}
-
-.task-desc {
-  color: #94a3b8;
-  font-size: 0.95rem;
+  overflow-x: hidden;
   line-height: 1.6;
 }
 
-.subtasks-box {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+/* ── GRID BACKGROUND ── */
+body::before {
+  content:'';
+  position: fixed; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(56,189,248,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridScroll 30s linear infinite;
+  pointer-events: none;
 }
+@keyframes gridScroll { to { background-position: 48px 48px; } }
 
-.subtask-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.88rem;
-  color: #cbd5e1;
+/* ── AMBIENT GLOW ── */
+.ambient {
+  position: fixed; z-index: 0; border-radius: 50%; filter: blur(120px); pointer-events: none;
 }
+.ambient-1 { width:600px; height:600px; top:-200px; left:-200px; background: radial-gradient(circle, rgba(56,189,248,0.06), transparent 70%); }
+.ambient-2 { width:500px; height:500px; bottom:-150px; right:-150px; background: radial-gradient(circle, rgba(167,139,250,0.07), transparent 70%); }
 
-.subtask-checkbox {
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--border);
-  border-radius: 3px;
-  outline: none;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
-}
+/* ── WRAPPER ── */
+.wrapper { position:relative; z-index:2; max-width:1180px; margin:0 auto; padding: 0 24px 80px; }
 
-.subtask-checkbox:checked {
-  background: var(--cyan);
-  border-color: var(--cyan);
-}
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+header { padding: 64px 0 48px; text-align: center; }
 
-.subtask-checkbox:checked::after {
-  content: '✓';
-  position: absolute;
-  color: var(--bg);
-  font-size: 11px;
-  font-weight: 900;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Alertas de Consolidación (Irvin's Box) */
-.consolidation-banner {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.15) 0%, rgba(8, 13, 26, 0.9) 100%);
-  border: 1px dashed var(--pink);
-  border-radius: 12px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: relative;
-}
-
-.consolidation-banner::before {
-  content: 'ALERTA RECOPILADORA';
-  position: absolute;
-  top: -10px;
-  left: 15px;
-  background: var(--pink);
-  color: #fff;
+.header-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.22);
+  border-radius: 100px;
+  padding: 6px 18px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 3px;
-  letter-spacing: 1px;
+  font-size: 11px; letter-spacing: 0.12em;
+  color: var(--cyan);
+  margin-bottom: 24px;
+}
+.header-eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 6px var(--cyan); animation:blink 1.8s step-end infinite; }
+@keyframes blink { 50%{opacity:0;} }
+
+.header-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 5.5vw, 52px);
+  font-weight: 800;
+  line-height: 1.05;
+  background: linear-gradient(135deg, #fff 0%, var(--cyan) 45%, var(--violet) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 40px rgba(56,189,248,0.25));
 }
 
-/* Glitch de Texto */
-.glitch-text {
-  animation: text-glitch-anim 3s linear infinite;
+.header-sub {
+  font-size: 14px; color: var(--text3); letter-spacing: 0.15em; font-weight: 500;
+  text-transform: uppercase; margin-bottom: 36px;
 }
 
-@keyframes text-glitch-anim {
-  0%, 95%, 100% { transform: skew(0deg); }
-  96% { transform: skew(8deg); color: var(--pink); }
-  97% { transform: skew(-8deg); color: var(--cyan); }
-  98% { transform: skew(3deg); }
+.header-chips { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.chip {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--glass); border: 1px solid var(--border);
+  border-radius: 8px; padding: 7px 16px;
+  font-size: 12px; font-weight: 500; color: var(--text2);
+  backdrop-filter: blur(8px);
 }
+.chip-icon { font-size: 14px; }
 
-/* Pie de página */
-footer {
-  text-align: center;
-  padding: 3rem 1.5rem;
-  color: #64748b;
+/* ══════════════════════════════════════════
+   SECTION LABEL
+══════════════════════════════════════════ */
+.sec-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 11px; letter-spacing: 0.16em;
+  color: var(--text3); text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.sec-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* ══════════════════════════════════════════
+   GLOBAL DASHBOARD
+══════════════════════════════════════════ */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 260px;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+@media(max-width:900px){ .dashboard{ grid-template-columns:1fr 1fr; } }
+@media(max-width:540px){ .dashboard{ grid-template-columns:1fr; } }
+
+.dash-card {
+  background: var(--glass); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 22px;
+  backdrop-filter: blur(12px);
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.dash-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+.dash-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.14em;
+  color: var(--text3); text-transform: uppercase; margin-bottom: 8px;
+}
+.dash-card-value {
+  font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; line-height: 1;
+}
+.dash-card-sub { font-size: 12px; color: var(--text3); margin-top: 4px; }
+
+.dash-card-accent { position:absolute; top:0; right:0; width:80px; height:80px; border-radius:50%; opacity:0.08; transform:translate(30px,-30px); }
+
+/* Global progress card */
+.dash-global {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(167,139,250,0.06));
+  border-color: rgba(56,189,248,0.2);
+}
+.global-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+.global-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--text); }
+.global-pct { font-family:'JetBrains Mono',monospace; font-size:30px; font-weight:700; color:var(--cyan); }
+
+.progress-track { background:rgba(56,189,248,0.08); border-radius:100px; height:8px; overflow:hidden; }
+.progress-fill {
+  height:100%; border-radius:100px;
+  background: linear-gradient(90deg, var(--cyan-d), var(--cyan), var(--violet));
+  transition: width 0.9s cubic-bezier(.4,0,.2,1);
+  position:relative; overflow:hidden;
+}
+.progress-fill::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
+  animation: shimmer 2.5s linear infinite;
+}
+@keyframes shimmer { from{transform:translateX(-100%)} to{transform:translateX(200%)} }
+
+/* member mini bars inside dashboard */
+.member-bars { display:flex; flex-direction:column; gap:9px; }
+.mbar-row { display:flex; align-items:center; gap:10px; }
+.mbar-name { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text3); width:60px; flex-shrink:0; }
+.mbar-track { flex:1; background:rgba(255,255,255,0.05); border-radius:4px; height:5px; overflow:hidden; }
+.mbar-fill { height:100%; border-radius:4px; transition:width 0.7s ease; }
+.mbar-pct { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text3); width:30px; text-align:right; flex-shrink:0; }
+
+/* ══════════════════════════════════════════
+   PHASE INDICATOR
+══════════════════════════════════════════ */
+.phase-strip {
+  display: flex; gap: 0;
+  background: var(--glass); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  margin-bottom: 36px;
+}
+.phase-item {
+  flex: 1; padding: 14px 8px; text-align: center;
+  border-right: 1px solid var(--border);
+  position: relative; cursor: default;
+  transition: background 0.3s;
+}
+.phase-item:last-child { border-right: none; }
+.phase-item:hover { background: var(--glass2); }
+.phase-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--text3); letter-spacing: 0.1em; margin-bottom: 4px;
+}
+.phase-name { font-size: 12px; font-weight: 600; color: var(--text2); line-height: 1.3; }
+.phase-arrow {
+  position: absolute; right: -8px; top: 50%; transform: translateY(-50%);
+  font-size: 10px; color: var(--text3); z-index:1;
+}
+@media(max-width:680px){
+  .phase-strip { flex-direction:column; }
+  .phase-item { border-right:none; border-bottom:1px solid var(--border); }
+  .phase-item:last-child{border-bottom:none;}
+  .phase-arrow{display:none;}
+}
+
+/* ══════════════════════════════════════════
+   TABS NAV
+══════════════════════════════════════════ */
+.nav-bar {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 20px;
+  background: var(--s1); border: 1px solid var(--border);
+  border-radius: 14px; padding: 6px;
+}
+
+.tab-btn {
+  flex: 1; min-width: 130px;
+  background: transparent; border: 1px solid transparent;
+  border-radius: 10px; padding: 12px 16px;
+  cursor: pointer; transition: all 0.25s ease;
+  display: flex; flex-direction: column; gap: 3px;
+  text-align: left;
+}
+.tab-btn:hover { background: var(--glass2); border-color: var(--border); }
+
+.tab-top { display:flex; align-items:center; gap:8px; }
+.tab-icon { font-size:14px; }
+.tab-name { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--text2); transition:color 0.2s; }
+.tab-role { font-size:10px; color:var(--text3); font-weight:400; line-height:1.2; }
+.tab-progress { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text3); }
+
+.tab-btn.active { border-color: var(--border2); background: var(--glass2); }
+.tab-btn.active .tab-name { color: var(--text); }
+
+/* Member color accent on active tab */
+.tab-btn[data-m="CHAFOYA"].active  { border-color: rgba(56,189,248,0.4);  background: rgba(56,189,248,0.06); }
+.tab-btn[data-m="KERIM"].active    { border-color: rgba(251,146,60,0.4);  background: rgba(251,146,60,0.06); }
+.tab-btn[data-m="IRVIN"].active    { border-color: rgba(52,211,153,0.4);  background: rgba(52,211,153,0.06); }
+.tab-btn[data-m="AXEL"].active     { border-color: rgba(251,191,36,0.4);  background: rgba(251,191,36,0.06); }
+.tab-btn[data-m="CHAVEZ"].active   { border-color: rgba(167,139,250,0.4); background: rgba(167,139,250,0.06); }
+
+/* ══════════════════════════════════════════
+   MODULE PANEL
+══════════════════════════════════════════ */
+.module-panel { display:none; animation: panelIn 0.35s ease; }
+.module-panel.active { display:block; }
+@keyframes panelIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* Module header */
+.mod-header {
+  border-radius: 16px 16px 0 0;
+  padding: 32px 36px 28px;
+  position: relative; overflow: hidden;
+  border: 1px solid var(--border);
+  border-bottom: none;
+}
+
+.mod-header::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(135deg, var(--mh-from,rgba(56,189,248,0.07)), var(--mh-to,rgba(167,139,250,0.03)));
+}
+.mod-header::after {
+  content:''; position:absolute;
+  right:-60px; top:-60px;
+  width:240px; height:240px; border-radius:50%;
+  background: radial-gradient(circle, var(--mh-glow,rgba(56,189,248,0.12)), transparent 70%);
+}
+
+.mod-header-inner { position:relative; z-index:1; display:flex; align-items:flex-start; gap:24px; }
+.mod-avatar {
+  width:64px; height:64px; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:26px; font-weight:800; font-family:'Syne',sans-serif;
+  flex-shrink:0;
+  border: 1px solid var(--mh-border,rgba(56,189,248,0.3));
+  background: var(--mh-avatar,rgba(56,189,248,0.1));
+  color: var(--mh-color,var(--cyan));
+}
+.mod-info { flex:1; }
+.mod-eyebrow {
+  font-family:'JetBrains Mono',monospace; font-size:10px;
+  letter-spacing:0.16em; color:var(--mh-color,var(--cyan));
+  margin-bottom:6px; text-transform:uppercase;
+}
+.mod-name {
+  font-family:'Syne',sans-serif; font-size:clamp(22px,4vw,36px);
+  font-weight:800; color:#fff; margin-bottom:4px; line-height:1;
+}
+.mod-subtitle { font-size:13px; color:var(--text2); font-weight:400; margin-bottom:14px; }
+.mod-badges { display:flex; gap:8px; flex-wrap:wrap; }
+.mod-badge {
+  font-size:11px; font-weight:600;
+  padding:4px 12px; border-radius:100px;
+  border:1px solid var(--mh-border,rgba(56,189,248,0.3));
+  color:var(--mh-color,var(--cyan));
+  background:rgba(56,189,248,0.08);
+}
+
+.mod-stats {
+  display:flex; gap:20px; flex-wrap:wrap;
+  align-items:flex-end;
+  padding-top:12px;
+  flex-shrink:0;
+}
+.mod-stat { text-align:center; }
+.mod-stat-num {
+  font-family:'Syne',sans-serif; font-size:26px; font-weight:800;
+}
+.mod-stat-label { font-size:10px; color:var(--text3); font-family:'JetBrains Mono',monospace; letter-spacing:0.08em; }
+
+/* Module body */
+.mod-body {
+  background: var(--s1); border:1px solid var(--border);
+  border-top:none; border-radius: 0 0 16px 16px; overflow:hidden;
+}
+
+/* Task list */
+.tasks-list { padding: 24px; display:flex; flex-direction:column; gap:10px; }
+
+.task-card {
+  background: var(--glass); border:1px solid var(--border);
+  border-radius: 12px; padding: 18px 20px;
+  cursor:pointer; transition: all 0.25s ease;
+  position: relative; overflow:hidden;
+}
+.task-card:hover { transform:translateX(4px); border-color:var(--border2); }
+
+/* left accent bar */
+.task-card::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+  background: var(--bar-color, var(--text3));
+  border-radius:3px 0 0 3px; transition:background 0.3s;
+}
+.task-card.status-inprogress::before { background:var(--amber); box-shadow:0 0 10px var(--amber); animation:barPulse 1.8s ease-in-out infinite; }
+.task-card.status-done::before { background:var(--green); }
+@keyframes barPulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+.task-card.status-done { background: rgba(52,211,153,0.04); border-color:rgba(52,211,153,0.15); }
+.task-card.status-inprogress { background: rgba(251,191,36,0.04); border-color:rgba(251,191,36,0.15); }
+
+/* task content */
+.task-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.task-left { display:flex; flex-direction:column; gap:4px; flex:1; }
+
+.task-meta { display:flex; align-items:center; gap:8px; }
+.task-num { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text3); }
+.task-phase {
+  font-size:10px; font-weight:600; padding:2px 8px; border-radius:4px;
+  font-family:'JetBrains Mono',monospace; letter-spacing:0.05em;
+}
+.phase-F1 { background:rgba(56,189,248,0.12); color:var(--cyan); }
+.phase-F2 { background:rgba(52,211,153,0.12); color:var(--green); }
+.phase-F3 { background:rgba(251,146,60,0.12); color:var(--orange); }
+.phase-F4 { background:rgba(167,139,250,0.12); color:var(--violet); }
+
+.task-title { font-size:15px; font-weight:600; color:var(--text); line-height:1.3; }
+.task-desc { font-size:13px; color:var(--text2); line-height:1.6; margin-bottom:10px; }
+
+.task-footer { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.task-eval {
+  font-size:11px; color:var(--text3);
+  background:var(--glass); border:1px solid var(--border);
+  border-radius:6px; padding:3px 10px;
+  font-family:'JetBrains Mono',monospace;
+}
+
+.status-btn {
+  display:flex; align-items:center; gap:6px;
+  padding:5px 14px; border-radius:20px;
+  font-size:11px; font-weight:600; font-family:'Inter',sans-serif;
+  border:1px solid; cursor:pointer; transition:all 0.2s;
+  white-space:nowrap; flex-shrink:0;
+}
+.status-btn.s-pending   { color:var(--text3); border-color:rgba(99,155,210,0.2); background:transparent; }
+.status-btn.s-inprogress{ color:var(--amber);  border-color:rgba(251,191,36,0.4);  background:rgba(251,191,36,0.08); }
+.status-btn.s-done      { color:var(--green);  border-color:rgba(52,211,153,0.4);  background:rgba(52,211,153,0.08); }
+.status-btn:hover { transform:scale(1.04); }
+
+/* done overlay */
+.task-card.status-done::after {
+  content:'✓'; position:absolute; right:14px; bottom:10px;
+  font-size:36px; font-weight:700; color:rgba(52,211,153,0.08);
+  pointer-events:none;
+}
+
+/* ══════════════════════════════════════════
+   MEMBER PROGRESS FOOTER inside mod-body
+══════════════════════════════════════════ */
+.mod-footer {
   border-top: 1px solid var(--border);
-  margin-top: 4rem;
-  background: rgba(8, 13, 26, 0.6);
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  background: rgba(0,0,0,0.2);
+}
+@media(max-width:600px){ .mod-footer{grid-template-columns:1fr;} }
+
+.mod-footer-title { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color:var(--text3); text-transform:uppercase; margin-bottom:12px; }
+
+.stat-row { display:flex; gap:16px; margin-bottom:14px; }
+.stat-box { text-align:center; }
+.stat-n { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; line-height:1; }
+.stat-n.c-done { color:var(--green); }
+.stat-n.c-ip   { color:var(--amber); }
+.stat-n.c-pend { color:var(--text3); }
+.stat-l { font-size:10px; color:var(--text3); font-family:'JetBrains Mono',monospace; }
+
+.member-track { background:rgba(255,255,255,0.05); border-radius:6px; height:8px; overflow:hidden; }
+.member-fill  { height:100%; border-radius:6px; transition:width 0.7s ease; }
+
+/* ══════════════════════════════════════════
+   DEADLINE TIMELINE inside mod-footer
+══════════════════════════════════════════ */
+.dl-list { display:flex; flex-direction:column; gap:10px; }
+.dl-item {
+  display:flex; gap:14px; align-items:flex-start;
+  padding:12px 14px; border-radius:10px;
+  border:1px solid var(--border); background:var(--glass);
+  transition:border-color 0.3s;
+}
+.dl-item:hover { border-color:var(--border2); }
+.dl-date-box {
+  flex-shrink:0; text-align:center;
+  padding:6px 10px; border-radius:8px;
+  min-width:50px;
+}
+.dl-day  { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; line-height:1; }
+.dl-mon  { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.08em; margin-top:2px; }
+.dl-content { flex:1; }
+.dl-tag  { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:3px; }
+.dl-t    { font-size:13px; font-weight:600; color:var(--text); margin-bottom:2px; line-height:1.3; }
+.dl-d    { font-size:11px; color:var(--text2); line-height:1.5; }
+
+/* color helpers */
+.col-cyan   { color:var(--cyan);   }
+.col-orange { color:var(--orange); }
+.col-green  { color:var(--green);  }
+.col-amber  { color:var(--amber);  }
+.col-violet { color:var(--violet); }
+
+.bg-cyan   { background:rgba(56,189,248,0.08);  border-color:rgba(56,189,248,0.2);  }
+.bg-orange { background:rgba(251,146,60,0.08);  border-color:rgba(251,146,60,0.2);  }
+.bg-green  { background:rgba(52,211,153,0.07);  border-color:rgba(52,211,153,0.2);  }
+.bg-amber  { background:rgba(251,191,36,0.08);  border-color:rgba(251,191,36,0.2);  }
+.bg-violet { background:rgba(167,139,250,0.07); border-color:rgba(167,139,250,0.2); }
+
+.fill-cyan   { background:linear-gradient(90deg,var(--cyan-d),var(--cyan));     }
+.fill-orange { background:linear-gradient(90deg,var(--orange-d),var(--orange)); }
+.fill-green  { background:linear-gradient(90deg,var(--green-d),var(--green));   }
+.fill-amber  { background:linear-gradient(90deg,var(--amber-d),var(--amber));   }
+.fill-violet { background:linear-gradient(90deg,var(--violet-d),var(--violet)); }
+
+/* ══════════════════════════════════════════
+   TIMELINE SECTION
+══════════════════════════════════════════ */
+.section-block {
+  background:var(--glass); border:1px solid var(--border);
+  border-radius:16px; padding:32px;
+  margin-bottom:20px; backdrop-filter:blur(8px);
+}
+
+.section-title {
+  font-family:'Syne',sans-serif; font-size:17px; font-weight:800;
+  color:var(--text); margin-bottom:6px;
+}
+.section-desc { font-size:13px; color:var(--text2); margin-bottom:24px; line-height:1.6; }
+
+/* Phase timeline */
+.tl { display:flex; flex-direction:column; gap:0; }
+.tl-row { display:grid; grid-template-columns:90px 28px 1fr; gap:0 16px; }
+
+.tl-date { text-align:right; padding-top:4px; }
+.tl-date-main { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text2); font-weight:500; }
+.tl-date-sub  { font-size:10px; color:var(--text3); }
+
+.tl-line-col { display:flex; flex-direction:column; align-items:center; }
+.tl-dot { width:14px; height:14px; border-radius:50%; border:2px solid; flex-shrink:0; margin-top:2px; }
+.tl-vline { flex:1; width:2px; background:var(--border); margin:4px 0; }
+.tl-row:last-child .tl-vline { display:none; }
+
+.tl-content { padding-bottom:28px; }
+.tl-phase-badge {
+  display:inline-block; font-size:10px; font-weight:700;
+  font-family:'JetBrains Mono',monospace; letter-spacing:0.08em;
+  padding:3px 10px; border-radius:4px; margin-bottom:8px;
+}
+.tl-title { font-size:16px; font-weight:700; color:var(--text); margin-bottom:6px; }
+.tl-desc  { font-size:13px; color:var(--text2); line-height:1.6; margin-bottom:10px; }
+.tl-who   { display:flex; gap:6px; flex-wrap:wrap; }
+.tl-tag   {
+  font-size:10px; font-family:'JetBrains Mono',monospace;
+  padding:2px 10px; border-radius:4px;
+  background:rgba(99,155,210,0.1); border:1px solid rgba(99,155,210,0.2);
+  color:var(--text2);
+}
+
+/* ══════════════════════════════════════════
+   CRITERIA GRID
+══════════════════════════════════════════ */
+.criteria-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:12px; }
+
+.crit-card {
+  background:var(--glass); border:1px solid var(--border);
+  border-radius:12px; padding:20px;
+  position:relative; overflow:hidden;
+  transition:transform 0.25s, border-color 0.25s;
+}
+.crit-card:hover { transform:translateY(-3px); border-color:var(--border2); }
+.crit-card::after {
+  content:attr(data-score);
+  position:absolute; right:14px; top:10px;
+  font-family:'Syne',sans-serif; font-size:42px; font-weight:800;
+  color:rgba(255,255,255,0.03); pointer-events:none;
+}
+
+.crit-type { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:8px; }
+.crit-title { font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px; line-height:1.3; }
+.crit-desc  { font-size:12px; color:var(--text2); line-height:1.55; margin-bottom:14px; }
+.crit-score { display:flex; align-items:center; gap:8px; }
+.score-pips { display:flex; gap:4px; }
+.pip { width:8px; height:8px; border-radius:50%; background:var(--s3); border:1px solid var(--border); }
+.pip.on { border-color:currentColor; }
+.pip.on.c-cyan   { background:var(--cyan);   box-shadow:0 0 6px var(--cyan); }
+.pip.on.c-orange { background:var(--orange); box-shadow:0 0 6px var(--orange); }
+.score-pts { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text3); }
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.site-footer {
+  text-align:center; padding:32px 0;
+  border-top:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  color:var(--text3); letter-spacing:0.1em; line-height:1.8;
+}
+.site-footer span { color:var(--cyan); }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:700px){
+  .mod-header-inner { flex-direction:column; gap:16px; }
+  .mod-stats { padding-top:0; }
+  .tl-row { grid-template-columns:70px 24px 1fr; }
+  .nav-bar { flex-direction:column; }
+  .tab-btn { min-width:unset; }
 }
 </style>
 </head>
 <body>
 
-<!-- Fondo Holográfico Interactivo -->
-<canvas id="canvas-cyber-grid"></canvas>
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
+
+<div class="wrapper">
 
 <header>
-  <div class="header-container">
-    <div class="subtitle">ENGINEERING WORKSPACE // ITSI 2026</div>
-    <h1 class="glitch-title">Aleaciones de Acero · Plan de Gestión</h1>
-    <p style="color: #94a3b8; font-size: 1.1rem; max-width: 800px;">
-      Cronograma optimizado de entrega y redacción. Fase de investigación acelerada y teórica priorizada para el próximo lunes. Todo el flujo de ensamble está asignado a <strong>Irvin</strong>.
-    </p>
+  <div class="header-eyebrow">
+    <span class="dot"></span>
+    CIENCIA Y TECNOLOGÍA 2026 · ITSI · ACTIVO
+  </div>
+  <h1 class="header-title">ALEACIONES DE ACERO<br>EN LA CONSTRUCCIÓN SALVADOREÑA</h1>
+  <p class="header-sub">Plan de Gestión del Proyecto · 2do Año Bachillerato · Equipo de 5</p>
+  <div class="header-chips">
+    <div class="chip"><span class="chip-icon">🏭</span> CORINCA S.A. de C.V. — Quetzaltepeque</div>
+    <div class="chip"><span class="chip-icon">👨‍🏫</span> Lic. Jonathan Alberto Menjívar</div>
+    <div class="chip"><span class="chip-icon">📅</span> Defensa: 10–12 Junio 2026</div>
+    <div class="chip"><span class="chip-icon">🎯</span> 50 puntos totales</div>
   </div>
 </header>
 
-<main>
-  <!-- Barra lateral (Dashboard del Escuadrón) -->
-  <section class="sidebar">
-    <div class="cyber-card">
-      <h2 class="card-title">🚀 Avance de Misiones</h2>
-      <div class="stats-list">
-        <!-- Chafoya -->
-        <div class="stat-item">
-          <div class="stat-label-row">
-            <span style="color: var(--cyan);">Chafoya</span>
-            <span>40%</span>
-          </div>
-          <div class="progress-track">
-            <div class="progress-bar-fill" style="width: 40%; background-color: var(--m-chafoya);"></div>
-          </div>
+<div class="sec-label">// PANEL DE CONTROL DEL PROYECTO</div>
+
+<div class="dashboard">
+
+  <div class="dash-card" style="border-color:rgba(56,189,248,0.25)">
+    <div class="dash-card-accent" style="background:var(--cyan)"></div>
+    <div class="dash-card-label">Tareas totales</div>
+    <div class="dash-card-value col-cyan" id="d-total">26</div>
+    <div class="dash-card-sub">distribuidas en 5 módulos</div>
+  </div>
+
+  <div class="dash-card" style="border-color:rgba(52,211,153,0.25)">
+    <div class="dash-card-accent" style="background:var(--green)"></div>
+    <div class="dash-card-label">Completadas</div>
+    <div class="dash-card-value col-green" id="d-done">0</div>
+    <div class="dash-card-sub" id="d-done-sub">0% del proyecto</div>
+  </div>
+
+  <div class="dash-card" style="border-color:rgba(251,191,36,0.25)">
+    <div class="dash-card-accent" style="background:var(--amber)"></div>
+    <div class="dash-card-label">En proceso</div>
+    <div class="dash-card-value col-amber" id="d-ip">0</div>
+    <div class="dash-card-sub" id="d-ip-sub">tareas activas</div>
+  </div>
+
+  <div class="dash-card" style="grid-row:span 1">
+    <div class="dash-card-label">Progreso por integrante</div>
+    <div class="member-bars" id="member-bars"></div>
+  </div>
+
+  <div class="dash-card dash-global">
+    <div class="global-header">
+      <span class="global-title">◈ Progreso global del proyecto</span>
+      <span class="global-pct" id="globalPct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="globalBar" style="width:0%"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="sec-label">// FLUJO OBLIGATORIO DE FASES</div>
+<div class="phase-strip">
+  <div class="phase-item">
+    <div class="phase-num">FASE 1</div>
+    <div class="phase-name" style="color:var(--cyan)">Investigación<br>Teórica</div>
+    <span class="phase-arrow">→</span>
+  </div>
+  <div class="phase-item">
+    <div class="phase-num">FASE 2</div>
+    <div class="phase-name" style="color:var(--green)">Redacción del<br>Informe</div>
+    <span class="phase-arrow">→</span>
+  </div>
+  <div class="phase-item">
+    <div class="phase-num">FASE 3</div>
+    <div class="phase-name" style="color:var(--orange)">Visita, Entrevista<br>y Video</div>
+    <span class="phase-arrow">→</span>
+  </div>
+  <div class="phase-item">
+    <div class="phase-num">FASE 4</div>
+    <div class="phase-name" style="color:var(--violet)">Prezi &<br>Producción Final</div>
+    <span class="phase-arrow">→</span>
+  </div>
+  <div class="phase-item">
+    <div class="phase-num">FASE 5</div>
+    <div class="phase-name" style="color:var(--amber)">Ensayo &<br>Defensa Oral</div>
+  </div>
+</div>
+
+<div class="sec-label">// MÓDULOS POR INTEGRANTE</div>
+<div class="nav-bar">
+  <button class="tab-btn active" data-m="CHAFOYA" onclick="showMod('CHAFOYA')">
+    <div class="tab-top"><span class="tab-icon">🔵</span><span class="tab-name">CHAFOYA</span></div>
+    <div class="tab-role">Coordinador de Campo<br>& Entrevistador Principal</div>
+    <div class="tab-progress" id="mini-CHAFOYA">0 / 5 tareas</div>
+  </button>
+  <button class="tab-btn" data-m="KERIM" onclick="showMod('KERIM')">
+    <div class="tab-top"><span class="tab-icon">🟠</span><span class="tab-name">KERIM</span></div>
+    <div class="tab-role">Producción Audiovisual<br>& Investigador</div>
+    <div class="tab-progress" id="mini-KERIM">0 / 5 tareas</div>
+  </button>
+  <button class="tab-btn" data-m="IRVIN" onclick="showMod('IRVIN')">
+    <div class="tab-top"><span class="tab-icon">🟢</span><span class="tab-name">IRVIN</span></div>
+    <div class="tab-role">Redactor Principal<br>& Apoyo en Campo</div>
+    <div class="tab-progress" id="mini-IRVIN">0 / 6 tareas</div>
+  </button>
+  <button class="tab-btn" data-m="AXEL" onclick="showMod('AXEL')">
+    <div class="tab-top"><span class="tab-icon">🟡</span><span class="tab-name">AXEL</span></div>
+    <div class="tab-role">Diseñador Prezi<br>& Co-Presentador</div>
+    <div class="tab-progress" id="mini-AXEL">0 / 5 tareas</div>
+  </button>
+  <button class="tab-btn" data-m="CHAVEZ" onclick="showMod('CHAVEZ')">
+    <div class="tab-top"><span class="tab-icon">🟣</span><span class="tab-name">CHÁVEZ</span></div>
+    <div class="tab-role">Control de Calidad<br>& Maquetador Teórico</div>
+    <div class="tab-progress" id="mini-CHAVEZ">0 / 5 tareas</div>
+  </button>
+</div>
+
+<div id="mod-CHAFOYA" class="module-panel active">
+  <div class="mod-header" style="--mh-from:rgba(56,189,248,0.12); --mh-border:rgba(56,189,248,0.35); --mh-color:var(--cyan)">
+    <div class="mod-header-inner">
+      <div class="mod-avatar">CH</div>
+      <div class="mod-info">
+        <div class="mod-eyebrow">Módulo 01 · Liderazgo de Campo</div>
+        <h2 class="mod-name">Chafoya</h2>
+        <p class="mod-subtitle">Gestión logística en CORINCA, desarrollo técnico de la entrevista presencial y coordinación teórica del marco estructural.</p>
+        <div class="mod-badges">
+          <span class="mod-badge">Logística</span>
+          <span class="mod-badge">Investigación Técnica</span>
+          <span class="mod-badge">Entrevistas</span>
         </div>
-        <!-- Kerim -->
-        <div class="stat-item">
-          <div class="stat-label-row">
-            <span style="color: var(--purple);">Kerim</span>
-            <span>35%</span>
+      </div>
+      <div class="mod-stats">
+        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-CHAFOYA">0%</div><div class="mod-stat-label">Progreso</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="mod-body">
+    <div class="tasks-list">
+      <div class="task-card status-pending" onclick="toggleTask('T01')" id="task-T01" style="--bar-color:var(--cyan)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 01</span><span class="task-phase phase-F1">FASE 1</span></div>
+            <h3 class="task-title">Investigación del Proceso del Acero en El Salvador</h3>
           </div>
-          <div class="progress-track">
-            <div class="progress-bar-fill" style="width: 35%; background-color: var(--m-kerim);"></div>
-          </div>
+          <button class="status-btn s-pending" id="btn-T01">Pendiente</button>
         </div>
-        <!-- Irvin (Master Consolidador) -->
-        <div class="stat-item">
-          <div class="stat-label-row">
-            <span style="color: var(--pink); font-weight: bold;">Irvin (Consolidador)</span>
-            <span>15%</span>
-          </div>
-          <div class="progress-track">
-            <div class="progress-bar-fill" style="width: 15%; background-color: var(--m-irvin);"></div>
-          </div>
+        <p class="task-desc">Recopilar información histórica, técnica y económica sobre la evolución de la metalurgia en el país y el papel de plantas clave como CORINCA en Quetzaltepeque.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
+          <span class="task-eval">Evaluación: Rigor teórico y fuentes bibliográficas completas.</span>
         </div>
-        <!-- Axel -->
-        <div class="stat-item">
-          <div class="stat-label-row">
-            <span style="color: var(--emerald);">Axel</span>
-            <span>50%</span>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T02')" id="task-T02" style="--bar-color:var(--green)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 02</span><span class="task-phase phase-F2">FASE 2</span></div>
+            <h3 class="task-title">Diseño del Cuestionario Técnico para CORINCA</h3>
           </div>
-          <div class="progress-track">
-            <div class="progress-bar-fill" style="width: 50%; background-color: var(--m-axel);"></div>
-          </div>
+          <button class="status-btn s-pending" id="btn-T02">Pendiente</button>
         </div>
-        <!-- Chávez -->
-        <div class="stat-item">
-          <div class="stat-label-row">
-            <span style="color: var(--orange);">Chávez</span>
-            <span>30%</span>
+        <p class="task-desc">Escribir una guía de 10 a 15 preguntas avanzadas dirigidas a los ingenieros de planta, enfocadas en aleaciones químicas, normas sismorresistentes (normas ASTM) y sostenibilidad.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
+          <span class="task-eval">Evaluación: Pertinencia de preguntas y profundidad de la investigación de campo.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T03')" id="task-T03" style="--bar-color:var(--orange)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 03</span><span class="task-phase phase-F3">FASE 3</span></div>
+            <h3 class="task-title">Dirección de la Entrevista Grabada en Planta</h3>
           </div>
-          <div class="progress-track">
-            <div class="progress-bar-fill" style="width: 30%; background-color: var(--m-chavez);"></div>
+          <button class="status-btn s-pending" id="btn-T03">Pendiente</button>
+        </div>
+        <p class="task-desc">Actuar como el entrevistador principal durante la visita presencial a CORINCA, asegurando la captura clara del audio y guiando las respuestas hacia el comportamiento estructural.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
+          <span class="task-eval">Evaluación: Fluidez, profesionalismo y manejo del cuestionario técnico.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T04')" id="task-T04" style="--bar-color:var(--violet)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 04</span><span class="task-phase phase-F4">FASE 4</span></div>
+            <h3 class="task-title">Redacción del Segmento "Logística y Aplicación Símica"</h3>
           </div>
+          <button class="status-btn s-pending" id="btn-T04">Pendiente</button>
+        </div>
+        <p class="task-desc">Escribir las secciones del informe final sobre cómo el acero local responde a las normativas constructivas de El Salvador frente a desastres sísmicos.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
+          <span class="task-eval">Evaluación: Integración teórica de datos reales de la industria.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T05')" id="task-T05" style="--bar-color:var(--amber)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 05</span><span class="task-phase phase-F4">FASE 5</span></div>
+            <h3 class="task-title">Consolidación del Argumento Técnico de Defensa</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T05">Pendiente</button>
+        </div>
+        <p class="task-desc">Revisar el dominio conceptual y preparar las respuestas a posibles objeciones del jurado acerca de la viabilidad económica y propiedades mecánicas de las aleaciones.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
+          <span class="task-eval">Evaluación: Oratoria, claridad argumentativa y dominio del tema.</span>
         </div>
       </div>
     </div>
-
-    <!-- Alert / Task-force Info -->
-    <div class="cyber-card critical">
-      <h2 class="card-title" style="color: var(--pink);">⚠️ PROTOCOLO DE CONSOLIDACIÓN</h2>
-      <p style="font-size: 0.88rem; line-height: 1.5; color: #cbd5e1; margin-bottom: 0.8rem;">
-        Todo miembro del equipo debe enviar sus investigaciones y redacciones a <strong>Irvin</strong> antes del <strong>Lunes 01 de Junio, 2026</strong>.
-      </p>
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--pink);">
-        SISTEMA: EN ESPERA DE DATOS...
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado de Tareas</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="f-done-CHAFOYA">0</div><div class="stat-l">Listo</div></div>
+          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-CHAFOYA">0</div><div class="stat-l">Proceso</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-CHAFOYA">5</div><div class="stat-l">Pendiente</div></div>
+        </div>
+        <div class="member-track"><div class="member-fill fill-cyan" id="bar-CHAFOYA" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Próximas Fechas Límite</div>
+        <div class="dl-list">
+          <div class="dl-item bg-cyan"><div class="dl-date-box col-cyan"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-cyan">Teoría · Prioridad</div><div class="dl-t">Investigación del Acero</div></div></div>
+          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Campo</div><div class="dl-t">Diseño de Cuestionario</div></div></div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- Área de Contenidos -->
-  <section class="content-area">
-    <!-- Pestañas de Navegación -->
-    <div class="nav-bar">
-      <button class="tab-btn active" onclick="switchPane('criticos')">⚠️ CRÍTICOS (LUNES)</button>
-      <button class="tab-btn" onclick="switchPane('chafoya')">Chafoya</button>
-      <button class="tab-btn" onclick="switchPane('kerim')">Kerim</button>
-      <button class="tab-btn" onclick="switchPane('irvin')">Irvin</button>
-      <button class="tab-btn" onclick="switchPane('axel')">Axel</button>
-      <button class="tab-btn" onclick="switchPane('chavez')">Chávez</button>
-    </div>
-
-    <!-- PANEL: CRÍTICOS (Adelantados para el Lunes de la próxima semana) -->
-    <div id="pane-criticos" class="module-pane active">
-      <div class="consolidation-banner">
-        <h3 style="color: #fff; font-family: 'Syne', sans-serif;" class="glitch-text">ENTREGA ACELERADA INVESTIGATIVA</h3>
-        <p style="font-size: 0.9rem; color: #94a3b8;">
-          Las siguientes tareas teóricas e investigativas han sido movidas al <strong>Lunes 01 de Junio</strong> para garantizar que el material base llegue a manos de Irvin para el ensamble.
-        </p>
+<div id="mod-KERIM" class="module-panel">
+  <div class="mod-header" style="--mh-from:rgba(251,146,60,0.12); --mh-border:rgba(251,146,60,0.35); --mh-color:var(--orange)">
+    <div class="mod-header-inner">
+      <div class="mod-avatar">KE</div>
+      <div class="mod-info">
+        <div class="mod-eyebrow">Módulo 02 · Dirección Audiovisual y Teórica</div>
+        <h2 class="mod-name">Kerim</h2>
+        <p class="mod-subtitle">Registro cinematográfico de la visita de campo, síntesis teórica del carbono y montaje del video justificativo para el jurado.</p>
+        <div class="mod-badges">
+          <span class="mod-badge">Cineasta</span>
+          <span class="mod-badge">Investigación Química</span>
+          <span class="mod-badge">Edición</span>
+        </div>
       </div>
-
-      <!-- Tarea Crítica 1 (Axel/Kerim) -->
-      <div class="task-card">
-        <div class="task-header">
-          <div class="task-meta">
-            <span class="badge-owner axel">Axel</span>
-            <span class="badge-owner kerim">Kerim</span>
-            <span class="badge-status urgent">ALTA PRIORIDAD</span>
+      <div class="mod-stats">
+        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-KERIM">0%</div><div class="mod-stat-label">Progreso</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="mod-body">
+    <div class="tasks-list">
+      <div class="task-card status-pending" onclick="toggleTask('T06')" id="task-T06" style="--bar-color:var(--orange)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 06</span><span class="task-phase phase-F1">FASE 1</span></div>
+            <h3 class="task-title">Fundamentos del Carbono en las Estructuras Metálicas</h3>
           </div>
-          <div class="task-date critical-date">📅 Lunes 01 Jun, 2026</div>
+          <button class="status-btn s-pending" id="btn-T06">Pendiente</button>
         </div>
-        <h3 class="task-title">Investigación Teórica: Propiedades Mecánicas y Estructuras</h3>
-        <p class="task-desc">Investigar y documentar la resistencia a la tracción, dureza y microestructuras cristalinas de las aleaciones de acero.</p>
-        <div class="subtasks-box">
-          <label class="subtask-item">
-            <input type="checkbox" class="subtask-checkbox" checked>
-            <span>Búsqueda bibliográfica de normas ASTM/ISO.</span>
-          </label>
-          <label class="subtask-item">
-            <input type="checkbox" class="subtask-checkbox">
-            <span>Redacción de tablas comparativas de propiedades para el informe.</span>
-          </label>
+        <p class="task-desc">Investigar a fondo el impacto del porcentaje de carbono en la ductilidad y resistencia a la tracción de los aceros estructurales utilizados en El Salvador.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
+          <span class="task-eval">Evaluación: Claridad en diagramas y fórmulas metalúrgicas básicas.</span>
         </div>
       </div>
-
-      <!-- Tarea Crítica 2 (Chafoya/Chávez) -->
-      <div class="task-card">
-        <div class="task-header">
-          <div class="task-meta">
-            <span class="badge-owner chafoya">Chafoya</span>
-            <span class="badge-owner chavez">Chávez</span>
-            <span class="badge-status urgent">ALTA PRIORIDAD</span>
+      <div class="task-card status-pending" onclick="toggleTask('T07')" id="task-T07" style="--bar-color:var(--green)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 07</span><span class="task-phase phase-F2">FASE 2</span></div>
+            <h3 class="task-title">Guion de Contenido Audiovisual e Institucional</h3>
           </div>
-          <div class="task-date critical-date">📅 Lunes 01 Jun, 2026</div>
+          <button class="status-btn s-pending" id="btn-T07">Pendiente</button>
         </div>
-        <h3 class="task-title">Análisis Teórico de Aleantes Químicos</h3>
-        <p class="task-desc">Recolección de información sobre el impacto del Carbono, Manganeso, Cromo y Níquel en la estructura molecular del acero.</p>
-        <div class="subtasks-box">
-          <label class="subtask-item">
-            <input type="checkbox" class="subtask-checkbox">
-            <span>Elaboración de fichas técnicas de elementos de aleación.</span>
-          </label>
-          <label class="subtask-item">
-            <input type="checkbox" class="subtask-checkbox">
-            <span>Envío de datos analizados directos a Irvin.</span>
-          </label>
+        <p class="task-desc">Escribir el guion técnico y literario del video del proyecto, detallando planos de los laboratorios de CORINCA, narración de fondo e inserciones de gráficos de aleaciones.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
+          <span class="task-eval">Evaluación: Estructura narrativa, ritmo y articulación de los objetivos del ITSI.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T08')" id="task-T08" style="--bar-color:var(--cyan)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 08</span><span class="task-phase phase-F3">FASE 3</span></div>
+            <h3 class="task-title">Grabación y Cobertura Cinematográfica en CORINCA</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T08">Pendiente</button>
+        </div>
+        <p class="task-desc">Operar los equipos de grabación durante el recorrido por la planta siderúrgica, capturando el proceso de fundición, laminado de varillas y entrevistas al personal técnico.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
+          <span class="task-eval">Evaluación: Estabilidad de imagen, iluminación industrial y nitidez sonora.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T09')" id="task-T09" style="--bar-color:var(--violet)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 09</span><span class="task-phase phase-F4">FASE 4</span></div>
+            <h3 class="task-title">Edición Completa y Postproducción del Video</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T09">Pendiente</button>
+        </div>
+        <p class="task-desc">Montar todo el metraje recolectado, añadir pistas sonoras claras, corregir el color de las zonas industriales y exportar el video final (máximo 5-7 minutos).</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
+          <span class="task-eval">Evaluación: Calidad del render final, fluidez de los cortes y dinamismo pedagógico.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T10')" id="task-T10" style="--bar-color:var(--amber)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 10</span><span class="task-phase phase-F4">FASE 5</span></div>
+            <h3 class="task-title">Defensa: Argumentación sobre Propiedades Químicas</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T10">Pendiente</button>
+        </div>
+        <p class="task-desc">Preparar la sección oral relativa a las propiedades del material fundido frente al calor y cómo las impurezas alteran el comportamiento estructural.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
+          <span class="task-eval">Evaluación: Precisión terminológica en química metalúrgica.</span>
         </div>
       </div>
     </div>
-
-    <!-- PANEL: CHAFOYA -->
-    <div id="pane-chafoya" class="module-pane">
-      <div class="task-card">
-        <div class="task-header">
-          <div class="task-meta">
-            <span class="badge-owner chafoya">Chafoya</span>
-            <span class="badge-status">FASE 1</span>
-          </div>
-          <div class="task-date critical-date">📅 Lunes 01 Jun, 2026</div>
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado de Tareas</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="f-done-KERIM">0</div><div class="stat-l">Listo</div></div>
+          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-KERIM">0</div><div class="stat-l">Proceso</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-KERIM">5</div><div class="stat-l">Pendiente</div></div>
         </div>
-        <h3 class="task-title">Tratamientos Térmicos e Investigación de Fase</h3>
-        <p class="task-desc">Análisis de templado, revenido y recocido en las aleaciones de acero comunes.</p>
-        <div class="subtasks-box">
-          <label class="subtask-item">
-            <input type="checkbox" class="subtask-checkbox">
-            <span>Investigación de curvas TTT (Tiempo-Temperatura-Transformación).</span>
-          </label>
+        <div class="member-track"><div class="member-fill fill-orange" id="bar-KERIM" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Próximas Fechas Límite</div>
+        <div class="dl-list">
+          <div class="dl-item bg-orange"><div class="dl-date-box col-orange"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-orange">Teoría · Prioridad</div><div class="dl-t">Fundamentos del Carbono</div></div></div>
+          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Contenido</div><div class="dl-t">Diseño del Guion Técnico</div></div></div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- PANEL: KERIM -->
-    <div id="pane-kerim" class="module-pane">
-      <div class="task-card">
-        <div class="task-header">
-          <div class="task-meta">
-            <span class="badge-owner kerim">Kerim</span>
-            <span class="badge-status">FASE 1</span>
-          </div>
-          <div class="task-date critical-date">📅 Lunes 01 Jun, 2026</div>
+<div id="mod-IRVIN" class="module-panel">
+  <div class="mod-header" style="--mh-from:rgba(52,211,153,0.12); --mh-border:rgba(52,211,153,0.35); --mh-color:var(--green)">
+    <div class="mod-header-inner">
+      <div class="mod-avatar">IR</div>
+      <div class="mod-info">
+        <div class="mod-eyebrow">Módulo 03 · Redacción, Estilo y Estructuración Científica</div>
+        <h2 class="mod-name">Irvin</h2>
+        <p class="mod-subtitle">Redactor de los pilares del marco teórico e integrador del informe bajo normativas académicas estrictas.</p>
+        <div class="mod-badges">
+          <span class="mod-badge">Redactor Alfa</span>
+          <span class="mod-badge">Normas APA / ITSI</span>
+          <span class="mod-badge">Documentación</span>
         </div>
-        <h3 class="task-title">Clasificaciones Industriales del Acero (AISI/SAE)</h3>
-        <p class="task-desc">Desglose teórico detallado de las series de acero (10xx, 41xx, 43xx) y sus aplicaciones clave en ingeniería.</p>
-        <div class="subtasks-box">
-          <label class="subtask-item">
-            <input type="checkbox" class="subtask-checkbox" checked>
-            <span>Mapeo estructural de la nomenclatura AISI/SAE.</span>
-          </label>
+      </div>
+      <div class="mod-stats">
+        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-IRVIN">0%</div><div class="mod-stat-label">Progreso</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="mod-body">
+    <div class="tasks-list">
+      <div class="task-card status-pending" onclick="toggleTask('T11')" id="task-T11" style="--bar-color:var(--green)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 11</span><span class="task-phase phase-F1">FASE 1</span></div>
+            <h3 class="task-title">Bases Físico-Químicas de las Aleaciones de Hierro-Carbono</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T11">Pendiente</button>
+        </div>
+        <p class="task-desc">Desarrollar teóricamente la formación cristalina del acero y el papel de elementos adicionales como manganeso, silicio y fósforo en la resistencia del material.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
+          <span class="task-eval">Evaluación: Rigor analítico y correcta referenciación científica.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T12')" id="task-T12" style="--bar-color:var(--green)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 12</span><span class="task-phase phase-F1">FASE 1</span></div>
+            <h3 class="task-title">Investigación de Normativas ASTM Internacionales</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T12">Pendiente</button>
+        </div>
+        <p class="task-desc">Documentar los estándares específicos de calidad del acero exigidos para las edificaciones comerciales en la región centroamericana.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
+          <span class="task-eval">Evaluación: Exactitud de normas citadas y aplicabilidad práctica.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T13')" id="task-T13" style="--bar-color:var(--green)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 13</span><span class="task-phase phase-F2">FASE 2</span></div>
+            <h3 class="task-title">Estructuración Completa del Cuerpo del Informe Escrito</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T13">Pendiente</button>
+        </div>
+        <p class="task-desc">Recibir la información de todos los módulos y unificarla en un único documento Word estructurado según los lineamientos oficiales del Lic. Menjívar.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
+          <span class="task-eval">Evaluación: Ortografía impecable, cohesión textual y aplicación de formato.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T14')" id="task-T14" style="--bar-color:var(--cyan)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 14</span><span class="task-phase phase-F3">FASE 3</span></div>
+            <h3 class="task-title">Transcripción Analítica de Datos de Campo</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T14">Pendiente</button>
+        </div>
+        <p class="task-desc">Analizar las grabaciones de CORINCA para transcribir textualmente los comentarios de los ingenieros y convertirlos en citas válidas dentro del capítulo de hallazgos del informe.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
+          <span class="task-eval">Evaluación: Precisión en la transcripción técnica y síntesis informativa.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T15')" id="task-T15" style="--bar-color:var(--violet)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 15</span><span class="task-phase phase-F4">FASE 4</span></div>
+            <h3 class="task-title">Revisión de Estilo Académico y Citas Bibliográficas APA</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T15">Pendiente</button>
+        </div>
+        <p class="task-desc">Asegurar que cada libro, sitio web institucional o entrevista citada cumpla estrictamente el formato APA de última edición, depurando el índice automatizado.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
+          <span class="task-eval">Evaluación: Cero plagio y referencias cruzadas correctas.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T16')" id="task-T16" style="--bar-color:var(--amber)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 16</span><span class="task-phase phase-F4">FASE 5</span></div>
+            <h3 class="task-title">Defensa Oral: Introducción y Conclusiones del Proyecto</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T16">Pendiente</button>
+        </div>
+        <p class="task-desc">Ensayar la apertura formal de la ponencia y la lectura técnica de las conclusiones, vinculando los resultados con los objetivos iniciales planteados.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
+          <span class="task-eval">Evaluación: Manejo del tiempo de presentación y tono académico formal.</span>
         </div>
       </div>
     </div>
-
-    <!-- PANEL: IRVIN (The Creator / Assembler) -->
-    <div id="pane-irvin" class="module-pane">
-      <div class="consolidation-banner" style="border-color: var(--pink); background: linear-gradient(135deg, rgba(244, 63, 94, 0.25) 0%, rgba(8, 13, 26, 0.9) 100%);">
-        <h3 style="color: var(--pink); font-family: 'Syne', sans-serif;">👑 CENTRAL DE ENSAMBLE & INFORME</h3>
-        <p style="font-size: 0.92rem; color: #f1f5f9; line-height: 1.6;">
-          <strong>Irvin</strong> tiene asignada la responsabilidad del control de calidad e integración documental. Recibe los reportes teóricos del resto del equipo para redactar el marco definitivo.
-        </p>
-      </div>
-
-      <div class="task-card" style="border-color: var(--pink);">
-        <div class="task-header">
-          <div class="task-meta">
-            <span class="badge-owner irvin" style="background-color: var(--pink); color: #fff;">Irvin</span>
-            <span class="badge-status urgent">CRÍTICO</span>
-          </div>
-          <div class="task-date">📅 Entrega Final: Miércoles 03 Jun, 2026</div>
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado de Tareas</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="f-done-IRVIN">0</div><div class="stat-l">Listo</div></div>
+          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-IRVIN">0</div><div class="stat-l">Proceso</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-IRVIN">6</div><div class="stat-l">Pendiente</div></div>
         </div>
-        <h3 class="task-title">Unificación, Marco Teórico y Reporte Técnico Completo</h3>
-        <p class="task-desc">Recibir la investigación de Chafoya, Kerim, Axel y Chávez el lunes para ensamblar, pulir estilos y dar el visto bueno al reporte definitivo de aleaciones de acero.</p>
-        <div class="subtasks-box">
-          <label class="subtask-item">
-            <input type="checkbox" class="subtask-checkbox">
-            <span>Recepción y revisión de los bloques investigativos.</span>
-          </label>
-          <label class="subtask-item">
-            <input type="checkbox" class="subtask-checkbox">
-            <span>Redacción y maquetación del Marco Teórico.</span>
-          </label>
-          <label class="subtask-item">
-            <input type="checkbox" class="subtask-checkbox">
-            <span>Consolidación del Reporte Técnico de Ingeniería de Materiales.</span>
-          </label>
+        <div class="member-track"><div class="member-fill fill-green" id="bar-IRVIN" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Próximas Fechas Límite</div>
+        <div class="dl-list">
+          <div class="dl-item bg-green"><div class="dl-date-box col-green"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-green">Teoría · Prioridad</div><div class="dl-t">Bases Físico-Químicas e Invs. ASTM</div></div></div>
+          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Estructura</div><div class="dl-t">Cuerpo General del Informe</div></div></div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- PANEL: AXEL -->
-    <div id="pane-axel" class="module-pane">
-      <div class="task-card">
-        <div class="task-header">
-          <div class="task-meta">
-            <span class="badge-owner axel">Axel</span>
-            <span class="badge-status">FASE 1</span>
-          </div>
-          <div class="task-date critical-date">📅 Lunes 01 Jun, 2026</div>
+<div id="mod-AXEL" class="module-panel">
+  <div class="mod-header" style="--mh-from:rgba(251,191,36,0.12); --mh-border:rgba(251,191,36,0.35); --mh-color:var(--amber)">
+    <div class="mod-header-inner">
+      <div class="mod-avatar">AX</div>
+      <div class="mod-info">
+        <div class="mod-eyebrow">Módulo 04 · Diseño de Interfaz de Defensa y Exposición</div>
+        <h2 class="mod-name">Axel</h2>
+        <p class="mod-subtitle">Diseño estructural de la presentación en Prezi, investigación del comportamiento mecánico y control estético visual del equipo.</p>
+        <div class="mod-badges">
+          <span class="mod-badge">Diseñador Prezi</span>
+          <span class="mod-badge">Estudio Mecánico</span>
+          <span class="mod-badge">Maquetador</span>
         </div>
-        <h3 class="task-title">Propiedades de Corrosión y Oxidación</h3>
-        <p class="task-desc">Análisis de la resistencia de aleaciones ante ambientes corrosivos extremos.</p>
+      </div>
+      <div class="mod-stats">
+        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-AXEL">0%</div><div class="mod-stat-label">Progreso</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="mod-body">
+    <div class="tasks-list">
+      <div class="task-card status-pending" onclick="toggleTask('T17')" id="task-T17" style="--bar-color:var(--amber)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 17</span><span class="task-phase phase-F1">FASE 1</span></div>
+            <h3 class="task-title">Estudio Teórico del Esfuerzo, Deformación y Fatiga</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T17">Pendiente</button>
+        </div>
+        <p class="task-desc">Recopilar datos conceptuales e infografías sobre las curvas de esfuerzo-deformación del acero estructural de refuerzo, esenciales para justificar el marco teórico.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
+          <span class="task-eval">Evaluación: Calidad técnica de los gráficos explicativos.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T18')" id="task-T18" style="--bar-color:var(--green)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 18</span><span class="task-phase phase-F2">FASE 2</span></div>
+            <h3 class="task-title">Arquitectura e Infraestructura de Diapositivas en Prezi</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T18">Pendiente</button>
+        </div>
+        <p class="task-desc">Crear el entorno de trabajo dinámico en Prezi, definiendo la paleta de colores corporativa basada en CORINCA y la tipografía tecnológica del proyecto.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
+          <span class="task-eval">Evaluación: Creatividad espacial y limpieza en la plantilla inicial.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T19')" id="task-T19" style="--bar-color:var(--cyan)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 19</span><span class="task-phase phase-F3">FASE 3</span></div>
+            <h3 class="task-title">Integración de Recursos Multimedia de Campo</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T19">Pendiente</button>
+        </div>
+        <p class="task-desc">Insertar en Prezi de forma ordenada las fotografías en alta resolución tomadas en Quetzaltepeque y el enlace directo al video producido por Kerim.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
+          <span class="task-eval">Evaluación: Tiempos de carga óptimos y consistencia visual interactiva.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T20')" id="task-T20" style="--bar-color:var(--violet)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 20</span><span class="task-phase phase-F4">FASE 4</span></div>
+            <h3 class="task-title">Optimización de Rutas de Zoom y Animaciones de Flujo</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T20">Pendiente</button>
+        </div>
+        <p class="task-desc">Configurar el camino de transición inteligente entre los subtemas para evitar transiciones molestas, asegurando una lectura natural para el jurado evaluador.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
+          <span class="task-eval">Evaluación: Fluidez del movimiento técnico de la plataforma.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T21')" id="task-T21" style="--bar-color:var(--amber)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 21</span><span class="task-phase phase-F4">FASE 5</span></div>
+            <h3 class="task-title">Co-Presentador Oral: Análisis Mecánico en la Pizarra</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T21">Pendiente</button>
+        </div>
+        <p class="task-desc">Ensayar la explicación interactiva de las fuerzas físicas reales aplicadas a las vigas de acero de construcción ante el tribunal científico.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
+          <span class="task-eval">Evaluación: Dinamismo expositivo y uso correcto del lenguaje corporal técnico.</span>
+        </div>
+      </div>
+    </div>
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado de Tareas</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="f-done-AXEL">0</div><div class="stat-l">Listo</div></div>
+          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-AXEL">0</div><div class="stat-l">Proceso</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-AXEL">5</div><div class="stat-l">Pendiente</div></div>
+        </div>
+        <div class="member-track"><div class="member-fill fill-amber" id="bar-AXEL" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Próximas Fechas Límite</div>
+        <div class="dl-list">
+          <div class="dl-item bg-amber"><div class="dl-date-box col-amber"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-amber">Teoría · Prioridad</div><div class="dl-t">Estudio Teórico de Fuerzas</div></div></div>
+          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Entorno</div><div class="dl-t">Línea Estética en Prezi</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="mod-CHAVEZ" class="module-panel">
+  <div class="mod-header" style="--mh-from:rgba(167,139,250,0.12); --mh-border:rgba(167,139,250,0.35); --mh-color:var(--violet)">
+    <div class="mod-header-inner">
+      <div class="mod-avatar">CH</div>
+      <div class="mod-info">
+        <div class="mod-eyebrow">Módulo 05 · Control de Calidad Teórica y Maquetación Final</div>
+        <h2 class="mod-name">Chávez</h2>
+        <p class="mod-subtitle">Filtro de calidad teórica del informe escrito, maquetación de gráficos e inspector técnico general de las rúbricas evaluativas.</p>
+        <div class="mod-badges">
+          <span class="mod-badge">Calidad / Editor</span>
+          <span class="mod-badge">Rúbricas Profesionales</span>
+          <span class="mod-badge">Validación</span>
+        </div>
+      </div>
+      <div class="mod-stats">
+        <div class="mod-stat"><div class="mod-stat-num" id="stat-n-CHAVEZ">0%</div><div class="mod-stat-label">Progreso</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="mod-body">
+    <div class="tasks-list">
+      <div class="task-card status-pending" onclick="toggleTask('T22')" id="task-T22" style="--bar-color:var(--violet)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 22</span><span class="task-phase phase-F1">FASE 1</span></div>
+            <h3 class="task-title">Análisis de Fallas Teóricas y Fatiga en el Acero Bajo</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T22">Pendiente</button>
+        </div>
+        <p class="task-desc">Recopilar y estructurar los datos analíticos mundiales e institucionales sobre colapsos de obras por el uso de aceros mal aleados o fuera de norma técnica.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Lunes 01 Junio (PRIORIDAD TEÓRICA)</span>
+          <span class="task-eval">Evaluación: Rigor empírico y valor preventivo aplicado al contexto de El Salvador.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T23')" id="task-T23" style="--bar-color:var(--green)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 23</span><span class="task-phase phase-F2">FASE 2</span></div>
+            <h3 class="task-title">Corrección de Estilo Teórico del Informe</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T23">Pendiente</button>
+        </div>
+        <p class="task-desc">Auditar minuciosamente el borrador general del documento de Irvin, eliminando ambigüedades lógicas, redundancias léxicas y asegurando la coherencia científica total.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Miércoles 03 Junio</span>
+          <span class="task-eval">Evaluación: Fluidez de lectura y unificación de criterios técnicos.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T24')" id="task-T24" style="--bar-color:var(--cyan)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 24</span><span class="task-phase phase-F3">FASE 3</span></div>
+            <h3 class="task-title">Maquetación Avanzada de Gráficos de Datos</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T24">Pendiente</button>
+        </div>
+        <p class="task-desc">Convertir las estadísticas complejas recolectadas en la planta de Quetzaltepeque en diagramas vectoriales limpios y tablas claras para adjuntar en los anexos.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Viernes 05 Junio</span>
+          <span class="task-eval">Evaluación: Comprensión visual inmediata y excelente manejo de la escala de datos.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T25')" id="task-T25" style="--bar-color:var(--violet)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 25</span><span class="task-phase phase-F4">FASE 4</span></div>
+            <h3 class="task-title">Auditoría Final del Proyecto Contra la Rúbrica Oficial</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T25">Pendiente</button>
+        </div>
+        <p class="task-desc">Evaluar el informe final y la presentación en Prezi con base en los indicadores reales provistos por la institución, garantizando la búsqueda de los 50 puntos.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Domingo 07 Junio</span>
+          <span class="task-eval">Evaluación: Cumplimiento del 100% de los requisitos curriculares establecidos.</span>
+        </div>
+      </div>
+      <div class="task-card status-pending" onclick="toggleTask('T26')" id="task-T26" style="--bar-color:var(--amber)">
+        <div class="task-top">
+          <div class="task-left">
+            <div class="task-meta"><span class="task-num">TAREA 26</span><span class="task-phase phase-F4">FASE 5</span></div>
+            <h3 class="task-title">Defensa Oral: Control de Calidad de Respuestas Rápidas</h3>
+          </div>
+          <button class="status-btn s-pending" id="btn-T26">Pendiente</button>
+        </div>
+        <p class="task-desc">Coordinar simulacros de preguntas imprevistas dentro del grupo, calibrando las respuestas para que sean concretas, seguras y científicamente fundamentadas.</p>
+        <div class="task-footer">
+          <span class="task-eval">ENTREGA: Martes 09 Junio</span>
+          <span class="task-eval">Evaluación: Capacidad de reacción en equipo y consistencia conceptual.</span>
+        </div>
+      </div>
+    </div>
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado de Tareas</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="f-done-CHAVEZ">0</div><div class="stat-l">Listo</div></div>
+          <div class="stat-box"><div class="stat-n c-ip" id="f-ip-CHAVEZ">0</div><div class="stat-l">Proceso</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="f-pend-CHAVEZ">5</div><div class="stat-l">Pendiente</div></div>
+        </div>
+        <div class="member-track"><div class="member-fill fill-violet" id="bar-CHAVEZ" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Próximas Fechas Límite</div>
+        <div class="dl-list">
+          <div class="dl-item bg-violet"><div class="dl-date-box col-violet"><div class="dl-day">01</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag col-violet">Teoría · Prioridad</div><div class="dl-t">Análisis de Fallas Teóricas</div></div></div>
+          <div class="dl-item"><div class="dl-date-box"><div class="dl-day">03</div><div class="dl-mon">JUN</div></div><div class="dl-content"><div class="dl-tag">Filtro</div><div class="dl-t">Control de Cohesión Científica</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-label">// CRONOGRAMA MAESTRO UNIFICADO</div>
+<div class="section-block">
+  <h2 class="section-title">Línea de Tiempo y Flujo Crítico de Entregas</h2>
+  <p class="section-desc">Estructura cronológica para asegurar la excelencia académica y la correcta sincronización del equipo antes de la defensa del proyecto.</p>
+
+  <div class="tl">
+    <div class="tl-row">
+      <div class="tl-date"><div class="tl-date-main">01 Junio</div><div class="tl-date-sub">Lunes</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--cyan)"></div><div class="tl-vline"></div></div>
+      <div class="tl-content">
+        <span class="tl-phase-badge bg-cyan col-cyan">FASE 1: INVESTIGACIÓN</span>
+        <h4 class="tl-title">Hito de Prioridad Teórica</h4>
+        <p class="tl-desc">Consolidar todo el levantamiento bibliográfico, fórmulas metalúrgicas, normas de sismicidad y estudio de esfuerzos.</p>
+        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
       </div>
     </div>
 
-    <!-- PANEL: CHAVEZ -->
-    <div id="pane-chavez" class="module-pane">
-      <div class="task-card">
-        <div class="task-header">
-          <div class="task-meta">
-            <span class="badge-owner chavez">Chávez</span>
-            <span class="badge-status">FASE 1</span>
-          </div>
-          <div class="task-date critical-date">📅 Lunes 01 Jun, 2026</div>
-        </div>
-        <h3 class="task-title">Comportamiento Térmico de Aleaciones Especiales</h3>
-        <p class="task-desc">Análisis comparativo de la conductividad térmica y coeficientes de dilatación en aceros inoxidables.</p>
+    <div class="tl-row">
+      <div class="tl-date"><div class="tl-date-main">03 Junio</div><div class="tl-date-sub">Miércoles</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--green)"></div><div class="tl-vline"></div></div>
+      <div class="tl-content">
+        <span class="tl-phase-badge bg-green col-green">FASE 2: REDACCIÓN</span>
+        <h4 class="tl-title">Estructura Inicial del Informe y Preparativos</h4>
+        <p class="tl-desc">Cuerpo base del Word unificado con formato APA, guion del video finalizado y cuestionario aprobado para la planta.</p>
+        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
       </div>
     </div>
-  </section>
-</main>
 
-<footer>
-  <p>© 2026 PROYECTO ITSI - ALEACIONES DE ACERO Y MATERIALES AVANZADOS</p>
-  <p style="font-size: 0.7rem; color: #475569; margin-top: 0.5rem;">SISTEMA DIGITAL SEGURO EN TIEMPO REAL · CONSOLA DEL ESTADO DEL PROYECTO</p>
+    <div class="tl-row">
+      <div class="tl-date"><div class="tl-date-main">05 Junio</div><div class="tl-date-sub">Viernes</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--orange)"></div><div class="tl-vline"></div></div>
+      <div class="tl-content">
+        <span class="tl-phase-badge bg-orange col-orange">FASE 3: TRABAJO DE CAMPO</span>
+        <h4 class="tl-title">Visita Técnica a CORINCA (Quetzaltepeque)</h4>
+        <p class="tl-desc">Ejecución de la entrevista técnica grabada, captura de material multimedia en laboratorios y transcripción inmediata de las citas de los ingenieros.</p>
+        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
+      </div>
+    </div>
+
+    <div class="tl-row">
+      <div class="tl-date"><div class="tl-date-main">07 Junio</div><div class="tl-date-sub">Domingo</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--violet)"></div><div class="tl-vline"></div></div>
+      <div class="tl-content">
+        <span class="tl-phase-badge bg-violet col-violet">FASE 4: PRODUCCIÓN</span>
+        <h4 class="tl-title">Cierre de Informe, Video y Presentación Prezi</h4>
+        <p class="tl-desc">Render final del video editado, optimización de rutas dinámicas en Prezi y auditoría completa del Word aplicando las rúbricas institucionales.</p>
+        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
+      </div>
+    </div>
+
+    <div class="tl-row">
+      <div class="tl-date"><div class="tl-date-main">09 Junio</div><div class="tl-date-sub">Martes</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--amber)"></div></div>
+      <div class="tl-content">
+        <span class="tl-phase-badge bg-amber col-amber">FASE 5: EVALUACIÓN</span>
+        <h4 class="tl-title">Simulacros de Oratoria y Control de Respuestas</h4>
+        <p class="tl-desc">Ensayos generales del discurso oral, dominio del escenario mecánico y calibración de respuestas rápidas ante el tribunal del Lic. Menjívar.</p>
+        <div class="tl-who"><span class="tl-tag">Todo el Equipo</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-label">// CRITERIOS DE RENDIMIENTO Y EVALUACIÓN</div>
+<div class="criteria-grid">
+  <div class="crit-card" data-score="10">
+    <div class="crit-type col-cyan">EVALUACIÓN 01</div>
+    <h3 class="crit-title">Marco Teórico y Científico</h3>
+    <p class="crit-desc">Dominio exacto de conceptos de aleaciones químicas, metalurgia de hierro-carbono y argumentación física del comportamiento del acero estructural.</p>
+    <div class="crit-score"><div class="score-pips"><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span></div><span class="score-pts">10 Puntos</span></div>
+  </div>
+
+  <div class="crit-card" data-score="15">
+    <div class="crit-type col-green">EVALUACIÓN 02</div>
+    <h3 class="crit-title">Informe Escrito Unificado</h3>
+    <p class="crit-desc">Calidad de redacción, consistencia lógica interna, ortografía perfecta, maquetación limpia de anexos y uso estricto del estándar APA.</p>
+    <div class="crit-score"><div class="score-pips"><span class="pip on c-green"></span><span class="pip on c-green"></span><span class="pip on c-green"></span></div><span class="score-pts">15 Puntos</span></div>
+  </div>
+
+  <div class="crit-card" data-score="10">
+    <div class="crit-type col-orange">EVALUACIÓN 03</div>
+    <h3 class="crit-title">Evidencia de Campo e Impacto</h3>
+    <p class="crit-desc">Rigor científico del cuestionario, profesionalismo en la entrevista ejecutada en CORINCA y dinamismo pedagógico del video documental final.</p>
+    <div class="crit-score"><div class="score-pips"><span class="pip on c-orange"></span><span class="pip on c-orange"></span></div><span class="score-pts">10 Puntos</span></div>
+  </div>
+
+  <div class="crit-card" data-score="15">
+    <div class="crit-type col-violet">EVALUACIÓN 04</div>
+    <h3 class="crit-title">Defensa Oral y Prezi</h3>
+    <p class="crit-desc">Fluidez comunicativa, lenguaje técnico impecable, recursos interactivos de la presentación en Prezi y precisión al responder las objeciones del jurado.</p>
+    <div class="crit-score"><div class="score-pips"><span class="pip on c-violet"></span><span class="pip on c-violet"></span><span class="pip on c-violet"></span></div><span class="score-pts">15 Puntos</span></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  PLAN DE TRABAJO · EXCELENCIA ACADÉMICA EN CIENCIA Y TECNOLOGÍA 2026<br>
+  <span>ALEACIONES DE ACERO EN LA CONSTRUCCIÓN SALVADOREÑA</span> · SEGUNDO AÑO DE BACHILLERATO · ITSI
 </footer>
 
-<script>
-// Sistema de navegación interactivo
-function switchPane(paneId) {
-  // Ocultar todos los páneles
-  document.querySelectorAll('.module-pane').forEach(pane => {
-    pane.classList.remove('active');
-  });
-  // Quitar active de todos los botones de navegación
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.remove('active');
-  });
+</div> <script>
+const MEMBERS = ['CHAFOYA', 'KERIM', 'IRVIN', 'AXEL', 'CHAVEZ'];
+const TASKS = {
+  'T01': { m: 'CHAFOYA', weight: 20, status: 0 },
+  'T02': { m: 'CHAFOYA', weight: 20, status: 0 },
+  'T03': { m: 'CHAFOYA', weight: 20, status: 0 },
+  'T04': { m: 'CHAFOYA', weight: 20, status: 0 },
+  'T05': { m: 'CHAFOYA', weight: 20, status: 0 },
 
-  // Mostrar el panel seleccionado
-  const targetPane = document.getElementById('pane-' + paneId);
-  if (targetPane) {
-    targetPane.classList.add('active');
-  }
+  'T06': { m: 'KERIM',   weight: 20, status: 0 },
+  'T07': { m: 'KERIM',   weight: 20, status: 0 },
+  'T08': { m: 'KERIM',   weight: 20, status: 0 },
+  'T09': { m: 'KERIM',   weight: 20, status: 0 },
+  'T10': { m: 'KERIM',   weight: 20, status: 0 },
 
-  // Activar botón clickeado
-  const clickedBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => 
-    btn.getAttribute('onclick').includes(paneId)
-  );
-  if (clickedBtn) {
-    clickedBtn.classList.add('active');
-  }
-}
+  'T11': { m: 'IRVIN',   weight: 16.66, status: 0 },
+  'T12': { m: 'IRVIN',   weight: 16.66, status: 0 },
+  'T13': { m: 'IRVIN',   weight: 16.66, status: 0 },
+  'T14': { m: 'IRVIN',   weight: 16.66, status: 0 },
+  'T15': { m: 'IRVIN',   weight: 16.66, status: 0 },
+  'T16': { m: 'IRVIN',   weight: 16.70, status: 0 },
 
-// ══════════════════════════════════════════
-// CANVAS HOLOGRÁFICO REACTIVO GAMER
-// ══════════════════════════════════════════
-const canvas = document.getElementById('canvas-cyber-grid');
-const ctx = canvas.getContext('2d');
+  'T17': { m: 'AXEL',    weight: 20, status: 0 },
+  'T18': { m: 'AXEL',    weight: 20, status: 0 },
+  'T19': { m: 'AXEL',    weight: 20, status: 0 },
+  'T20': { m: 'AXEL',    weight: 20, status: 0 },
+  'T21': { m: 'AXEL',    weight: 20, status: 0 },
 
-let particles = [];
-let mouse = { x: null, y: null, radius: 150 };
+  'T22': { m: 'CHAVEZ',  weight: 20, status: 0 },
+  'T23': { m: 'CHAVEZ',  weight: 20, status: 0 },
+  'T24': { m: 'CHAVEZ',  weight: 20, status: 0 },
+  'T25': { m: 'CHAVEZ',  weight: 20, status: 0 },
+  'T26': { m: 'CHAVEZ',  weight: 20, status: 0 }
+};
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-// Escuchar movimiento del mouse para acelerar y atraer partículas
-window.addEventListener('mousemove', (e) => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
+document.addEventListener("DOMContentLoaded", () => {
+  buildMemberBars();
+  calculateAll();
 });
 
-window.addEventListener('mouseleave', () => {
-  mouse.x = null;
-  mouse.y = null;
-});
-
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 2 + 1;
-    this.baseX = this.x;
-    this.baseY = this.y;
-    this.density = (Math.random() * 30) + 15;
-    this.color = Math.random() > 0.5 ? 'rgba(56, 189, 248, 0.4)' : 'rgba(244, 63, 94, 0.3)';
-  }
-
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-  }
-
-  update() {
-    // Si el cursor está cerca, la partícula reacciona (Efecto de overclocking cibernético)
-    if (mouse.x !== null && mouse.y !== null) {
-      let dx = mouse.x - this.x;
-      let dy = mouse.y - this.y;
-      let distance = Math.sqrt(dx * dx + dy * dy);
-      let forceDirectionX = dx / distance;
-      let forceDirectionY = dy / distance;
-      let maxDistance = mouse.radius;
-      let force = (maxDistance - distance) / maxDistance;
-      
-      if (distance < mouse.radius) {
-        let directionX = forceDirectionX * force * this.density * 0.7;
-        let directionY = forceDirectionY * force * this.density * 0.7;
-        this.x -= directionX;
-        this.y -= directionY;
-      } else {
-        if (this.x !== this.baseX) {
-          let dx = this.x - this.baseX;
-          this.x -= dx / 15;
-        }
-        if (this.y !== this.baseY) {
-          let dy = this.y - this.baseY;
-          this.y -= dy / 15;
-        }
-      }
-    } else {
-      // Movimiento autónomo lento de fondo
-      this.x += Math.sin(Date.now() * 0.001 + this.baseY) * 0.15;
-      this.y += Math.cos(Date.now() * 0.001 + this.baseX) * 0.15;
-    }
-  }
+function showMod(m) {
+  document.querySelectorAll('.module-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('mod-'+m).classList.add('active');
+  document.querySelector('[data-m="'+m+'"]').classList.add('active');
+  document.querySelector('.nav-bar').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
-function initParticles() {
-  particles = [];
-  const numberOfParticles = Math.min(100, (canvas.width * canvas.height) / 15000);
-  for (let i = 0; i < numberOfParticles; i++) {
-    particles.push(new Particle());
-  }
+function buildMemberBars() {
+  const container = document.getElementById('member-bars');
+  const nameMap = { CHAFOYA:'Chafoya', KERIM:'Kerim', IRVIN:'Irvin', AXEL:'Axel', CHAVEZ:'Chávez' };
+  const fillMap = { CHAFOYA:'var(--m-chafoya)', KERIM:'var(--m-kerim)', IRVIN:'var(--m-irvin)', AXEL:'var(--m-axel)', CHAVEZ:'var(--m-chavez)' };
+  container.innerHTML = '';
+  MEMBERS.forEach(m => {
+    const row = document.createElement('div');
+    row.className = 'mbar-row';
+    row.innerHTML = `
+      <span class="mbar-name">${nameMap[m]}</span>
+      <div class="mbar-track"><div class="mbar-fill" id="mbar-${m}" style="width:0%;background:${fillMap[m]};border-radius:4px;height:100%;transition:width 0.7s ease"></div></div>
+      <span class="mbar-pct" id="mbar-pct-${m}">0%</span>
+    `;
+    container.appendChild(row);
+  });
 }
-initParticles();
-window.addEventListener('resize', initParticles);
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+function toggleTask(id) {
+  const t = TASKS[id];
+  if(!t) return;
+  t.status = (t.status + 1) % 3; // 0:pending, 1:inprogress, 2:done
   
-  // Dibujar líneas cibernéticas débiles (Grid)
-  ctx.strokeStyle = 'rgba(56, 189, 248, 0.03)';
-  ctx.lineWidth = 1;
-  const gridSize = 80;
-  for (let x = 0; x < canvas.width; x += gridSize) {
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, canvas.height);
-    ctx.stroke();
+  const card = document.getElementById('task-' + id);
+  const btn = document.getElementById('btn-' + id);
+  
+  card.classList.remove('status-pending', 'status-inprogress', 'status-done');
+  btn.classList.remove('s-pending', 's-inprogress', 's-done');
+  
+  if(t.status === 0) {
+    card.classList.add('status-pending');
+    btn.classList.add('s-pending');
+    btn.innerText = "Pendiente";
+  } else if(t.status === 1) {
+    card.classList.add('status-inprogress');
+    btn.classList.add('s-inprogress');
+    btn.innerText = "En proceso";
+  } else if(t.status === 2) {
+    card.classList.add('status-done');
+    btn.classList.add('s-done');
+    btn.innerText = "Completado";
   }
-  for (let y = 0; y < canvas.height; y += gridSize) {
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(canvas.width, y);
-    ctx.stroke();
-  }
-
-  // Dibujar y actualizar partículas
-  for (let i = 0; i < particles.length; i++) {
-    particles[i].draw();
-    particles[i].update();
-  }
-  requestAnimationFrame(animate);
+  calculateAll();
 }
 
-window.onload = function () {
-  animate();
+function calculateAll() {
+  let totalTasks = Object.keys(TASKS).length;
+  let totalDone = 0;
+  let totalIp = 0;
+  
+  let mStats = {};
+  MEMBERS.forEach(m => { mStats[m] = { done:0, ip:0, pend:0, progress:0 }; });
+  
+  Object.keys(TASKS).forEach(id => {
+    const t = TASKS[id];
+    if(t.status === 2) {
+      totalDone++;
+      mStats[t.m].done++;
+      mStats[t.m].progress += t.weight;
+    } else if(t.status === 1) {
+      totalIp++;
+      mStats[t.m].ip++;
+    } else {
+      mStats[t.m].pend++;
+    }
+  });
+  
+  let globalPctValue = Math.round((totalDone / totalTasks) * 100);
+  document.getElementById('d-done').innerText = totalDone;
+  document.getElementById('d-done-sub').innerText = globalPctValue + "% del proyecto";
+  document.getElementById('d-ip').innerText = totalIp;
+  document.getElementById('d-ip-sub').innerText = totalIp + " tareas activas";
+  document.getElementById('globalPct').innerText = globalPctValue + "%";
+  document.getElementById('globalBar').style.width = globalPctValue + "%";
+  
+  MEMBERS.forEach(m => {
+    let roundedProgress = Math.min(100, Math.round(mStats[m].progress));
+    document.getElementById('stat-n-' + m).innerText = roundedProgress + "%";
+    document.getElementById('mini-' + m).innerText = mStats[m].done + " / " + (mStats[m].done + mStats[m].ip + mStats[m].pend) + " tareas";
+    document.getElementById('mbar-' + m).style.width = roundedProgress + "%";
+    document.getElementById('mbar-pct-' + m).innerText = roundedProgress + "%";
+    
+    document.getElementById('f-done-' + m).innerText = mStats[m].done;
+    document.getElementById('f-ip-' + m).innerText = mStats[m].ip;
+    document.getElementById('f-pend-' + m).innerText = mStats[m].pend;
+    document.getElementById('bar-' + m).style.width = roundedProgress + "%";
+  });
 }
 </script>
 </body>
