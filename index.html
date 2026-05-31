@@ -325,19 +325,6 @@ header { padding: 64px 0 48px; text-align: center; }
   background:rgba(56,189,248,0.08);
 }
 
-/* Mod Link Button Style */
-.mod-link-btn {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
-  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border);
-  border-radius: 8px; padding: 6px 14px; font-size: 11px; font-weight: 500;
-  color: var(--text2); text-decoration: none; font-family: 'JetBrains Mono', monospace;
-  transition: all 0.25s ease; backdrop-filter: blur(8px);
-}
-.mod-link-btn:hover {
-  background: rgba(255, 255, 255, 0.08); border-color: var(--border2);
-  color: #fff; transform: translateY(-1px);
-}
-
 .mod-stats {
   display:flex; gap:20px; flex-wrap:wrap;
   align-items:flex-end;
@@ -597,6 +584,9 @@ header { padding: 64px 0 48px; text-align: center; }
 
 <div class="wrapper">
 
+<!-- ══════════════════════════════════════════════════
+  HEADER
+══════════════════════════════════════════════════ -->
 <header>
   <div class="header-eyebrow">
     <span class="dot"></span>
@@ -612,6 +602,9 @@ header { padding: 64px 0 48px; text-align: center; }
   </div>
 </header>
 
+<!-- ══════════════════════════════════════════════════
+  DASHBOARD
+══════════════════════════════════════════════════ -->
 <div class="sec-label">// PANEL DE CONTROL DEL PROYECTO</div>
 
 <div class="dashboard">
@@ -637,11 +630,13 @@ header { padding: 64px 0 48px; text-align: center; }
     <div class="dash-card-sub" id="d-ip-sub">tareas activas</div>
   </div>
 
+  <!-- member mini bars -->
   <div class="dash-card" style="grid-row:span 1">
     <div class="dash-card-label">Progreso por integrante</div>
     <div class="member-bars" id="member-bars"></div>
   </div>
 
+  <!-- global bar — full width -->
   <div class="dash-card dash-global">
     <div class="global-header">
       <span class="global-title">◈ Progreso global del proyecto</span>
@@ -654,6 +649,9 @@ header { padding: 64px 0 48px; text-align: center; }
 
 </div>
 
+<!-- ══════════════════════════════════════════════════
+  PHASE STRIP
+══════════════════════════════════════════════════ -->
 <div class="sec-label">// FLUJO OBLIGATORIO DE FASES</div>
 <div class="phase-strip">
   <div class="phase-item">
@@ -682,6 +680,9 @@ header { padding: 64px 0 48px; text-align: center; }
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════════════
+  TABS
+══════════════════════════════════════════════════ -->
 <div class="sec-label">// MÓDULOS POR INTEGRANTE</div>
 
 <div class="nav-bar">
@@ -706,310 +707,751 @@ header { padding: 64px 0 48px; text-align: center; }
     <div class="tab-progress" id="mini-AXEL">0 / 5 tareas</div>
   </button>
   <button class="tab-btn" data-m="CHAVEZ" onclick="showMod('CHAVEZ')">
-    <div class="tab-top"><span class="tab-icon">🟣</span><span class="tab-name">CHAVEZ</span></div>
-    <div class="tab-role">Coordinador Técnico<br>& Editor Final</div>
+    <div class="tab-top"><span class="tab-icon">🟣</span><span class="tab-name">CHÁVEZ</span></div>
+    <div class="tab-role">Investigador Teórico<br>& Gestión Bibliográfica</div>
     <div class="tab-progress" id="mini-CHAVEZ">0 / 5 tareas</div>
   </button>
 </div>
 
+<!-- ══ CHAFOYA ══ -->
 <div class="module-panel active" id="mod-CHAFOYA">
-  <div class="mod-header" style="--mh-from:rgba(56,189,248,0.12);--mh-to:rgba(56,189,248,0.02);--mh-glow:rgba(56,189,248,0.18);--mh-border:rgba(56,189,248,0.35);--mh-avatar:rgba(56,189,248,0.12);--mh-color:var(--cyan)">
+  <div class="mod-header" style="--mh-from:rgba(56,189,248,0.08);--mh-to:rgba(56,189,248,0.02);--mh-glow:rgba(56,189,248,0.15);--mh-color:var(--cyan);--mh-border:rgba(56,189,248,0.3);--mh-avatar:rgba(56,189,248,0.1)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">CC</div>
+      <div class="mod-avatar">CH</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 01 · Integrante Responsable</div>
-        <h2 class="mod-name">Carlos Chafoya</h2>
-        <p class="mod-subtitle">Liderazgo de campo, enlace directo para la gestión de la visita y encargado de dirigir el cuestionario técnico presencial en la planta.</p>
+        <div class="mod-eyebrow">// COORDINADOR DE CAMPO & ENTREVISTADOR PRINCIPAL</div>
+        <div class="mod-name">CHAFOYA</div>
+        <div class="mod-subtitle">Coordina la visita · Conduce la entrevista técnica · Investiga propiedades mecánicas</div>
         <div class="mod-badges">
-          <span class="mod-badge">Fase 1 (x1)</span>
-          <span class="mod-badge">Fase 3 (x3)</span>
-          <span class="mod-badge">Fase 5 (x1)</span>
+          <span class="mod-badge">🏭 Visita CORINCA</span>
+          <span class="mod-badge">🎙 Entrevistador</span>
+          <span class="mod-badge">📊 5 tareas</span>
         </div>
-        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
-          📄 Ver Documento de Referencia (SC)
-        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="p-CHAFOYA">0%</div><div class="mod-stat-label">Completado</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-green" id="cnt-done-CHAFOYA">0</div><div class="mod-stat-label">HECHAS</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-amber" id="cnt-ip-CHAFOYA">0</div><div class="mod-stat-label">EN PROG</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" style="color:var(--text3)" id="cnt-pend-CHAFOYA">5</div><div class="mod-stat-label">PEND</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
     <div class="tasks-list" id="tasks-CHAFOYA"></div>
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado general</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="fs-done-CHAFOYA">0</div><div class="stat-l">COMPLETADAS</div></div>
+          <div class="stat-box"><div class="stat-n c-ip"   id="fs-ip-CHAFOYA">0</div><div class="stat-l">EN PROCESO</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="fs-pend-CHAFOYA">5</div><div class="stat-l">PENDIENTE</div></div>
+        </div>
+        <div class="member-track"><div class="member-fill fill-cyan" id="bar-CHAFOYA" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Fechas límite</div>
+        <div class="dl-list">
+          <div class="dl-item">
+            <div class="dl-date-box bg-cyan"><div class="dl-day col-cyan">02</div><div class="dl-mon col-cyan">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-cyan">MAR · FASE 1</div><div class="dl-t">Investigación teórica dominada</div><div class="dl-d">Propiedades mecánicas del acero explicables sin leer. Base lista para el cuestionario.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-cyan"><div class="dl-day col-cyan">04</div><div class="dl-mon col-cyan">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-cyan">JUE · FASE 3</div><div class="dl-t">Visita a CORINCA confirmada</div><div class="dl-d">Fecha y hora pactadas. Equipo notificado con 3 días de anticipación.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-cyan"><div class="dl-day col-cyan">09</div><div class="dl-mon col-cyan">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-cyan">MAR · FASE 5</div><div class="dl-t">Ensayo final liderado</div><div class="dl-d">Ropa formal preparada. Q&A técnica dominada para el día de la defensa.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- ══ KERIM ══ -->
 <div class="module-panel" id="mod-KERIM">
-  <div class="mod-header" style="--mh-from:rgba(251,146,60,0.12);--mh-to:rgba(251,146,60,0.02);--mh-glow:rgba(251,146,60,0.18);--mh-border:rgba(251,146,60,0.35);--mh-avatar:rgba(251,146,60,0.12);--mh-color:var(--orange)">
+  <div class="mod-header" style="--mh-from:rgba(251,146,60,0.08);--mh-to:rgba(251,146,60,0.02);--mh-glow:rgba(251,146,60,0.15);--mh-color:var(--orange);--mh-border:rgba(251,146,60,0.3);--mh-avatar:rgba(251,146,60,0.1)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">PA</div>
+      <div class="mod-avatar" style="color:var(--orange);border-color:rgba(251,146,60,0.3);background:rgba(251,146,60,0.1)">KE</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 02 · Integrante Responsable</div>
-        <h2 class="mod-name">Kerim Ramos</h2>
-        <p class="mod-subtitle">Dirección audiovisual del proyecto, registro de evidencia multimedia en CORINCA y estructuración del marco teórico inicial.</p>
-        <div class="mod-badges">
-          <span class="mod-badge">Fase 1 (x2)</span>
-          <span class="mod-badge">Fase 3 (x2)</span>
-          <span class="mod-badge">Fase 5 (x1)</span>
+        <div class="mod-eyebrow" style="color:var(--orange)">// PRODUCCIÓN AUDIOVISUAL & INVESTIGADOR</div>
+        <div class="mod-name">KERIM</div>
+        <div class="mod-subtitle">Investiga el proceso siderúrgico · Planea y ejecuta el video · Edita el producto final</div>
+        <div class="mod-badges" style="--mh-color:var(--orange);--mh-border:rgba(251,146,60,0.3)">
+          <span class="mod-badge" style="color:var(--orange);border-color:rgba(251,146,60,0.3);background:rgba(251,146,60,0.08)">🎥 Cámara Principal</span>
+          <span class="mod-badge" style="color:var(--orange);border-color:rgba(251,146,60,0.3);background:rgba(251,146,60,0.08)">✂️ Editor de Video</span>
+          <span class="mod-badge" style="color:var(--orange);border-color:rgba(251,146,60,0.3);background:rgba(251,146,60,0.08)">📊 5 tareas</span>
         </div>
-        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
-          📄 Ver Documento de Referencia (SC)
-        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="p-KERIM">0%</div><div class="mod-stat-label">Completado</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-green" id="cnt-done-KERIM">0</div><div class="mod-stat-label">HECHAS</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-amber" id="cnt-ip-KERIM">0</div><div class="mod-stat-label">EN PROG</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" style="color:var(--text3)" id="cnt-pend-KERIM">5</div><div class="mod-stat-label">PEND</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
     <div class="tasks-list" id="tasks-KERIM"></div>
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado general</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="fs-done-KERIM">0</div><div class="stat-l">COMPLETADAS</div></div>
+          <div class="stat-box"><div class="stat-n c-ip"   id="fs-ip-KERIM">0</div><div class="stat-l">EN PROCESO</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="fs-pend-KERIM">5</div><div class="stat-l">PENDIENTE</div></div>
+        </div>
+        <div class="member-track"><div class="member-fill fill-orange" id="bar-KERIM" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Fechas límite</div>
+        <div class="dl-list">
+          <div class="dl-item">
+            <div class="dl-date-box bg-orange"><div class="dl-day col-orange">02</div><div class="dl-mon col-orange">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-orange">MAR · FASE 1</div><div class="dl-t">Proceso siderúrgico investigado</div><div class="dl-d">Del mineral de hierro a la varilla corrugada. Base para el guion del video.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-orange"><div class="dl-day col-orange">04</div><div class="dl-mon col-orange">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-orange">JUE · FASE 3</div><div class="dl-t">Guion del video aprobado</div><div class="dl-d">Estructura con tiempos, lista de tomas B-Roll y preguntas surgidas del informe.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-orange"><div class="dl-day col-orange">07</div><div class="dl-mon col-orange">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-orange">DOM · FECHA LÍMITE</div><div class="dl-t">Video editado y subido</div><div class="dl-d">4–5 min exactos · lower thirds · B-Roll · enlace al equipo para Prezi.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- ══ IRVIN ══ -->
 <div class="module-panel" id="mod-IRVIN">
-  <div class="mod-header" style="--mh-from:rgba(52,211,153,0.12);--mh-to:rgba(52,211,153,0.02);--mh-glow:rgba(52,211,153,0.18);--mh-border:rgba(52,211,153,0.35);--mh-avatar:rgba(52,211,153,0.12);--mh-color:var(--green)">
+  <div class="mod-header" style="--mh-from:rgba(52,211,153,0.08);--mh-to:rgba(52,211,153,0.02);--mh-glow:rgba(52,211,153,0.12);--mh-color:var(--green);--mh-border:rgba(52,211,153,0.3);--mh-avatar:rgba(52,211,153,0.1)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">RP</div>
+      <div class="mod-avatar" style="color:var(--green);border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.1)">IR</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 03 · Integrante Responsable</div>
-        <h2 class="mod-name">Irvin Flores</h2>
-        <p class="mod-subtitle">Responsable del desarrollo del reporte formal escrito, transcripción de datos y recopilación de las normas técnicas aplicadas.</p>
-        <div class="mod-badges">
-          <span class="mod-badge">Fase 1 (x1)</span>
-          <span class="mod-badge">Fase 2 (x3)</span>
-          <span class="mod-badge">Fase 3 (x1)</span>
-          <span class="mod-badge">Fase 5 (x1)</span>
+        <div class="mod-eyebrow" style="color:var(--green)">// REDACTOR PRINCIPAL DEL INFORME & APOYO EN CAMPO</div>
+        <div class="mod-name">IRVIN</div>
+        <div class="mod-subtitle">Compila y redacta el informe completo · Investiga la industria local · Asistente en CORINCA</div>
+        <div class="mod-badges" style="--mh-color:var(--green)">
+          <span class="mod-badge" style="color:var(--green);border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.07)">📝 Redactor Jefe</span>
+          <span class="mod-badge" style="color:var(--green);border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.07)">📋 Asistente en Campo</span>
+          <span class="mod-badge" style="color:var(--green);border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.07)">📊 6 tareas</span>
         </div>
-        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
-          📄 Ver Documento de Referencia (SC)
-        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="p-IRVIN">0%</div><div class="mod-stat-label">Completado</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-green" id="cnt-done-IRVIN">0</div><div class="mod-stat-label">HECHAS</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-amber" id="cnt-ip-IRVIN">0</div><div class="mod-stat-label">EN PROG</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" style="color:var(--text3)" id="cnt-pend-IRVIN">6</div><div class="mod-stat-label">PEND</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
     <div class="tasks-list" id="tasks-IRVIN"></div>
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado general</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="fs-done-IRVIN">0</div><div class="stat-l">COMPLETADAS</div></div>
+          <div class="stat-box"><div class="stat-n c-ip"   id="fs-ip-IRVIN">0</div><div class="stat-l">EN PROCESO</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="fs-pend-IRVIN">6</div><div class="stat-l">PENDIENTE</div></div>
+        </div>
+        <div class="member-track"><div class="member-fill fill-green" id="bar-IRVIN" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Fechas límite</div>
+        <div class="dl-list">
+          <div class="dl-item">
+            <div class="dl-date-box bg-green"><div class="dl-day col-green">02</div><div class="dl-mon col-green">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-green">MAR · FASE 1</div><div class="dl-t">Investigación industria local lista</div><div class="dl-d">Historia del acero en El Salvador, normativas ASTM y empresas nacionales documentadas.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-green"><div class="dl-day col-green">06</div><div class="dl-mon col-green">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-green">VIE · FASE 2</div><div class="dl-t">Borrador del informe integrado</div><div class="dl-d">Todas las secciones compiladas (excepto Introducción). Metodología y Conclusiones redactadas.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-green"><div class="dl-day col-green">08</div><div class="dl-mon col-green">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-green">LUN · FECHA LÍMITE</div><div class="dl-t">Informe PDF final y completo</div><div class="dl-d">Introducción redactada al final. Formato, índice, portada y APA aplicados.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- ══ AXEL ══ -->
 <div class="module-panel" id="mod-AXEL">
-  <div class="mod-header" style="--mh-from:rgba(251,191,36,0.12);--mh-to:rgba(251,191,36,0.02);--mh-glow:rgba(251,191,36,0.18);--mh-border:rgba(251,191,36,0.35);--mh-avatar:rgba(251,191,36,0.12);--mh-color:var(--amber)">
+  <div class="mod-header" style="--mh-from:rgba(251,191,36,0.08);--mh-to:rgba(251,191,36,0.02);--mh-glow:rgba(251,191,36,0.12);--mh-color:var(--amber);--mh-border:rgba(251,191,36,0.3);--mh-avatar:rgba(251,191,36,0.1)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">DP</div>
+      <div class="mod-avatar" style="color:var(--amber);border-color:rgba(251,191,36,0.3);background:rgba(251,191,36,0.1)">AX</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 04 · Integrante Responsable</div>
-        <h2 class="mod-name">Axel Castillo</h2>
-        <p class="mod-subtitle">Diseño estructural de la presentación interactiva en Prezi, diseño de diagramas de procesos y co-defensa del proyecto.</p>
+        <div class="mod-eyebrow" style="color:var(--amber)">// DISEÑADOR PREZI & CO-PRESENTADOR</div>
+        <div class="mod-name">AXEL</div>
+        <div class="mod-subtitle">Investiga propiedades físicas · Diseña el Prezi y portada · Presenta el Marco Teórico</div>
         <div class="mod-badges">
-          <span class="mod-badge">Fase 1 (x1)</span>
-          <span class="mod-badge">Fase 4 (x3)</span>
-          <span class="mod-badge">Fase 5 (x1)</span>
+          <span class="mod-badge" style="color:var(--amber);border-color:rgba(251,191,36,0.3);background:rgba(251,191,36,0.08)">🎨 Diseñador Prezi</span>
+          <span class="mod-badge" style="color:var(--amber);border-color:rgba(251,191,36,0.3);background:rgba(251,191,36,0.08)">🖼️ Portada PDF</span>
+          <span class="mod-badge" style="color:var(--amber);border-color:rgba(251,191,36,0.3);background:rgba(251,191,36,0.08)">📊 5 tareas</span>
         </div>
-        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
-          📄 Ver Documento de Referencia (SC)
-        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="p-AXEL">0%</div><div class="mod-stat-label">Completado</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-green" id="cnt-done-AXEL">0</div><div class="mod-stat-label">HECHAS</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-amber" id="cnt-ip-AXEL">0</div><div class="mod-stat-label">EN PROG</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" style="color:var(--text3)" id="cnt-pend-AXEL">5</div><div class="mod-stat-label">PEND</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
     <div class="tasks-list" id="tasks-AXEL"></div>
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado general</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="fs-done-AXEL">0</div><div class="stat-l">COMPLETADAS</div></div>
+          <div class="stat-box"><div class="stat-n c-ip"   id="fs-ip-AXEL">0</div><div class="stat-l">EN PROCESO</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="fs-pend-AXEL">5</div><div class="stat-l">PENDIENTE</div></div>
+        </div>
+        <div class="member-track"><div class="member-fill fill-amber" id="bar-AXEL" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Fechas límite</div>
+        <div class="dl-list">
+          <div class="dl-item">
+            <div class="dl-date-box bg-amber"><div class="dl-day col-amber">02</div><div class="dl-mon col-amber">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-amber">MAR · FASE 1</div><div class="dl-t">Propiedades físicas/térmicas investigadas</div><div class="dl-d">Dominar densidad, punto de fusión, conductividad. Base para exponer el Marco Teórico sin leer.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-amber"><div class="dl-day col-amber">05</div><div class="dl-mon col-amber">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-amber">JUE · FASE 4</div><div class="dl-t">Prezi estructurado con Marco Teórico</div><div class="dl-d">Las 7 secciones obligatorias armadas. Portada creativa con foto grupal como marca de agua.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-amber"><div class="dl-day col-amber">08</div><div class="dl-mon col-amber">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-amber">LUN · FECHA LÍMITE</div><div class="dl-t">Prezi 100% con video insertado</div><div class="dl-d">Video de Kerim integrado. QR al informe. Listo para ensayo del martes 9.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- ══ CHAVEZ ══ -->
 <div class="module-panel" id="mod-CHAVEZ">
-  <div class="mod-header" style="--mh-from:rgba(167,139,250,0.12);--mh-to:rgba(167,139,250,0.02);--mh-glow:rgba(167,139,250,0.18);--mh-border:rgba(167,139,250,0.35);--mh-avatar:rgba(167,139,250,0.12);--mh-color:var(--violet)">
+  <div class="mod-header" style="--mh-from:rgba(167,139,250,0.08);--mh-to:rgba(167,139,250,0.02);--mh-glow:rgba(167,139,250,0.12);--mh-color:var(--violet);--mh-border:rgba(167,139,250,0.3);--mh-avatar:rgba(167,139,250,0.1)">
     <div class="mod-header-inner">
-      <div class="mod-avatar">CT</div>
+      <div class="mod-avatar" style="color:var(--violet);border-color:rgba(167,139,250,0.3);background:rgba(167,139,250,0.1)">CV</div>
       <div class="mod-info">
-        <div class="mod-eyebrow">Módulo 05 · Integrante Responsable</div>
-        <h2 class="mod-name">Rodrigo Chávez</h2>
-        <p class="mod-subtitle">Coordinación de los requerimientos de entrega en Classroom, control de calidad del documento integrado y simulación previa de preguntas y respuestas.</p>
+        <div class="mod-eyebrow" style="color:var(--violet)">// INVESTIGADOR TEÓRICO PRINCIPAL & GESTIÓN BIBLIOGRÁFICA</div>
+        <div class="mod-name">CHÁVEZ</div>
+        <div class="mod-subtitle">Primera línea de investigación · Redacta el Marco Teórico · Cuestionario técnico · APA</div>
         <div class="mod-badges">
-          <span class="mod-badge">Fase 2 (x1)</span>
-          <span class="mod-badge">Fase 4 (x1)</span>
-          <span class="mod-badge">Fase 5 (x3)</span>
+          <span class="mod-badge" style="color:var(--violet);border-color:rgba(167,139,250,0.3);background:rgba(167,139,250,0.07)">🔬 Investigador Principal</span>
+          <span class="mod-badge" style="color:var(--violet);border-color:rgba(167,139,250,0.3);background:rgba(167,139,250,0.07)">📚 Bibliografía APA</span>
+          <span class="mod-badge" style="color:var(--violet);border-color:rgba(167,139,250,0.3);background:rgba(167,139,250,0.07)">📊 5 tareas</span>
         </div>
-        <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.sc.gob.sv/site/uploads/est_14_inf.pdf" target="_blank" class="mod-link-btn">
-          📄 Ver Documento de Referencia (SC)
-        </a>
       </div>
       <div class="mod-stats">
-        <div class="mod-stat"><div class="mod-stat-num" id="p-CHAVEZ">0%</div><div class="mod-stat-label">Completado</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-green" id="cnt-done-CHAVEZ">0</div><div class="mod-stat-label">HECHAS</div></div>
+        <div class="mod-stat"><div class="mod-stat-num col-amber" id="cnt-ip-CHAVEZ">0</div><div class="mod-stat-label">EN PROG</div></div>
+        <div class="mod-stat"><div class="mod-stat-num" style="color:var(--text3)" id="cnt-pend-CHAVEZ">5</div><div class="mod-stat-label">PEND</div></div>
       </div>
     </div>
   </div>
   <div class="mod-body">
     <div class="tasks-list" id="tasks-CHAVEZ"></div>
+    <div class="mod-footer">
+      <div>
+        <div class="mod-footer-title">Estado general</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-n c-done" id="fs-done-CHAVEZ">0</div><div class="stat-l">COMPLETADAS</div></div>
+          <div class="stat-box"><div class="stat-n c-ip"   id="fs-ip-CHAVEZ">0</div><div class="stat-l">EN PROCESO</div></div>
+          <div class="stat-box"><div class="stat-n c-pend" id="fs-pend-CHAVEZ">5</div><div class="stat-l">PENDIENTE</div></div>
+        </div>
+        <div class="member-track"><div class="member-fill fill-violet" id="bar-CHAVEZ" style="width:0%"></div></div>
+      </div>
+      <div>
+        <div class="mod-footer-title">Fechas límite</div>
+        <div class="dl-list">
+          <div class="dl-item">
+            <div class="dl-date-box bg-violet"><div class="dl-day col-violet">29</div><div class="dl-mon col-violet">MAY</div></div>
+            <div class="dl-content"><div class="dl-tag col-violet">VIE · PRIORIDAD #1</div><div class="dl-t">Investigación base documentada</div><div class="dl-d">Clasificación del acero, elementos aleantes y productos CORINCA. Base del Marco Teórico.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-violet"><div class="dl-day col-violet">03</div><div class="dl-mon col-violet">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-violet">MIÉ · FASE 2</div><div class="dl-t">Marco Teórico redactado + Cuestionario</div><div class="dl-d">Sección 5 del informe lista. Cuestionario técnico de 8-10 preguntas entregado a Chafoya.</div></div>
+          </div>
+          <div class="dl-item">
+            <div class="dl-date-box bg-violet"><div class="dl-day col-violet">06</div><div class="dl-mon col-violet">JUN</div></div>
+            <div class="dl-content"><div class="dl-tag col-violet">VIE · FASE 2</div><div class="dl-t">Bibliografía APA completa entregada</div><div class="dl-d">Todas las fuentes del equipo formateadas en APA 7. Entregadas a Irvin para el informe.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div style="margin-top:40px;"></div>
-
+<!-- ══════════════════════════════════════════════════
+  TIMELINE FASES
+══════════════════════════════════════════════════ -->
+<br>
+<div class="sec-label">// CRONOGRAMA DETALLADO DE FASES</div>
 <div class="section-block">
-  <div class="sec-label" style="margin-bottom:8px">// CRONOGRAMA DE ENTREGAS CRÍTICAS</div>
-  <h3 class="section-title">Hitos del Segundo Trimestre</h3>
-  <p class="section-desc">Puntos de control obligatorios establecidos por la institución educativa para la asignación de notas.</p>
-  
+  <div class="section-title">Hoja de Ruta del Proyecto</div>
+  <div class="section-desc">Secuencia con dependencia lógica obligatoria. Ninguna fase puede iniciarse sin completar la anterior. La entrevista y el video son consecuencia de la investigación, no el punto de partida.</div>
   <div class="tl">
+
     <div class="tl-row">
-      <div class="tl-date"><div class="tl-date-main">20 Abr</div><div class="tl-date-sub">Lunes</div></div>
-      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--cyan)"></div><div class="tl-vline"></div></div>
+      <div class="tl-date"><div class="tl-date-main">27–29 MAY</div><div class="tl-date-sub">Sem 1</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--cyan);box-shadow:0 0 8px rgba(56,189,248,0.5)"></div><div class="tl-vline"></div></div>
       <div class="tl-content">
-        <span class="tl-phase-badge" style="background:rgba(56,189,248,0.15);color:var(--cyan)">ENTREGA 01</span>
-        <h4 class="tl-title">Avance del Marco Teórico Completo</h4>
-        <p class="tl-desc">Revisión obligatoria en Classroom de los primeros capítulos investigados. Ponderación directa.</p>
-        <div class="tl-who"><span class="tl-tag">Todo el equipo</span></div>
-      </div>
-    </div>
-    
-    <div class="tl-row">
-      <div class="tl-date"><div class="tl-date-main">15 May</div><div class="tl-date-sub">Viernes</div></div>
-      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--green)"></div><div class="tl-vline"></div></div>
-      <div class="tl-content">
-        <span class="tl-phase-badge" style="background:rgba(52,211,153,0.15);color:var(--green)">ENTREGA 02</span>
-        <h4 class="tl-title">Informe Final Impreso & Video Técnico</h4>
-        <p class="tl-desc">Cierre total de la redacción. Entrega física del reporte empastado o engargolado y subida del video de la visita industrial a CORINCA.</p>
-        <div class="tl-who"><span class="tl-tag">Todo el equipo</span></div>
+        <span class="tl-phase-badge" style="background:rgba(56,189,248,0.12);color:var(--cyan)">FASE 1 · INVESTIGACIÓN</span>
+        <div class="tl-title">Dominio teórico absoluto del tema</div>
+        <div class="tl-desc">Cada integrante investiga su subtema asignado (propiedades mecánicas, proceso siderúrgico, industria local, propiedades físicas, clasificación del acero). Sin excepción: nadie avanza a la siguiente fase sin conocer la teoría. Chávez entrega el borrador de investigación base el viernes 29.</div>
+        <div class="tl-who">
+          <span class="tl-tag">TODOS</span>
+          <span class="tl-tag">CHÁVEZ lidera la investigación base</span>
+        </div>
       </div>
     </div>
 
     <div class="tl-row">
-      <div class="tl-date"><div class="tl-date-main">05 Jun</div><div class="tl-date-sub">Viernes</div></div>
-      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--orange)"></div><div class="tl-vline"></div></div>
+      <div class="tl-date"><div class="tl-date-main">30 MAY–5 JUN</div><div class="tl-date-sub">Sem 2</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--green);box-shadow:0 0 8px rgba(52,211,153,0.5)"></div><div class="tl-vline"></div></div>
       <div class="tl-content">
-        <span class="tl-phase-badge" style="background:rgba(251,146,60,0.15);color:var(--orange)">ENTREGA 03</span>
-        <h4 class="tl-title">Presentación Prezi & Recursos Visuales</h4>
-        <p class="tl-desc">Entrega del enlace público de la presentación en Prezi Next y validación del material de apoyo final.</p>
-        <div class="tl-who"><span class="tl-tag">Axel Castillo</span></div>
+        <span class="tl-phase-badge" style="background:rgba(52,211,153,0.12);color:var(--green)">FASE 2 · REDACCIÓN DEL INFORME</span>
+        <div class="tl-title">Redacción del informe teórico + cuestionario</div>
+        <div class="tl-desc">Chávez redacta el Marco Teórico (miérc 3) y entrega a Irvin. Irvin compila el informe con Metodología y Conclusiones (viernes 6 borrador). Axel diseña portada y estructura del Prezi con el contenido del Marco Teórico. Chávez entrega cuestionario técnico el miércoles 3 para que Chafoya lo revise antes de la visita.</div>
+        <div class="tl-who">
+          <span class="tl-tag">CHÁVEZ → Marco Teórico + Cuestionario</span>
+          <span class="tl-tag">IRVIN → Compila informe</span>
+          <span class="tl-tag">AXEL → Prezi base + Portada</span>
+        </div>
       </div>
     </div>
 
     <div class="tl-row">
-      <div class="tl-date"><div class="tl-date-main">10–12 Jun</div><div class="tl-date-sub">Mie–Vie</div></div>
-      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--amber)"></div><div class="tl-vline"></div></div>
+      <div class="tl-date"><div class="tl-date-main">5–6 JUN</div><div class="tl-date-sub">Sem 3</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--orange);box-shadow:0 0 8px rgba(251,146,60,0.5)"></div><div class="tl-vline"></div></div>
       <div class="tl-content">
-        <span class="tl-phase-badge" style="background:rgba(251,191,36,0.15);color:var(--amber)">EVALUACIÓN REINA</span>
-        <h4 class="tl-title">Defensa Oral y Evaluación ante Terna</h4>
-        <p class="tl-desc">Exposición formal en traje completo frente a los docentes evaluadores de la institución. Traer maquetas o muestras.</p>
-        <div class="tl-who"><span class="tl-tag">Defensa Obligatoria de los 5 integrantes</span></div>
+        <span class="tl-phase-badge" style="background:rgba(251,146,60,0.12);color:var(--orange)">FASE 3 · VISITA CORINCA & GRABACIÓN</span>
+        <div class="tl-title">Entrevista técnica + captura audiovisual</div>
+        <div class="tl-desc">El equipo llega a CORINCA con el informe teórico dominado y el cuestionario listo. Chafoya conduce la entrevista en despacho. Kerim opera cámara y audio. Irvin toma notas técnicas y fotografías del detrás de cámaras. Todos interactúan con el experto demostrando conocimiento previo.</div>
+        <div class="tl-who">
+          <span class="tl-tag">CHAFOYA → Entrevistador</span>
+          <span class="tl-tag">KERIM → Cámara + Audio</span>
+          <span class="tl-tag">IRVIN → Notas + Fotos</span>
+        </div>
       </div>
     </div>
+
+    <div class="tl-row">
+      <div class="tl-date"><div class="tl-date-main">6–8 JUN</div><div class="tl-date-sub">Sem 3</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--violet);box-shadow:0 0 8px rgba(167,139,250,0.5)"></div><div class="tl-vline"></div></div>
+      <div class="tl-content">
+        <span class="tl-phase-badge" style="background:rgba(167,139,250,0.12);color:var(--violet)">FASE 4 · PRODUCCIÓN FINAL</span>
+        <div class="tl-title">Edición de video · Informe final · Prezi completo</div>
+        <div class="tl-desc">Kerim edita el video (dom 7 límite). Irvin integra los Resultados y redacta la Introducción al final (lun 8). Chafoya redacta la sección de Resultados con el análisis de la entrevista. Axel inserta el video en el Prezi y completa la sección de Contraste (lun 8). Chávez entrega bibliografía APA completa (viernes 6).</div>
+        <div class="tl-who">
+          <span class="tl-tag">KERIM → Edición video</span>
+          <span class="tl-tag">IRVIN → Informe final</span>
+          <span class="tl-tag">AXEL → Prezi final</span>
+          <span class="tl-tag">CHAFOYA → Sección Resultados</span>
+          <span class="tl-tag">CHÁVEZ → Bibliografía</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-row">
+      <div class="tl-date"><div class="tl-date-main">9 JUN</div><div class="tl-date-sub">Sem 3</div></div>
+      <div class="tl-line-col"><div class="tl-dot" style="border-color:var(--amber);box-shadow:0 0 8px rgba(251,191,36,0.5)"></div><div class="tl-vline"></div></div>
+      <div class="tl-content">
+        <span class="tl-phase-badge" style="background:rgba(251,191,36,0.12);color:var(--amber)">FASE 5 · ENSAYO Y DEFENSA</span>
+        <div class="tl-title">Ensayo general + preparación de la defensa</div>
+        <div class="tl-desc">Presentación completa de principio a fin con el Prezi final. Turno de preguntas técnicas entre los 5 integrantes. Verificación de vestimenta formal ejecutiva. El 10–12 de junio: defensa real ante el docente. Sin leer. Con dominio total del tema.</div>
+        <div class="tl-who"><span class="tl-tag">TODO EL EQUIPO</span></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<div class="section-block">
-  <div class="sec-label" style="margin-bottom:8px">// CRITERIOS OFICIALES DE EVALUACIÓN</div>
-  <h3 class="section-title">Distribución Analítica de los 50 Puntos</h3>
-  <p class="section-desc">Estructura del puntaje asignado por el docente asignado para la nota global del periodo.</p>
+<!-- ══════════════════════════════════════════════════
+  CRITERIOS
+══════════════════════════════════════════════════ -->
+<div class="sec-label">// CRITERIOS DE EVALUACIÓN — 50 PUNTOS TOTALES</div>
+<div class="criteria-grid">
 
-  <div class="criteria-grid">
-    <div class="crit-card" data-score="10 pts">
-      <div class="crit-type col-cyan">Estructura Escrita</div>
-      <h4 class="crit-title">Marco Teórico & Rigor Científico</h4>
-      <p class="crit-desc">Calidad analítica de la investigación sobre la composición del acero, metalurgia y normas ASTM salvadoreñas.</p>
-      <div class="crit-score">
-        <div class="score-pips"><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span><span class="pip on c-cyan"></span></div>
-        <span class="score-pts">20% Peso</span>
-      </div>
-    </div>
-
-    <div class="crit-card" data-score="10 pts">
-      <div class="crit-type col-green">Trabajo Empírico</div>
-      <h4 class="crit-title">Visita de Campo & Entrevista</h4>
-      <p class="crit-desc">Evidencia clara de la gestión con la empresa CORINCA S.A., calidad de los datos técnicos obtenidos de primera mano.</p>
-      <div class="crit-score">
-        <div class="score-pips"><span class="pip on c-green"></span><span class="pip on c-green"></span><span class="pip on c-green"></span><span class="pip on c-green"></span><span class="pip on c-green"></span></div>
-        <span class="score-pts">20% Peso</span>
-      </div>
-    </div>
-
-    <div class="crit-card" data-score="10 pts">
-      <div class="crit-type col-orange">Multimedia</div>
-      <h4 class="crit-title">Video de la Investigación</h4>
-      <p class="crit-desc">Edición limpia, audio claro, locución profesional, tomas representativas del proceso industrial y las entrevistas.</p>
-      <div class="crit-score">
-        <div class="score-pips"><span class="pip on c-orange"></span><span class="pip on c-orange"></span><span class="pip on c-orange"></span><span class="pip on c-orange"></span><span class="pip on c-orange"></span></div>
-        <span class="score-pts">20% Peso</span>
-      </div>
-    </div>
-
-    <div class="crit-card" data-score="20 pts">
-      <div class="crit-type col-amber">Oratoria</div>
-      <h4 class="crit-title">Defensa Oral y Manejo de Preguntas</h4>
-      <p class="crit-desc">Dominio absoluto del tema, terminología técnica adecuada, seguridad individual frente al jurado examinador.</p>
-      <div class="crit-score">
-        <div class="score-pips"><span class="pip on c-amber"></span><span class="pip on c-amber"></span><span class="pip on c-amber"></span><span class="pip on c-amber"></span><span class="pip on c-amber"></span></div>
-        <span class="score-pts">40% Peso</span>
-      </div>
-    </div>
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-cyan">// GRUPAL · INFORME PDF</div>
+    <div class="crit-title">Formato y Estructura</div>
+    <div class="crit-desc">Portada con foto grupal como marca de agua, índice electrónico numerado, texto justificado, bibliografía en normas APA 7.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div></div><span class="score-pts">0–5 PTS</span></div>
   </div>
+
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-cyan">// GRUPAL · INFORME PDF</div>
+    <div class="crit-title">Calidad Científica</div>
+    <div class="crit-desc">Introducción sin errores pedagógicos. Marco Teórico profundo con datos técnicos. Análisis teoría vs. realidad con el experto.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div></div><span class="score-pts">0–5 PTS</span></div>
+  </div>
+
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-cyan">// GRUPAL · PREZI</div>
+    <div class="crit-title">Presentación Prezi</div>
+    <div class="crit-desc">Exclusivamente en Prezi. Regla de los 3 puntos en Introducción. Diseño limpio con mapas conceptuales, sin texto saturado.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div></div><span class="score-pts">0–5 PTS</span></div>
+  </div>
+
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-cyan">// GRUPAL · VIDEO</div>
+    <div class="crit-title">Parámetros Técnicos del Video</div>
+    <div class="crit-desc">Exactamente 4–5 minutos. Audio nítido, imagen estable en horizontal. Lower thirds con nombre y cargo del experto.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div></div><span class="score-pts">0–5 PTS</span></div>
+  </div>
+
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-cyan">// GRUPAL · VIDEO</div>
+    <div class="crit-title">Ejecución y Guion</div>
+    <div class="crit-desc">Sin cámara estática. B-Roll con tomas del entorno real, materiales en proceso y equipo interactuando activamente con el experto.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div><div class="pip on c-cyan"></div></div><span class="score-pts">0–5 PTS</span></div>
+  </div>
+
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-orange">// INDIVIDUAL · DEFENSA</div>
+    <div class="crit-title">Vestimenta y Profesionalismo</div>
+    <div class="crit-desc">Vestimenta formal ejecutiva para especialidad ITSI. Postura y actitud propias de un profesional del sector de ingeniería.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div></div><span class="score-pts">0–5 PTS</span></div>
+  </div>
+
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-orange">// INDIVIDUAL · DEFENSA</div>
+    <div class="crit-title">Dominio de la Información</div>
+    <div class="crit-desc">Explica conceptos técnicos sin leer la presentación. Apropiación total de la teoría de materiales y sus propiedades.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div></div><span class="score-pts">0–5 PTS</span></div>
+  </div>
+
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-orange">// INDIVIDUAL · DEFENSA</div>
+    <div class="crit-title">Pensamiento Crítico Q&A</div>
+    <div class="crit-desc">Responde preguntas del docente con seguridad y lenguaje técnico, relacionando la teoría investigada con lo observado en campo.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div></div><span class="score-pts">0–5 PTS</span></div>
+  </div>
+
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-orange">// INDIVIDUAL · DEFENSA</div>
+    <div class="crit-title">Expresión Oral y Corporal</div>
+    <div class="crit-desc">Postura profesional, voz fuerte y clara, contacto visual directo con la audiencia durante toda la exposición.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div></div><span class="score-pts">0–5 PTS</span></div>
+  </div>
+
+  <div class="crit-card" data-score="5">
+    <div class="crit-type col-orange">// INDIVIDUAL · VIDEO</div>
+    <div class="crit-title">Participación en el Video</div>
+    <div class="crit-desc">Presencia activa y visible: preguntas técnicas inteligentes, toma de notas, interacción directa con el material y el especialista.</div>
+    <div class="crit-score"><div class="score-pips"><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div><div class="pip on c-orange"></div></div><span class="score-pts">0–5 PTS</span></div>
+  </div>
+
 </div>
+
+</div><!-- /wrapper -->
 
 <footer class="site-footer">
-  SISTEMA DE GESTIÓN INTERNO · EQUIPO DE TRABAJO ITSI 2026<br>
-  Construido con <span>✦</span> Inter, Syne y JetBrains Mono
+  GESTIÓN DE PROYECTO · CIENCIA Y TECNOLOGÍA 2026 · <span>ITSI</span><br>
+  COMPLEJO EDUCATIVO CATÓLICO <span>"DRA. MARÍA JULIA HERNÁNDEZ"</span><br>
+  LIC. JONATHAN ALBERTO MENJÍVAR · MAYO 2026
 </footer>
 
-</div> <script>
-// BASE DE DATOS DE TAREAS — MODIFICABLE
-const DATA = [
-  // ── CHAFOYA TAREAS
-  { id:1,  m:'CHAFOYA', f:'F1', t:'Búsqueda bibliográfica inicial sobre metalurgia del acero', d:'Recopilar información sobre los procesos de reducción, el alto horno y la inyección de carbono para fundamentar los conceptos metalúrgicos iniciales.', ev:'Marco Teórico', s:'pending' },
-  { id:2,  m:'CHAFOYA', f:'F3', t:'Redacción formal y envío de carta de solicitud a CORINCA', d:'Formular la petición formal firmada por la institución, gestionar los canales de comunicación y dar seguimiento telefónico hasta agendar fecha oficial.', ev:'Evidencia de Campo', s:'pending' },
-  { id:3,  m:'CHAFOYA', f:'F3', t:'Estructuración de guía de entrevista técnica institucional', d:'Diseñar el cuestionario con mínimo 12 preguntas de alta relevancia dirigidas al Ingeniero de Planta de CORINCA acerca de aleaciones y control de calidad.', ev:'Evidencia de Campo', s:'pending' },
-  { id:4,  m:'CHAFOYA', f:'F3', t:'Conducción presencial de la entrevista técnica en planta', d:'Dirigir el cuestionario durante la visita, fungiendo como entrevistador principal y garantizando el desarrollo formal del diálogo.', ev:'Evidencia de Campo', s:'pending' },
-  { id:5,  m:'CHAFOYA', f:'F5', t:'Simulación interna exhaustiva de preguntas y respuestas', d:'Coordinar jornadas de práctica en equipo para anticipar cuestionamientos severos del jurado y refinar respuestas metodológicas.', ev:'Defensa Oral', s:'pending' },
+<script>
+// ══════════════════════════════════════════
+// TASK DATA — lógica correcta: investigar → redactar → entrevistar → grabar → presentar
+// ══════════════════════════════════════════
+const MEMBERS = ['CHAFOYA','KERIM','IRVIN','AXEL','CHAVEZ'];
+const COLORS  = { CHAFOYA:'var(--m-chafoya)', KERIM:'var(--m-kerim)', IRVIN:'var(--m-irvin)', AXEL:'var(--m-axel)', CHAVEZ:'var(--m-chavez)' };
+const FILLS   = { CHAFOYA:'fill-cyan', KERIM:'fill-orange', IRVIN:'fill-green', AXEL:'fill-amber', CHAVEZ:'fill-violet' };
 
-  // ── KERIM TAREAS
-  { id:6,  m:'KERIM',   f:'F1', t:'Investigación de propiedades mecánicas básicas del acero', d:'Definir operacionalmente los conceptos de ductilidad, límite elástico, tenacidad y resistencia a la tracción en el marco conceptual.', ev:'Marco Teórico', s:'pending' },
-  { id:7,  m:'KERIM',   f:'F1', t:'Ficha técnica exhaustiva del acero corrugado (Sismo-Resistente)', d:'Investigar por qué las varillas corrugadas absorben energía sísmica y las normativas que regulan su diseño en El Salvador.', ev:'Marco Teórico', s:'pending' },
-  { id:8,  m:'KERIM',   f:'F3', t:'Coordinación logística de equipos de grabación en visita', d:'Asegurar disponibilidad de cámaras, micrófonos de solapa e iluminación idónea para documentar el recorrido sin interrumpir la operación.', ev:'Video Técnico', s:'pending' },
-  { id:9,  m:'KERIM',   f:'F3', t:'Edición multimedia e integración del Video del Proyecto', d:'Procesar los clips de la planta, insertar transiciones, subtítulos de términos de ingeniería y renderizar el entregable en alta definición.', ev:'Video Técnico', s:'pending' },
-  { id:10, m:'KERIM',   f:'F5', t:'Preparación del guion técnico expositivo de defensa', d:'Definir los bloques cronometrados de la exposición grupal para evitar exceder el tiempo máximo penalizado por el jurado.', ev:'Defensa Oral', s:'pending' },
+const taskData = {
 
-  // ── IRVIN TAREAS
-  { id:11, m:'IRVIN',   f:'F1', t:'Diferenciación conceptual: Acero al Carbono vs Especiales', d:'Redactar la sección teórica que contrasta las aplicaciones del acero ordinario frente a los aceros aleados con Cromo, Níquel y Manganeso.', ev:'Marco Teórico', s:'pending' },
-  { id:12, m:'IRVIN',   f:'F2', t:'Redacción formal y ordenamiento del Capítulo I y II', d:'Digitar la introducción, justificación, alcances y limitaciones del documento final siguiendo normas estrictas de redacción académica.', ev:'Informe Escrito', s:'pending' },
-  { id:13, m:'IRVIN',   f:'F2', t:'Vaciado técnico y transcripción de datos de entrevista', d:'Pasar a limpio el audio grabado en CORINCA, organizando las respuestas del ingeniero de manera coherente para los anexos.', ev:'Informe Escrito', s:'pending' },
-  { id:14, m:'IRVIN',   f:'F2', t:'Análisis comparativo de las Normas Técnicas Salvadoreñas', d:'Documentar la aplicación obligatoria de las normas técnicas locales e internacionales en las edificaciones de infraestructura civil del país.', ev:'Informe Escrito', s:'pending' },
-  { id:15, m:'IRVIN',   f:'F3', t:'Toma estructurada de bitácora de campo presencial', d:'Registrar manualmente todas las observaciones, datos de producción y comentarios espontáneos del personal durante el recorrido por la fábrica.', ev:'Evidencia de Campo', s:'pending' },
-  { id:16, m:'IRVIN',   f:'F5', t:'Revisión ortográfica de fichas de exposición individual', d:'Verificar que las tarjetas resumen del equipo carezcan de errores tipográficos y posean los conceptos técnicos clave bien detallados.', ev:'Defensa Oral', s:'pending' },
+  CHAFOYA: [
+    {
+      phase:'F1', phaseLabel:'FASE 1 · INVESTIGACIÓN',
+      title:'Investigar: Propiedades mecánicas del acero estructural',
+      desc:'Estudiar y documentar: resistencia a la tracción, límite elástico, ductilidad, dureza (Brinell/Vickers) y tenacidad de las aleaciones de acero usadas en construcción. Entender cómo estas propiedades determinan el comportamiento del acero en columnas, vigas y losas. Esta base le permitirá mantener una conversación técnica con el ingeniero de CORINCA.',
+      eval:'Criterio Individual: Dominio de información — prerequisito para la entrevista'
+    },
+    {
+      phase:'F1', phaseLabel:'FASE 1 · INVESTIGACIÓN',
+      title:'Investigar: Uso del acero en edificios de hormigón armado en El Salvador',
+      desc:'Documentar cómo se aplica el acero en edificios de varios niveles: función de la varilla corrugada en columnas y vigas, malla electrosoldada en losas, normativas de diseño sísmico (NSO 10) y el papel del acero en la resistencia al terremoto. Esta información guía las preguntas de la entrevista hacia la aplicación local real.',
+      eval:'Criterio Grupal: Calidad Científica — aplicación local para la sección de Contraste del Prezi'
+    },
+    {
+      phase:'F3', phaseLabel:'FASE 3 · VISITA CORINCA',
+      title:'Coordinar y confirmar la visita a CORINCA',
+      desc:'Solo después de tener el informe teórico avanzado: enviar la carta de permiso, dar seguimiento hasta confirmar fecha y hora con CORINCA. Notificar al equipo con al menos 3 días de anticipación. Verificar que todos tengan vestimenta apropiada y el cuestionario de Chávez revisado antes de ir.',
+      eval:'Criterio Grupal: Video – Ejecución'
+    },
+    {
+      phase:'F3', phaseLabel:'FASE 3 · ENTREVISTA',
+      title:'Conducir la entrevista técnica en CORINCA',
+      desc:'Llegar con el cuestionario memorizado y el Marco Teórico dominado. Entrevistar al ingeniero en despacho demostrando conocimiento previo: no hacer preguntas básicas, sino sostener una conversación técnica a nivel profesional. Mantener contacto visual, no leer del celular. Interactuar con materiales físicos visibles en cámara.',
+      eval:'Criterio Individual: Q&A + Participación activa en video'
+    },
+    {
+      phase:'F4', phaseLabel:'FASE 4 · REDACCIÓN RESULTADOS',
+      title:'Redactar sección del informe: Resultados y Análisis de la entrevista',
+      desc:'Después de la visita: redactar la sección 7 del informe. No es una transcripción. Es un análisis: síntesis de las aportaciones técnicas más valiosas del ingeniero + contraste explícito entre lo que decían los libros (Marco Teórico de Chávez) y lo que el experto enseñó en la práctica. Tercera persona formal. Entregar a Irvin para integración.',
+      eval:'Criterio Grupal: Calidad Científica — sección de contraste teoría vs. realidad'
+    }
+  ],
 
-  // ── AXEL TAREAS
-  { id:17, m:'AXEL',    f:'F1', t:'Investigación histórica: Evolución del Acero en el país', d:'Rastrear los hitos constructivos clave en El Salvador desde el uso de estructuras de madera y adobe hasta la adopción masiva del acero estructural.', ev:'Marco Teórico', s:'pending' },
-  { id:18, m:'AXEL',    f:'F4', t:'Diseño estructural y conceptual de la plantilla en Prezi Next', d:'Crear un lienzo dinámico no lineal con paleta oscura acorde al proyecto, estructurando las burbujas temáticas lógicamente.', ev:'Presentación Prezi', s:'pending' },
-  { id:19, m:'AXEL',    f:'F4', t:'Montaje de contenidos teóricos en la presentación', d:'Sintetizar textos densos en diagramas de flujo interactivos dentro de Prezi, optimizando la carga visual.', ev:'Presentación Prezi', s:'pending' },
-  { id:20, m:'AXEL',    f:'F4', t:'Integración de evidencias fotográficas en la secuencia', d:'Insertar de manera organizada las imágenes capturadas de los hornos y laboratorios de CORINCA dentro del flujo de la presentación.', ev:'Presentación Prezi', s:'pending' },
-  { id:21, m:'AXEL',    f:'F5', t:'Diseño y dominio del lenguaje corporal del grupo', d:'Supervisar la postura en el escenario, contacto visual y ademanes correctos durante las fases de ensayo generalizado.', ev:'Defensa Oral', s:'pending' },
+  KERIM: [
+    {
+      phase:'F1', phaseLabel:'FASE 1 · INVESTIGACIÓN',
+      title:'Investigar: El proceso siderúrgico — del mineral a la varilla',
+      desc:'Documentar paso a paso: extracción del mineral de hierro → reducción en alto horno → obtención del acero líquido → colada continua → laminación en caliente → obtención de palanquillas y varillas corrugadas. Identificar en qué etapas se determinan las propiedades mecánicas finales. Esta base es imprescindible para entender lo que se verá en CORINCA y para formular preguntas técnicas en el video.',
+      eval:'Criterio Individual: Participación activa en video — hay que entender lo que se graba'
+    },
+    {
+      phase:'F1', phaseLabel:'FASE 1 · INVESTIGACIÓN',
+      title:'Investigar: Normas técnicas del acero de construcción (ASTM)',
+      desc:'Estudiar las principales normas ASTM aplicadas al acero de construcción: ASTM A615 (varillas deformadas), ASTM A36 (perfiles estructurales), ASTM A706 (acero para zonas sísmicas). Qué garantizan estas normas, qué pruebas de calidad se realizan y cómo se aplican en El Salvador. Insumo directo para el cuestionario y para el guion del video.',
+      eval:'Criterio Grupal: Calidad Científica — el guion no puede ser genérico sin conocer las normas'
+    },
+    {
+      phase:'F3', phaseLabel:'FASE 3 · PRE-PRODUCCIÓN',
+      title:'Elaborar el guion del video basado en el informe teórico',
+      desc:'Con el Marco Teórico ya redactado (Chávez) y el cuestionario aprobado: diseñar el guion técnico con estructura de tiempos. Introducción 30-45 s: presentación del equipo en las instalaciones de CORINCA. Desarrollo + B-Roll 3 min: preguntas del cuestionario intercaladas con tomas del proceso productivo. Cierre 30-45 s: reflexión del equipo sobre lo aprendido. Cada toma de B-Roll debe tener intención técnica.',
+      eval:'Criterio Grupal: Video – Ejecución y guion'
+    },
+    {
+      phase:'F3', phaseLabel:'FASE 3 · GRABACIÓN',
+      title:'Grabación en CORINCA: cámara, audio y B-Roll',
+      desc:'Operar cámara/smartphone en trípode. Grabación en horizontal (nunca vertical). Gestionar el audio: micrófono de solapa o segundo dispositivo oculto cerca del ingeniero para captar la voz limpia por encima del ruido de planta. Capturar B-Roll: maquinaria operando, varillas en proceso, palanquillas, equipo de producción. Verificar material en sitio antes de salir.',
+      eval:'Criterio Grupal: Parámetros técnicos — audio y estabilidad son los criterios más difíciles'
+    },
+    {
+      phase:'F4', phaseLabel:'FASE 4 · POST-PRODUCCIÓN',
+      title:'Edición y entrega del video final (4–5 minutos exactos)',
+      desc:'Montar el video: entrevista + B-Roll intercalado + lower thirds en la primera aparición del ingeniero (nombre completo y cargo). Duración estricta: mínimo 4:00, máximo 5:00. Revisar niveles de audio, estabilidad y coherencia narrativa. Exportar en formato horizontal HD. Subir a YouTube o Drive y compartir enlace al equipo antes del domingo 7 de junio.',
+      eval:'Criterio Grupal: Parámetros técnicos + Ejecución y guion del video'
+    }
+  ],
 
-  // ── CHAVEZ TAREAS
-  { id:22, m:'CHAVEZ',  f:'F2', t:'Estructuración de Índices, Glosarios y Bibliografía APA', d:'Maquetar el esqueleto automatizado del informe escrito, organizando los términos metalúrgicos y validando las citas bibliográficas.', ev:'Informe Escrito', s:'pending' },
-  { id:23, m:'CHAVEZ',  f:'F4', t:'Revisión crítica del video institucional preliminar', d:'Auditar el primer corte del video de Kerim, señalando ajustes en transiciones, volumen de voz de fondo y exactitud de subtítulos técnicos.', ev:'Video Técnico', s:'pending' },
-  { id:24, m:'CHAVEZ',  f:'F5', t:'Revisión ortográfica final y control de calidad del Informe', d:'Leer meticulosamente el reporte final completo antes de imprimir para erradicar inconsistencias en la paginación o la sintaxis.', ev:'Informe Escrito', s:'pending' },
-  { id:25, m:'CHAVEZ',  f:'F5', t:'Logística de impresión, empastado y entrega formal', d:'Gestionar el financiamiento común, llevar el archivo final a la imprenta y subir el PDF oficial a Google Classroom en el tiempo límite.', ev:'Informe Escrito', s:'pending' },
-  { id:26, m:'CHAVEZ',  f:'F5', t:'Estrategia de contingencia ante preguntas difíciles de la terna', d:'Establecer un código de asignación de respuestas rápido para que el integrante más apto tome la palabra ordenadamente durante la terna.', ev:'Defensa Oral', s:'pending' }
-];
+  IRVIN: [
+    {
+      phase:'F1', phaseLabel:'FASE 1 · INVESTIGACIÓN',
+      title:'Investigar: Historia del acero en El Salvador e industria siderúrgica nacional',
+      desc:'Documentar la evolución del uso del acero en la construcción salvadoreña: primeras importaciones, surgimiento de empresas nacionales (CORINCA, AMSISA), impacto del terremoto del 2001 en las normativas sísmicas, situación actual del sector. Esta investigación enriquece directamente el Marco Teórico de Chávez y es la base para la sección de Contraste y Aplicación Local del Prezi.',
+      eval:'Criterio Grupal: Calidad Científica — contextualización local obligatoria del proyecto'
+    },
+    {
+      phase:'F2', phaseLabel:'FASE 2 · REDACCIÓN',
+      title:'Redactar sección: Metodología de la investigación de campo',
+      desc:'Describir: perfil del especialista entrevistado en CORINCA (nombre, cargo, empresa, experiencia), justificación técnica de su elección como experto, e incluir el cuestionario de Chávez como instrumento adjunto. Esta sección se redacta antes de la visita con los datos conocidos del especialista. Tercera persona formal.',
+      eval:'Criterio Grupal: Calidad Científica — el informe debe justificar por qué se eligió ese experto'
+    },
+    {
+      phase:'F2', phaseLabel:'FASE 2 · COMPILACIÓN',
+      title:'Compilar y estructurar el informe PDF completo',
+      desc:'Integrar las secciones de todos los integrantes en un solo documento coherente. Orden oficial: Portada (Axel) → Índice electrónico → Introducción (al final) → Objetivos → Marco Teórico (Chávez) → Metodología → Resultados (Chafoya, post-visita) → Conclusiones → Bibliografía APA (Chávez). Aplicar formato justificado, interlineado 1.5, márgenes APA y numeración de páginas.',
+      eval:'Criterio Grupal: Formato y Estructura — el documento final es responsabilidad de Irvin'
+    },
+    {
+      phase:'F2', phaseLabel:'FASE 2 · REDACCIÓN',
+      title:'Redactar sección: Conclusiones del informe',
+      desc:'Redactar una vez finalizado el análisis de la entrevista. Responder: ¿Se cumplieron los 3 objetivos específicos? ¿Qué diferencias existieron entre la teoría investigada y la práctica industrial de CORINCA? ¿Qué impacto tiene el conocimiento de las aleaciones de acero para la carrera en ITSI? Reflexión técnica y crítica, no solo descripción. Tercera persona.',
+      eval:'Criterio Grupal: Calidad Científica — conclusiones superficiales bajan la nota'
+    },
+    {
+      phase:'F4', phaseLabel:'FASE 4 · CIERRE DEL INFORME',
+      title:'Redactar la Introducción del informe (SIEMPRE LO ÚLTIMO)',
+      desc:'⚠️ ERROR COMÚN: redactarla primero. La Introducción se escribe DESPUÉS de terminar todo el informe. Debe responder 3 preguntas: ¿De qué trata este trabajo? (contexto del acero en El Salvador), ¿Por qué se realizó? (vincular teoría y práctica), ¿Cómo se hizo? (mención breve de la entrevista con el experto). Prohibido definir conceptos aquí o adelantar conclusiones.',
+      eval:'Criterio Grupal: Calidad Científica — este es el error más común que penaliza la nota'
+    },
+    {
+      phase:'F5', phaseLabel:'FASE 5 · DEFENSA',
+      title:'Presentación oral de secciones asignadas sin leer',
+      desc:'Dominar oralmente la sección de Resultados y la Metodología del Prezi. Exponer sin leer, manteniendo contacto visual con la audiencia. Estar preparado para Q&A técnica del docente sobre las diferencias observadas entre la teoría y la realidad de CORINCA. Vestimenta formal ejecutiva obligatoria.',
+      eval:'Criterio Individual: Dominio + Expresión oral + Participación en video'
+    }
+  ],
 
-const MEMBERS = ['CHAFOYA', 'KERIM', 'IRVIN', 'AXEL', 'CHAVEZ'];
+  AXEL: [
+    {
+      phase:'F1', phaseLabel:'FASE 1 · INVESTIGACIÓN',
+      title:'Investigar: Propiedades físicas y térmicas del acero estructural',
+      desc:'Documentar: densidad del acero (7,850 kg/m³), punto de fusión (~1,500°C), módulo de elasticidad (200 GPa), conductividad térmica, expansión térmica y comportamiento ante el fuego (pérdida de resistencia a 500°C). Entender por qué el acero expuesto al fuego requiere revestimiento ignífugo en edificios. Esta base teórica permite a Axel exponer el Marco Teórico en el Prezi sin necesidad de leer.',
+      eval:'Criterio Individual: Dominio del tema — necesario para exponer el Marco Teórico sin leer'
+    },
+    {
+      phase:'F2', phaseLabel:'FASE 2 · DISEÑO',
+      title:'Diseñar la portada creativa del informe PDF con foto grupal',
+      desc:'Crear la portada institucional con identidad visual profesional. Elemento obligatorio: fotografía grupal de los 5 integrantes editada con baja opacidad como marca de agua de fondo. Incluir: nombre de la institución, especialidad ITSI, título completo del proyecto, tema específico, nombre del docente y lista de los 5 integrantes. Diseño limpio, sin saturar. Entregar a Irvin para el informe.',
+      eval:'Criterio Grupal: Formato y Estructura — portada sin foto grupal = penalización directa'
+    },
+    {
+      phase:'F2', phaseLabel:'FASE 2 · PREZI',
+      title:'Construir la estructura del Prezi con el contenido del Marco Teórico',
+      desc:'DESPUÉS de que Chávez entregue el Marco Teórico: crear las 7 secciones obligatorias en Prezi. Sección 4 (Marco Teórico): poblar con esquemas, mapas conceptuales, palabras clave y visuales técnicos del acero. NUNCA texto saturado ni párrafos. Secciones 1-3: carátula, objetivos e introducción con la regla de los 3 puntos. Diseño visual alusivo a ingeniería y construcción.',
+      eval:'Criterio Grupal: Prezi – Estructura y Diseño visual'
+    },
+    {
+      phase:'F4', phaseLabel:'FASE 4 · PREZI FINAL',
+      title:'Completar el Prezi: video insertado, contraste y anexos',
+      desc:'Con el video de Kerim listo (lunes 8): insertarlo directamente en la sección 5 del Prezi. Añadir la sección 6 (Contraste y Aplicación Local) con la comparación entre el Marco Teórico y los hallazgos de la entrevista. Sección 7 (Conclusiones). Anexos: QR o enlace al informe PDF y al video. Verificar la reproducción del video antes del ensayo.',
+      eval:'Criterio Grupal: Prezi 100% completo para la defensa'
+    },
+    {
+      phase:'F5', phaseLabel:'FASE 5 · DEFENSA',
+      title:'Exponer el Marco Teórico oralmente sin leer',
+      desc:'Presentar la sección 4 del Prezi con fluidez técnica. Usar los esquemas y mapas conceptuales como apoyo visual, nunca como texto a leer. Dominar: propiedades físicas, térmicas y mecánicas del acero. Responder Q&A del docente sobre las propiedades del material y su relación con el diseño estructural. Vestimenta formal ejecutiva obligatoria.',
+      eval:'Criterio Individual: Dominio de información + Expresión oral + Vestimenta'
+    }
+  ],
 
-// INICIALIZACIÓN
-document.addEventListener("DOMContentLoaded", () => {
-  // Cargar estados guardados si existen
-  const saved = localStorage.getItem('itsi_2026_tasks');
-  if(saved) {
-    const parse = JSON.parse(saved);
-    DATA.forEach(t => { if(parse[t.id]) t.s = parse[t.id]; });
-  }
-  buildMemberBars();
-  renderAll();
-});
+  CHAVEZ: [
+    {
+      phase:'F1', phaseLabel:'FASE 1 · INVESTIGACIÓN — PRIORIDAD #1',
+      title:'Investigar: Definición, clasificación y composición de aleaciones de acero',
+      desc:'⭐ PRIMERA TAREA DEL PROYECTO — TODO EL EQUIPO LA NECESITA. Documentar: definición de aleación metálica, diferencias entre hierro puro, hierro fundido y acero, clasificación del acero según contenido de carbono (acero dulce <0.25%, semiduro 0.25-0.60%, duro >0.60%), función de los elementos aleantes (manganeso → dureza, cromo → anticorrosión, níquel → tenacidad, silicio → desgasificación). Fuentes académicas verificables.',
+      eval:'Criterio Grupal: Calidad Científica — NÚCLEO del Marco Teórico, lo necesitan todos'
+    },
+    {
+      phase:'F1', phaseLabel:'FASE 1 · INVESTIGACIÓN',
+      title:'Investigar: Productos CORINCA y normas de calidad ASTM aplicadas',
+      desc:'Investigar específicamente los productos que fabrica CORINCA: varilla corrugada Grado 40 y 60, malla electrosoldada, alambre de púas, palanquillas de acero. Para cada producto: norma ASTM aplicada, porcentaje de carbono, resistencia nominal, uso específico en construcción. Esta información es la que guiará el cuestionario técnico y diferenciará las preguntas de la entrevista de las básicas.',
+      eval:'Criterio Grupal: Calidad Científica — sin este conocimiento el cuestionario es genérico'
+    },
+    {
+      phase:'F2', phaseLabel:'FASE 2 · REDACCIÓN',
+      title:'Redactar el Marco Teórico y Conceptual del informe (sección 5)',
+      desc:'CON TODA LA INVESTIGACIÓN COMPLETADA: redactar la sección más importante del informe. Estructura sugerida: 1) Definición y clasificación de aleaciones de acero, 2) Propiedades físicas, químicas y mecánicas con datos técnicos numéricos, 3) Proceso siderúrgico resumido, 4) Productos de acero para construcción, 5) Historia y contexto en El Salvador. Mínimo 3 páginas. Tercera persona formal. Entregar a Irvin para integración al informe.',
+      eval:'Criterio Grupal: Calidad Científica — sección más extensa y técnica del informe'
+    },
+    {
+      phase:'F2', phaseLabel:'FASE 2 · CUESTIONARIO',
+      title:'Elaborar el cuestionario técnico de entrevista para CORINCA',
+      desc:'BASADO EN EL MARCO TEÓRICO YA REDACTADO: diseñar exactamente 10 preguntas técnicas específicas. Ninguna pregunta genérica. Ejemplo de pregunta buena: "¿Qué porcentaje de carbono maneja su acero Grado 60 y cómo controlan ese parámetro durante el laminado?" vs. pregunta mala: "¿Qué es el acero?". El cuestionario debe demostrar que el equipo ya sabe del tema. Entregar a Chafoya para revisión antes de la visita.',
+      eval:'Criterio Grupal: Calidad Científica — preguntas vagas = conversación sin valor técnico'
+    },
+    {
+      phase:'F2', phaseLabel:'FASE 2 · BIBLIOGRAFÍA',
+      title:'Compilar la bibliografía completa en normas APA 7',
+      desc:'Registrar y formatear TODAS las fuentes consultadas por el equipo: libros de texto de Ciencia de Materiales, artículos técnicos, sitios web institucionales (ASTM, CORINCA, Ministerio de Obras Públicas), normas técnicas. Formato APA 7 estricto: autor, año, título, editorial o URL. Entregar el listado completo a Irvin para incluirlo como sección final del informe PDF.',
+      eval:'Criterio Grupal: Formato y Estructura — sin APA la sección de bibliografía queda en 0'
+    }
+  ]
+};
 
-// INTERCAMBIO DE PANELES (TABS)
+// ══════════════════════════════════════════
+// STATE — persiste en sessionStorage para mantener progreso al recargar
+// ══════════════════════════════════════════
+const CYCLE = { pending:'inprogress', inprogress:'done', done:'pending' };
+const LABELS = { pending:'○  PENDIENTE', inprogress:'◑  EN PROCESO', done:'●  COMPLETADA' };
+
+function loadState() {
+  try {
+    const saved = sessionStorage.getItem('itsi-state');
+    if(saved) return JSON.parse(saved);
+  } catch(e){}
+  const s = {};
+  MEMBERS.forEach(m => s[m] = taskData[m].map(()=>'pending'));
+  return s;
+}
+function saveState(s) {
+  try { sessionStorage.setItem('itsi-state', JSON.stringify(s)); } catch(e){}
+}
+const state = loadState();
+
+// ══════════════════════════════════════════
+// RENDER
+// ══════════════════════════════════════════
+function phaseClass(p) {
+  return { F1:'phase-F1', F2:'phase-F2', F3:'phase-F3', F4:'phase-F4', F5:'phase-F4' }[p] || '';
+}
+
+function renderTasks(m) {
+  const container = document.getElementById('tasks-'+m);
+  container.innerHTML = '';
+  taskData[m].forEach((task, i) => {
+    const s = state[m][i];
+    const card = document.createElement('div');
+    card.className = 'task-card status-'+s;
+    card.innerHTML = `
+      <div class="task-top">
+        <div class="task-left">
+          <div class="task-meta">
+            <span class="task-num">T${String(i+1).padStart(2,'0')}</span>
+            <span class="task-phase ${phaseClass(task.phase)}">${task.phaseLabel}</span>
+          </div>
+          <div class="task-title">${task.title}</div>
+        </div>
+        <button class="status-btn s-${s}" onclick="cycleStatus('${m}',${i})">${LABELS[s]}</button>
+      </div>
+      <div class="task-desc">${task.desc}</div>
+      <div class="task-footer">
+        <span class="task-eval">${task.eval}</span>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+  updateMember(m);
+}
+
+function cycleStatus(m, i) {
+  state[m][i] = CYCLE[state[m][i]];
+  saveState(state);
+  renderTasks(m);
+  updateGlobal();
+}
+
+function updateMember(m) {
+  const s = state[m];
+  const total = s.length;
+  const done  = s.filter(x=>x==='done').length;
+  const ip    = s.filter(x=>x==='inprogress').length;
+  const pend  = s.filter(x=>x==='pending').length;
+  const pct   = Math.round((done/total)*100);
+
+  // header stats
+  ['done','ip','pend'].forEach(k => {
+    const el = document.getElementById('cnt-'+k+'-'+m);
+    if(el) el.textContent = k==='done'?done:k==='ip'?ip:pend;
+  });
+  // footer stats
+  const fd = document.getElementById('fs-done-'+m);  if(fd) fd.textContent = done;
+  const fi = document.getElementById('fs-ip-'+m);    if(fi) fi.textContent = ip;
+  const fp = document.getElementById('fs-pend-'+m);  if(fp) fp.textContent = pend;
+
+  const bar = document.getElementById('bar-'+m);
+  if(bar) bar.style.width = pct+'%';
+
+  const mini = document.getElementById('mini-'+m);
+  if(mini) mini.textContent = `${done} / ${total} tareas`;
+
+  // mini bar in dashboard
+  const mb = document.getElementById('mbar-'+m);
+  if(mb) mb.style.width = pct+'%';
+  const mp = document.getElementById('mbarpct-'+m);
+  if(mp) mp.textContent = pct+'%';
+}
+
+function updateGlobal() {
+  let total=0, done=0, ip=0;
+  MEMBERS.forEach(m => {
+    state[m].forEach(s => { total++; if(s==='done') done++; if(s==='inprogress') ip++; });
+  });
+  const pct = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('globalPct').textContent = pct+'%';
+  document.getElementById('globalBar').style.width = pct+'%';
+  document.getElementById('d-total').textContent = total;
+  document.getElementById('d-done').textContent = done;
+  document.getElementById('d-done-sub').textContent = pct+'% del proyecto';
+  document.getElementById('d-ip').textContent = ip;
+  document.getElementById('d-ip-sub').textContent = ip === 1 ? '1 tarea activa' : ip+' tareas activas';
+}
+
+// ══════════════════════════════════════════
+// TABS
+// ══════════════════════════════════════════
 function showMod(m) {
   document.querySelectorAll('.module-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
@@ -1019,98 +1461,9 @@ function showMod(m) {
   document.querySelector('.nav-bar').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
-// RENDERS
-function renderAll() {
-  MEMBERS.forEach(m => renderTasks(m));
-  updateDashboard();
-}
-
-function renderTasks(m) {
-  const container = document.getElementById('tasks-'+m);
-  container.innerHTML = '';
-  const filtered = DATA.filter(t => t.m === m);
-
-  filtered.forEach(t => {
-    const card = document.createElement('div');
-    card.className = `task-card status-${t.s}`;
-    card.onclick = () => toggleStatus(t.id);
-
-    let statusLabel = 'Pendiente';
-    if(t.s === 'inprogress') statusLabel = 'En Proceso';
-    if(t.s === 'done') statusLabel = 'Completado';
-
-    card.innerHTML = `
-      <div class="task-top">
-        <div class="task-left">
-          <div class="task-meta">
-            <span class="task-num">ID-#${String(t.id).padStart(2,'0')}</span>
-            <span class="task-phase phase-${t.f}">${t.f.replace('F','Fase ')}</span>
-          </div>
-          <h4 class="task-title">${t.t}</h4>
-        </div>
-        <button class="status-btn s-${t.s}">${statusLabel}</button>
-      </div>
-      <p class="task-desc">${t.d}</p>
-      <div class="task-footer">
-        <span class="task-eval">🎯 Criterio: ${t.ev}</span>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-}
-
-// LÓGICA DE INTERMITENCIA DE ESTADOS
-function toggleStatus(id) {
-  const task = DATA.find(t => t.id === id);
-  if(task.s === 'pending') task.s = 'inprogress';
-  else if(task.s === 'inprogress') task.s = 'done';
-  else task.s = 'pending';
-
-  // Guardar en local storage
-  const state = {};
-  DATA.forEach(t => state[t.id] = t.s);
-  localStorage.setItem('itsi_2026_tasks', JSON.stringify(state));
-
-  renderAll();
-}
-
-// METRICAS DEL DASHBOARD DEL EQUIPO
-function updateDashboard() {
-  const total = DATA.length;
-  const done = DATA.filter(t => t.s === 'done').length;
-  const ip = DATA.filter(t => t.s === 'inprogress').length;
-
-  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-
-  document.getElementById('d-total').innerText = total;
-  document.getElementById('d-done').innerText = done;
-  document.getElementById('d-done-sub').innerText = `${pct}% del proyecto total`;
-  document.getElementById('d-ip').innerText = ip;
-  document.getElementById('d-ip-sub').innerText = `${ip} tareas en desarrollo`;
-
-  // Barra global animada
-  document.getElementById('globalPct').innerText = pct + '%';
-  document.getElementById('globalBar').style.width = pct + '%';
-
-  // Actualizar micro porcentajes de cada integrante
-  MEMBERS.forEach(m => {
-    const mTotal = DATA.filter(t => t.m === m).length;
-    const mDone = DATA.filter(t => t.m === m && t.s === 'done').length;
-    const mPct = mTotal > 0 ? Math.round((mDone / mTotal) * 100) : 0;
-
-    // Actualiza texto en cabecera del módulo
-    document.getElementById('p-'+m).innerText = mPct + '%';
-    // Actualiza mini tabs
-    document.getElementById('mini-'+m).innerText = `${mDone} / ${mTotal} tareas`;
-    // Actualiza barra en dashboard
-    const fill = document.getElementById('mbar-'+m);
-    if(fill) fill.style.width = mPct + '%';
-    const num = document.getElementById('mbarnum-'+m);
-    if(num) num.innerText = mPct + '%';
-  });
-}
-
-// INTEGRACIÓN DE BARRAS DINÁMICAS EN DASHBOARD
+// ══════════════════════════════════════════
+// MEMBER BARS in DASHBOARD
+// ══════════════════════════════════════════
 function buildMemberBars() {
   const container = document.getElementById('member-bars');
   const nameMap = { CHAFOYA:'Chafoya', KERIM:'Kerim', IRVIN:'Irvin', AXEL:'Axel', CHAVEZ:'Chávez' };
@@ -1122,11 +1475,18 @@ function buildMemberBars() {
     row.innerHTML = `
       <span class="mbar-name">${nameMap[m]}</span>
       <div class="mbar-track"><div class="mbar-fill" id="mbar-${m}" style="width:0%;background:${fillMap[m]};border-radius:4px;height:100%;transition:width 0.7s ease"></div></div>
-      <span class="mbar-pct" id="mbarnum-${m}">0%</span>
+      <span class="mbar-pct" id="mbarpct-${m}">0%</span>
     `;
     container.appendChild(row);
   });
 }
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+buildMemberBars();
+MEMBERS.forEach(m => renderTasks(m));
+updateGlobal();
 </script>
 </body>
 </html>
